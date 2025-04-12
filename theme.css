@@ -913,11 +913,11 @@ div[class=""] {
     padding: 0px !important;
 }
 /* Modify play button */
-.layout-desktop .mainDetailButtons .btnPlay::after {
+.layout-desktop .mainDetailButtons .btnPlay::after, .layout-mobile .mainDetailButtons .btnPlay::after {
     content: "Play" !important;
 }
 
-.layout-desktop .mainDetailButtons .btnPlay {
+.layout-desktop .mainDetailButtons .btnPlay, .layout-mobile .mainDetailButtons .btnPlay {
     position: relative !important;
     margin-right: -85px !important;
     padding-right: 20px !important;
@@ -928,10 +928,10 @@ div[class=""] {
     transition: filter 0.2s ease;
 }
 
-.layout-desktop .mainDetailButtons .btnPlay:hover {
+.layout-desktop .mainDetailButtons .btnPlay:hover, .layout-mobile .mainDetailButtons .btnPlay:hover  {
     filter: brightness(120%);
 }
-.layout-desktop .mainDetailButtons .detailButton {
+.layout-desktop .mainDetailButtons .detailButton, .layout-mobile .mainDetailButtons .detailButton {
     -webkit-flex-direction: row !important;
     flex-direction: row !important;
 }
@@ -1375,17 +1375,17 @@ div.nextUpSection {
 }
 
 /* Merge theme files */ /* This is for mobile */
-@media (max-width: 1150px) {
+@media (max-width: 1200px) {
     /*Disable Static Drawer (modified)*/
     /* Reset size of Jellyfin logo */
-    .layout-mobile .detailLogo, .layout-tv .detailLogo, .layout-mobile .detailLogo  {
+    .layout-mobile .detailLogo, .layout-tv .detailLogo, .layout-desktop .detailLogo  {
         display: block !important;
         width: 70% !important;
     }
     .layout-mobile .itemBackdrop {
         background-attachment: scroll;
-        opacity: .5 !important;
-        margin-top: none !important;
+        opacity: .3 !important;
+        margin-top: 0rem !important;
     }
     .layout-desktop .pageTitleWithLogo, .layout-tv .pageTitleWithLogo, .layout-mobile .pageTitleWithLogo {
         height: 30px !important;
@@ -1405,16 +1405,41 @@ div.nextUpSection {
         background: var(--secondary-background-color) !important;
         backdrop-filter: none !important;
     }
-    .layout-desktop:has(.backgroundContainer.withBackdrop) .mainDrawer:not(.dashboardDocument) {
+    .layout-mobile:has(.backgroundContainer.withBackdrop) .mainDrawer:not(.dashboardDocument) {
         width: 275px !important;
         background-color: var(--primary-background-transparent) !important;
         backdrop-filter: blur(var(--blur)) !important;
     }
     @supports not selector(:has(*)) {
-        .layout-desktop .backgroundContainer.withBackdrop + div .mainDrawer {
+        .layout-mobile .backgroundContainer.withBackdrop + div .mainDrawer {
             background: var(--secondary-background-color) !important;
             backdrop-filter: none !important;
         }
+    }
+    /* Blur buttons */
+    .layout-mobile:has(.backgroundContainer.withBackdrop) .navMenuOption-selected {
+        backdrop-filter: blur(var(--blur)) !important;
+    }
+    .layout-mobile:has(.backgroundContainer.withBackdrop) .navMenuOption:hover:not(.navMenuOption-selected) {
+        background: var(--primary-background-transparent) !important;
+        backdrop-filter: blur(var(--blur)) !important;
+    }
+
+    /* Dynamic backdrop support */
+    /* Translucent cards */
+    .layout-mobile #itemDetailPage:not(.noBackdropTransparency) .detailsGroupItem,
+    .layout-mobile #itemDetailPage:not(.noBackdropTransparency) .detailSectionContent,
+    .layout-mobile #itemDetailPage:not(.noBackdropTransparency) .trackSelections {
+        background: var(--primary-background-transparent) !important;
+        backdrop-filter: blur(var(--blur)) !important;
+    }
+
+    /* Transparent drawer */
+    .layout-mobile .backgroundContainer.withBackdrop + div .mainDrawer {
+        background: linear-gradient(to right, #10101090, transparent) !important;
+    }
+    .layout-mobile:has(#itemDetailPage.noBackdropTransparency) .mainDrawer {
+        background: var(--secondary-background-color) !important;
     }
 
     /* Lower drawer buttons */
@@ -1591,7 +1616,7 @@ input:not(.mdl-slider) {
 }
 
 /* Merge theme files */ /* This is for mobile */
-@media (max-width: 1150px) {
+@media (max-width: 1200px) {
 
     /* mobile logo fix */
     .pageTitleWithDefaultLogo
@@ -1768,4 +1793,21 @@ input:not(.mdl-slider) {
 /* Show the top bar when the login page is hidden or absent */
 body:not(:has(#loginPage:not(.hide))) .skinHeader {
     display: flex !important;
+}
+
+.layout-mobile .backdropImage {
+    background-position: 50% !important;
+    background-repeat: no-repeat !important;
+    background-size: cover !important;
+    bottom: 0 !important;
+    contain: layout style !important;
+    left: 0 !important;
+    position: absolute !important;
+    right: 0 !important;
+    top: 0 !important
+}
+
+.layout-mobile .backdropImageFadeIn {
+    -webkit-animation: backdrop-fadein .8s ease-in normal both !important;
+    animation: backdrop-fadein .8s ease-in normal both !important
 }
