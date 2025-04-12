@@ -1819,11 +1819,11 @@ body:not(:has(#loginPage:not(.hide))) .skinHeader {
 /* Rounding of play button in media-bar */
 .play-button {
     border-radius: 15px !important;
-    color: #695acde5;
+    color: #695acde5 !important;
 }
 
 .layout-desktop .headerTabs {
-    background: rgb(246 237 11 / 20%) !important;
+    background: rgba(0, 0, 0, 0.2) !important;
     border-radius: 15px !important;
     height: 50px !important;
     font-size: 18px !important;
