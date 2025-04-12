@@ -11,8 +11,8 @@
     --secondary-background-color: #181818;
     --primary-background-transparent: rgba(0, 153, 255, 0.1);
     --secondary-background-transparent: rgba(0, 153, 255, 0.2);
-    --rounded-cards: 5px;
-    --blur: 2px;
+    --rounded-cards: 8px;
+    --blur: 5px;
     --alt-accent-color: #ffffff20;
     --alt-accent-color-nontsp: #ffffffe0
 
@@ -1320,6 +1320,11 @@ a.emby-button.homeLibraryButton.raised:hover::before {
     background-image: url("https://i.ibb.co/JWYbjZ4z/jp.png");
 }
 
+.layout-desktop .pageTitleWithLogo {
+    height: 40px !important;
+    width: 200px !important;
+}
+
 /* Hide Next Up */
 div.nextUpSection {
     display: none;
@@ -1632,7 +1637,7 @@ input:not(.mdl-slider) {
     }
 
     /* header size fix */
-    .layout-desktop .headerTabs {
+    .layout-desktop .headerTabs, .layout-mobile .headerTabs {
         background: rgba(0, 0, 0, 0.2) !important;
         border-radius: 5px !important;
         height: 40px !important;
@@ -1810,4 +1815,16 @@ body:not(:has(#loginPage:not(.hide))) .skinHeader {
 .layout-mobile .backdropImageFadeIn {
     -webkit-animation: backdrop-fadein .8s ease-in normal both !important;
     animation: backdrop-fadein .8s ease-in normal both !important
+}
+/* Rounding of play button in media-bar */
+.play-button {
+    border-radius: 15px !important;
+    color: slateblue;
+}
+
+.layout-desktop .headerTabs {
+    background: rgb(246 237 11 / 20%) !important;
+    border-radius: 15px !important;
+    height: 50px !important;
+    font-size: 18px !important;
 }
