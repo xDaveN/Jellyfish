@@ -280,7 +280,8 @@ html,
     max-width: 100% !important;
 }
 .layout-mobile .emby-button-foreground {
-    top: -1px !important;
+    top: -5px !important;
+    text-shadow: -2px 2px 10px #000000 !important; /* Merge theme files - adding shadow for text and aligning content to the button*/
 }
 .layout-mobile .skinHeader {
     transition: .1s !important;
@@ -1207,7 +1208,7 @@ div[class=""] {
 
 /* Inactive Header text color */
 .emby-button > .emby-button-foreground {
-    color: grey;
+    color: blanchedalmond;
     transition: color 0.2s ease
 }
 /* Active Header text color */
@@ -1834,4 +1835,14 @@ body:not(:has(#loginPage:not(.hide))) .skinHeader {
 
 .layout-desktop .headerTabs {
     background: rgba(0, 0, 0, 0.2) !important;
+}
+
+/* Fixes for media-bar font and first section overlapping media bar */
+.section0 {
+    margin-top: 5%;
+    height: auto;
+    }
+.genre, .plot, .rating-value, .rating-value span, .date,.age-rating span, .runTime, .featured-content, .button-container button, .play-text
+    {
+    font-family: Noto Sans, Noto Sans HK, Noto Sans JP, Noto Sans KR, Noto Sans SC, Noto Sans TC, sans-serif !important;
 }
