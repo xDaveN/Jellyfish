@@ -1637,7 +1637,8 @@ input:not(.mdl-slider) {
 
     /* mobile logo fix */
     .pageTitleWithDefaultLogo
-    { background-image: url("https://i.ibb.co/c01rKqN/jp.png");
+    {  /* background-image: url("https://i.ibb.co/JWYbjZ4z/jp.png"); */
+        background-image: url("https://i.ibb.co/NgBH1tdh/jf.png");
         background-size: 100px;
     }
 
