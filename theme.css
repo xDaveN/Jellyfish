@@ -1328,7 +1328,8 @@ a.emby-button.homeLibraryButton.raised:hover::before {
 /* Scyflow extras*/
 /* BW Logo */
 .pageTitleWithDefaultLogo {
-    background-image: url("https://i.ibb.co/JWYbjZ4z/jp.png");
+    /* background-image: url("https://i.ibb.co/JWYbjZ4z/jp.png"); */
+    background-image: url("https://i.ibb.co/NgBH1tdh/jf.png");
 }
 
 .layout-desktop .pageTitleWithLogo {
