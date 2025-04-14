@@ -148,6 +148,8 @@ progress::-webkit-progress-value {
 /* Dynamic buttons */
 .layout-desktop .navMenuOption:hover:not(.navMenuOption-selected) {
     transform: scale(1.05) !important;
+    border-radius: 10px !important;
+    color: var(--primary-accent-color) !important;
 }
 .layout-desktop .listItem {
     transition: .2s !important;
@@ -159,7 +161,7 @@ progress::-webkit-progress-value {
 
 /*  watched indicator */
 .playedIndicator {
-    background: var(--primary-accent-color) !important;
+    background: var(--secondary-accent-color) !important;
 }
 /* Update progress bar colors to use primary color */
 .itemProgressBarForeground {
@@ -1228,24 +1230,24 @@ div[class=""] {
         border-radius: 0 !important;
         width: 40px;
         height: 40px;
-        background: #00000085 !important;
+        background: var(--primary-accent-color) !important;
     }
 
     .indicator {
         border-radius: 0 !important;
         width: 40px;
         height: 40px;
-        background: #00000085 !important;
+        background: var(--primary-accent-color) !important;
     }
 
     .lazy-image-fadein-fast.non-blurhashable.lazy.itemAction.listItemImage-large.listItemImage > .mediaSourceIndicator {
         border-radius: 0 !important;
-        background: #00000085 !important;
+        background: var(--primary-accent-color) !important;
     }
 
     .mediaSourceIndicator {
         border-radius: 0 !important;
-        background: #00000085 !important;
+        background: var(--primary-accent-color) !important;
     }
 }
 /* Outline Cards on Hover */
@@ -1334,7 +1336,7 @@ a.emby-button.homeLibraryButton.raised:hover::before {
 }
 
 .layout-desktop .pageTitleWithLogo {
-    height: 40px !important;
+    height: 50px !important;
     width: 140px !important;
 }
 
@@ -1398,10 +1400,18 @@ div.nextUpSection {
     /* Reset size of Jellyfin logo */
     .layout-mobile .detailLogo, .layout-tv .detailLogo, .layout-desktop .detailLogo  {
         display: block !important;
-        width: 70% !important;
+        width: 80% !important;
         position: inherit !important;
         top: 5vh  !important;
     }
+
+    @media (orientation: landscape) {
+        .layout-mobile .detailLogo {
+            left: 15% !important;
+            top: 15% !important;
+        }
+    }
+
     .layout-mobile .itemBackdrop {
         background-attachment: scroll;
         opacity: .3 !important;
@@ -1871,3 +1881,25 @@ body:not(:has(#loginPage:not(.hide))) .skinHeader {
     from { transform: rotate(0deg); }
     to { transform: rotate(360deg); }
   }
+
+.detailLogo {
+    animation: slideInLogo 1s ease-out;
+}
+@keyframes slideInLogo {
+    0% { transform: translateY(-50px); opacity: 0; }
+    60% { transform: translateY(10px); opacity: 1; }
+    100% { transform: translateY(0); }
+}
+
+.button-flat:hover, .button-link:hover {
+    transform: scale(1.2);
+    transition: transform 0.2s ease-in-out;
+}
+
+.detailPagePrimaryContainer {
+    animation: fadeSlideIn 2s ease-in-out;
+}
+@keyframes fadeSlideIn {
+    0% { opacity: 0; transform: translateX(20px); }
+    100% { opacity: 1; transform: translateX(0); }
+}
