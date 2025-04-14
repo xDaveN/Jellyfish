@@ -161,7 +161,7 @@ progress::-webkit-progress-value {
 
 /*  watched indicator */
 .playedIndicator {
-    background: var(--secondary-accent-color) !important;
+    background: #48b648 !important;
 }
 /* Update progress bar colors to use primary color */
 .itemProgressBarForeground {
@@ -1227,17 +1227,16 @@ div[class=""] {
 @media (min-width: 1200px) {
     /* Squared Dark/Transparent Episode and Version indicators */
     .playedIndicator {
-        border-radius: 0 !important;
-        width: 40px;
-        height: 40px;
-        background: var(--primary-accent-color) !important;
+        border-radius: 10px !important;
+        width: 30px;
+        height: 30px;
+        background: #48b648 !important;
     }
 
     .indicator {
-        border-radius: 0 !important;
-        width: 40px;
-        height: 40px;
-        background: var(--primary-accent-color) !important;
+        border-radius: 10px !important;
+        width: 30px;
+        height: 30px;
     }
 
     .lazy-image-fadein-fast.non-blurhashable.lazy.itemAction.listItemImage-large.listItemImage > .mediaSourceIndicator {
@@ -1400,7 +1399,7 @@ div.nextUpSection {
     /* Reset size of Jellyfin logo */
     .layout-mobile .detailLogo, .layout-tv .detailLogo, .layout-desktop .detailLogo  {
         display: block !important;
-        width: 80% !important;
+        width: 70% !important;
         position: inherit !important;
         top: 5vh  !important;
     }
@@ -1673,17 +1672,16 @@ input:not(.mdl-slider) {
 
     /* Smaller Squared Dark/Transparent Episode, Version indicators for Android */
     .playedIndicator {
-        border-radius: 0 !important;
+        border-radius: 10px !important;
         width: 30px;
         height: 30px;
-        background: #00000085 !important;
+        background: #48b648 !important;
     }
 
     .indicator {
-        border-radius: 0 !important;
+        border-radius: 10px !important;
         width: 30px;
         height: 30px;
-        background: #00000085 !important;
     }
 
     .layout-desktop .emby-button-foreground {
@@ -1705,7 +1703,7 @@ input:not(.mdl-slider) {
 /*Disable Static Drawer (modified)*/
 /* Reset size of Jellyfin logo */
 .layout-desktop .pageTitleWithLogo {
-    height: 40px !important;
+    height: 50px !important;
     width: 140px !important;
     margin: 0 1em 0 .5em !important;
 }
@@ -1883,7 +1881,7 @@ body:not(:has(#loginPage:not(.hide))) .skinHeader {
   }
 
 .detailLogo {
-    animation: slideInLogo 1s ease-out;
+    animation: slideInLogo 0.8s ease-out;
 }
 @keyframes slideInLogo {
     0% { transform: translateY(-50px); opacity: 0; }
