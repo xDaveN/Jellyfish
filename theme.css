@@ -11,7 +11,7 @@
     --secondary-background-color: #181818;
     --primary-background-transparent: rgba(0, 153, 255, 0.1);
     --secondary-background-transparent: rgba(0, 153, 255, 0.2);
-    --rounded-cards: 8px;
+    --rounded-cards: 15px;
     --blur: 5px;
     --alt-accent-color: #ffffff20;
     --alt-accent-color-nontsp: #ffffffe0
@@ -915,7 +915,7 @@ div[class=""] {
 }
 /* Modify play button */
 .layout-desktop .mainDetailButtons .btnPlay::after, .layout-mobile .mainDetailButtons .btnPlay::after {
-    content: "Play?" !important;
+    content: "Sooo..?" !important;
 }
 
 .layout-desktop .mainDetailButtons .btnPlay {
@@ -931,8 +931,8 @@ div[class=""] {
 
 .layout-mobile .mainDetailButtons .btnPlay {
     position: relative !important;
-    padding-right: 20px !important;
-    right: 10px !important;
+    padding-right: auto !important;
+    right: auto !important;
     background: var(--primary-accent-color) !important;
     border-radius: 15px !important;
     color: var(--secondary-background-color) !important;
@@ -1329,7 +1329,8 @@ a.emby-button.homeLibraryButton.raised:hover::before {
 /* BW Logo */
 .pageTitleWithDefaultLogo {
     /* background-image: url("https://i.ibb.co/JWYbjZ4z/jp.png"); */
-    background-image: url("https://i.ibb.co/NgBH1tdh/jf.png");
+    background-image: url("https://i.ibb.co/TqBxLXTx/jfish.png");
+    background-size: 110px !important;
 }
 
 .layout-desktop .pageTitleWithLogo {
@@ -1398,6 +1399,8 @@ div.nextUpSection {
     .layout-mobile .detailLogo, .layout-tv .detailLogo, .layout-desktop .detailLogo  {
         display: block !important;
         width: 70% !important;
+        position: inherit !important;
+        top: 5vh  !important;
     }
     .layout-mobile .itemBackdrop {
         background-attachment: scroll;
@@ -1629,7 +1632,7 @@ input:not(.mdl-slider) {
 }
 
 .layout-desktop .emby-button-foreground {
-    top: -10px !important;
+    top: -12px !important;
 }
 
 /* Merge theme files */ /* This is for mobile */
@@ -1638,8 +1641,9 @@ input:not(.mdl-slider) {
     /* mobile logo fix */
     .pageTitleWithDefaultLogo
     {  /* background-image: url("https://i.ibb.co/JWYbjZ4z/jp.png"); */
-        background-image: url("https://i.ibb.co/NgBH1tdh/jf.png");
-        background-size: 100px;
+        background-image: url("https://i.ibb.co/TqBxLXTx/jfish.png");
+        background-size: 110px !important;
+        padding: 8px !important;
     }
 
 
@@ -1848,3 +1852,22 @@ body:not(:has(#loginPage:not(.hide))) .skinHeader {
     {
     font-family: Noto Sans, Noto Sans HK, Noto Sans JP, Noto Sans KR, Noto Sans SC, Noto Sans TC, sans-serif !important;
 }
+
+/* Other Fixes and animations */
+
+.layout-mobile .mainDetailButtons {
+    margin: auto !important;
+    padding-top : 10px !important;
+  }
+
+.syncButton {
+      display: block !important;
+  }
+
+.starRatingContainer:hover .starIcon {
+    animation: spin 1s ease-in-out;
+  }
+  @keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
