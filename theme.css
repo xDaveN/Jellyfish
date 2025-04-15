@@ -1,5 +1,6 @@
+@import url("https://cdn.jsdelivr.net/gh/prayag17/Jellyfin-Icons/round.css");
 @import url("https://cdn.jsdelivr.net/gh/Druidblack/jellyfin-icon-metadata@main/public-icon.css");
-/*Scyflow-main*/
+
 /* Variables */
 :root {
     --primary-r: 0;
@@ -1045,106 +1046,6 @@ div[class=""] {
 }
 
 
-
-/* Login page */
-.layout-desktop #loginPage {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.layout-desktop #loginPage .padded-left.padded-right.padded-bottom-page.margin-auto-y {
-    background: var(--secondary-background-color) !important;
-    width: 400px !important;
-    border-radius: 25px !important;
-    padding: 50px !important;
-}
-.layout-desktop #loginPage .manualLoginForm .btnCancel {
-    position: absolute !important;
-    background: none !important;
-    width: 100px !important;
-    margin-left: -10px !important;
-    margin-top: 70px !important;
-    text-align: left !important;
-}
-.layout-desktop #loginPage .visualLoginForm {
-    position: relative !important;
-    background: var(--secondary-background-color) !important;
-    z-index: 1000 !important;
-}
-.layout-desktop #loginPage .btnForgotPassword {
-    background: none !important;
-    font-weight: normal !important;
-    width: 150px !important;
-    text-align: right !important;
-    position: absolute !important;
-    margin-left: 255px !important;
-    margin-top: -195px !important;
-    font-size: smaller !important;
-    color: rgba(255, 255, 255, 0.5) !important;
-    z-index: 1 !important;
-}
-.layout-desktop #loginPage .loginDisclaimerContainer {
-    top: 0px !important;
-    position: relative !important;
-    left: 0px !important;
-    width: auto !important;
-    margin-top: 0px !important;
-    /* top: 130px !important;
-    position: relative !important;
-    left: -50px !important;
-    width: 500px !important;
-    margin-top: -35px !important; */
-}
-/* Merge theme files */
-
-/* Addition for the disclaimer */
-.loginDisclaimer p {
-    text-align: left !important;
-    font-size: 110% !important;
-    text-shadow: -1px 1px 12px #ffffff;
-}
-
-/*Hide "Please sign in" text, margin is to prevent login form moving too far up*/
-#loginPage h1 {display: none}
-#loginPage .padded-left.padded-right.padded-bottom-page {margin-top: 10px}
-
-
-.layout-desktop #loginPage .squareCard {
-    width: 25% !important;
-    font-size: smaller !important;
-}
-@media (max-width: 100em) {
-    .layout-desktop #loginPage .squareCard {
-        width: 20% !important;
-    }
-    .layout-desktop #loginPage .padded-left.padded-right.padded-bottom-page.margin-auto-y {
-        width: 600px !important;
-    }
-    .layout-desktop #loginPage .btnForgotPassword {
-        margin-left: 450px !important;
-    }
-    .layout-desktop #loginPage .disclaimerContainer {
-        width: 700px !important;
-    }
-}
-@media (max-width: 87.5em) {
-    .layout-desktop #loginPage .squareCard {
-        width: 20% !important;
-    }
-}
-@media (max-width: 75em) {
-    .layout-desktop #loginPage .squareCard {
-        width: 20% !important;
-    }
-}
-@media (max-width: 43.75em) {
-    .layout-desktop #loginPage .squareCard {
-        width: 20% !important;
-    }
-}
-
-
-
 /* Dialog box */
 .dialog {
     background-color: var(--secondary-background-color) !important;
@@ -1820,10 +1721,6 @@ input:not(.mdl-slider) {
 }
 
 /* Merge theme files */
-/* Show the top bar when the login page is hidden or absent */
-body:not(:has(#loginPage:not(.hide))) .skinHeader {
-    display: flex !important;
-}
 
 .layout-mobile .backdropImage {
     background-position: 50% !important;
