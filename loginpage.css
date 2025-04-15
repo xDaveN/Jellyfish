@@ -46,7 +46,7 @@ body:has(#loginPage:not(.hide)) .standalonePage {
 
 /* General style for ALL h1 elements within #loginPage */
 #loginPage h1 {
-  text-indent: -9999px;
+  color: #ffffff00;
   overflow: hidden;
   white-space: nowrap;
   display: block !important;
@@ -55,7 +55,7 @@ body:has(#loginPage:not(.hide)) .standalonePage {
   margin: 10px auto !important;
   text-align: center !important;
   position: relative;
-  padding: 10px;
+  padding: 20px 0 10px 0;
   border: none;
 }
 
@@ -72,6 +72,8 @@ body:has(#loginPage:not(.hide)) .standalonePage {
 #loginPage .sectionTitle {
 margin: 0 auto 1.2em !important;
 text-align: center;
+margin: -10px 0 0 0;
+padding: 0;
 /* Add height here ONLY if it needs to be DIFFERENT from the general h1 rule */
 /* height: 80px; */
 }
