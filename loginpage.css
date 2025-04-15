@@ -152,3 +152,65 @@ padding: 0;
   50% { transform: scale(1.15); }
   100% { transform: scale(1); }
 }
+
+
+/* Manual Login Page Customizations */
+
+#loginPage .checkboxLabel, #loginPage button.emby-button[type="submit"] span, #loginPage button.emby-button[type="button"].btnCancel span {
+  font-size: 0;
+}
+#loginPage .checkboxLabel::after {
+  content: "Password amnesia preventer!";
+  font-size: 16px !important;
+  font-family: inherit;
+}
+
+#loginPage .emby-input {
+  transition: all 0.3s ease-in-out;
+  border-radius: 5px;
+  padding: 12px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+}
+
+#loginPage .checkboxContainer:hover {
+  color:  var(--primary-accent-color) !important;
+}
+
+#loginPage button.emby-button[type="submit"] span::after {
+  content: "Enter the Matrix! 🌀" !important;
+  font-size: 16px !important;
+  font-family: inherit;
+}
+
+#loginPage button.emby-button[type="submit"] {
+  background-color: #28a745a8 !important;
+  color: white !important;
+}
+
+#loginPage button.emby-button[type="submit"]:hover {
+  background-color: #28a745 !important;
+  color: white !important;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  transform: scale(1.05);
+}
+
+
+#loginPage button.emby-button[type="button"].btnCancel span::after {
+  content: "Abort Mission! ☠️" !important;
+  font-size: 16px !important;
+  font-family: inherit;
+}
+
+#loginPage button.emby-button[type="button"].btnCancel {
+  background-color: #dc3545a8 !important;
+  color: white !important;
+  filter: brightness(1.1);
+}
+
+#loginPage button.emby-button[type="button"].btnCancel:hover {
+  background-color: #dc3545 !important;
+  color: white !important;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  transform: scale(1.05);
+}
