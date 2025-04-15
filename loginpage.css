@@ -1,4 +1,8 @@
 /*Narrow the login form, size according to display size (bigger on mobile)*/
+
+#loginPage {
+  color:
+}
 #loginPage .readOnlyContent,
 #loginPage form {
   max-width: 32em !important;
@@ -28,6 +32,33 @@
   background-color: darkgrey;
   background: url(https://i.imgur.com/9vL4iNf.png) !important;
   background-size: cover !important;
+}
+
+body:has(#loginPage:not(.hide)) .dialogContainer .formDialog {
+  border-radius: 60px !important;
+}
+
+body:has(#loginPage:not(.hide)) .dialogContainer .formDialogFooter .emby-button {
+  background-color: #a95cc3bb !important;
+  color: white !important;
+}
+
+body:has(#loginPage:not(.hide)) .formDialogHeader {
+  background-color: #a95cc3bb;
+  border-top-left-radius: 60px;
+  border-top-right-radius: 60px;
+  padding: 1em;
+  margin-left: .2em !important;
+}
+
+body:has(#loginPage:not(.hide)) .formDialogHeaderTitle {
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+body:has(#loginPage:not(.hide)) .dialogContentInner {
+  padding-top: 2em;
+  font-weight: bold;
 }
 
 /*Hide "manual" and "forgot" buttons on the login screen*/
@@ -156,7 +187,7 @@ padding: 0;
 
 /* Manual Login Page Customizations */
 
-#loginPage .checkboxLabel, #loginPage button.emby-button[type="submit"] span, #loginPage button.emby-button[type="button"].btnCancel span {
+#loginPage .checkboxLabel, #loginPage button.emby-button[type="submit"] span, #loginPage button.emby-button[type="button"].btnCancel span, #loginPage button.emby-button[type="button"].btnQuick span {
   font-size: 0;
 }
 #loginPage .checkboxLabel::after {
@@ -210,6 +241,25 @@ padding: 0;
 
 #loginPage button.emby-button[type="button"].btnCancel:hover {
   background-color: #dc3545 !important;
+  color: white !important;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  transform: scale(1.05);
+}
+
+#loginPage button.emby-button[type="button"].btnQuick span::after {
+  content: "🪼 Quick Connect 🔗" !important;
+  font-size: 16px !important;
+  font-family: inherit;
+}
+
+#loginPage button.emby-button[type="button"].btnQuick {
+  background-color: #aa5cc38c !important;
+  color: white !important;
+  filter: brightness(1.1);
+}
+
+#loginPage button.emby-button[type="button"].btnQuick:hover {
+  background-color: #a95cc3bb !important;
   color: white !important;
   transition: background-color 0.3s ease, transform 0.3s ease;
   transform: scale(1.05);
