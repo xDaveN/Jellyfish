@@ -30,15 +30,11 @@
 
 .button-submit {
     background: var(--secondary-accent-color) !important;
-    color: var(--primary-accent-color) !important;
 }
 
 .emby-checkbox:checked + span + .checkboxOutline {
     background: var(--secondary-accent-color) !important;
     border-color: var(--secondary-accent-color) !important;
-}
-.checkboxIcon {
-    color: var(--primary-accent-color)
 }
 
 .layout-desktop .detailSectionContent,

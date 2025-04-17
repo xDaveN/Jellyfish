@@ -521,8 +521,8 @@ div[class=""] {
     margin: 0px 0px 10px 10px !important;
     color: var(--primary-accent-color) !important;
 }
-
-.headerUsername {
+/* Add accent color to all heads in the profile section */
+.headerUsername, .sectionTitle {
     color: var(--primary-accent-color) !important;
 }
 
