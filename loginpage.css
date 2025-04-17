@@ -1,8 +1,5 @@
 /*Narrow the login form, size according to display size (bigger on mobile)*/
 
-#loginPage {
-  color:
-}
 #loginPage .readOnlyContent,
 #loginPage form {
   max-width: 32em !important;
