@@ -1133,12 +1133,10 @@ div[class=""] {
     }
 
     .lazy-image-fadein-fast.non-blurhashable.lazy.itemAction.listItemImage-large.listItemImage > .mediaSourceIndicator {
-        border-radius: 0 !important;
         background: var(--primary-accent-color) !important;
     }
 
     .mediaSourceIndicator {
-        border-radius: 0 !important;
         background: var(--primary-accent-color) !important;
     }
 }
@@ -1439,10 +1437,6 @@ div.nextUpSection {
     .layout-desktop .appfooter {
         margin-left: 0px !important;
     }
-}
-
-/* Merge theme files */ /* This is for mobile */
-@media (max-width: 1200px) {
 
     /* mobile logo fix */
     .pageTitleWithDefaultLogo
@@ -1453,32 +1447,12 @@ div.nextUpSection {
     }
 
 
-    /* Smaller Cast and Crew Section */
-    #castContent .card.overflowPortraitCard {
-        width: 100px;
-        /* android/small screen fix */
-    }
-
     /* header size fix */
     .layout-desktop .headerTabs, .layout-mobile .headerTabs {
         background: rgba(0, 0, 0, 0.2) !important;
         border-radius: 15px !important;
         height: 40px !important;
         font-size: 12px !important;
-    }
-
-    /* Smaller Squared Dark/Transparent Episode, Version indicators for Android */
-    .playedIndicator {
-        border-radius: 10px !important;
-        width: 30px;
-        height: 30px;
-        background: #48b648 !important;
-    }
-
-    .indicator {
-        border-radius: 10px !important;
-        width: 30px;
-        height: 30px;
     }
 
     .layout-desktop .emby-button-foreground {
