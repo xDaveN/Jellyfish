@@ -1,0 +1,22 @@
+/* Cornered card indicators */
+.cardIndicators,
+.listItemIndicators {
+  right: 0 !important;
+  top: 0 !important;
+}
+.innerCardFooter {
+  border-radius: 0px 8px !important;
+  box-shadow: -2px 1px 4px 0 rgb(0 0 0 / .8) !important;
+}
+.countIndicator, .playedIndicator {
+  border-radius: 2px 0px 2px 15px !important;
+  box-shadow: -2px 1px 4px 0 rgb(0 0 0 / .8) !important;
+}
+
+.mediaSourceIndicator {
+  left: 0 !important;
+  top: 0 !important;
+  border-radius: 8px 0px !important;
+  box-shadow: -2px 1px 4px 0 rgb(0 0 0 / .8);
+  background: -2px 1px 4px 0 rgb(0 0 0 / .8)
+}
