@@ -194,11 +194,11 @@ html,
 
 /* Add hover color for header buttons */
 .headerRight .paper-icon-button-light:hover, .headerRight .paper-icon-button-light:hover:not(:disabled) {
-    color: var(--secondary-accent-color) !important;
+    color: var(--primary-accent-color) !important;
   }
 
 .headerRight .paper-icon-button-light:focus, .headerRight .paper-icon-button-light:focus:not(:disabled) {
-    color: var(--secondary-accent-color) !important;
+    color: var(--primary-accent-color) !important;
 }
 
 /* Text colors within the bar */
@@ -296,8 +296,7 @@ html,
     top: -14px !important;
 }
 .layout-mobile .emby-button-foreground {
-    top: -5px !important;
-    text-shadow: -2px 2px 10px #000000 !important; /* Mobile shadow */
+    text-shadow: -2px 2px 12px #000000eb !important; /* Mobile shadow */
 }
 
 /* Hide Home Button (Except Dashboard) */
@@ -778,14 +777,17 @@ a.emby-button.homeLibraryButton.raised:hover::before {
     padding-right: 20px !important;
     margin-right: 0 !important; /* Reset potential negative margin */
     right: 0 !important; /* Reset potential offset */
+    color: var(--secondary-background-color) !important;
+    border-radius: var(--rounded-cards) !important;
 }
 .layout-mobile .mainDetailButtons .btnPlay {
     /* Keep original style from global section */
     position: relative !important;
     padding-right: auto !important;
     right: auto !important;
-    margin: auto !important;
+    color: var(--secondary-background-color) !important;
     padding-top: 10px !important;
+    border-radius: var(--rounded-cards) !important;
 }
 .layout-desktop .mainDetailButtons .btnPlay:hover, .layout-mobile .mainDetailButtons .btnPlay:hover  {
     filter: brightness(120%);
