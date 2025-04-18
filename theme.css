@@ -79,13 +79,13 @@ progress::-webkit-progress-value,
 .MuiListItemButton-root.Mui-selected,
 .listItemIcon:not(.listItemIcon-transparent):not(.notification_important) {
     color: var(--primary-accent-color) !important;
+    background-color: var(--secondary-background-color) !important;
 }
 
 /* Apply Accent Color - Hover Effects */
 @media (hover: hover) and (pointer: fine) {
     .paper-icon-button-light:hover:not(:disabled):not(.headerButton) { /* Exclude header buttons */
         color: var(--primary-accent-color) !important;
-        background-color: var(--secondary-accent-color) !important;
     }
 }
 
@@ -227,8 +227,8 @@ html,
 	transition: color 0.2s ease;
 }
 #indexPage .homeLibraryButton:hover, .emby-tab-button:hover {
-	background-color: var(--primary-accent-color) !important; /* Use primary accent color on hover */
 	border-radius: 100px !important; /* Pill shape */
+	background-color: var(--primary-accent-color) !important; /* Use primary accent color on hover */
 }
 .raised.homeLibraryButton.emby-button:hover, .emby-tab-button:hover, .homeLibraryButton:focus {
 	outline: none !important;
@@ -253,7 +253,7 @@ html,
     margin-bottom: 10px !important;
     margin-left: 60px !important;
     margin-top: -58px !important;
-    font-size: 18px !important; /* Your font size */
+    font-size: 12px !important; /* Your font size */
     /* Appearance styles handled above */
 }
 .layout-desktop .headerRight {
@@ -264,7 +264,7 @@ html,
     /* Appearance styles handled above */
 }
 .emby-tab-button {
-    height: 45px !important; /* Match .headerRight */
+    height: 30px !important; /* Match .headerRight */
     display: inline-flex !important; /* Ensure text centering */
     align-items: center !important; /* Vertically center content */
     justify-content: center !important; /* Horizontally center content */
