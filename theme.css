@@ -79,7 +79,6 @@ progress::-webkit-progress-value,
 .MuiListItemButton-root.Mui-selected,
 .listItemIcon:not(.listItemIcon-transparent):not(.notification_important) {
     color: var(--primary-accent-color) !important;
-    background-color: var(--secondary-background-color) !important;
 }
 
 /* Apply Accent Color - Hover Effects */
@@ -419,8 +418,7 @@ html,
     background: transparent !important;
     backdrop-filter: none !important;
 }
-.layout-mobile .headroom--top .headerRight,
-.layout-mobile .headroom--not-top:has(.headerTabs.sectionTabs:not(.hide)) .headerRight {
+.layout-mobile .headroom--top .headerRight {
     background: var(--header-background-color) !important; /* Keep button bg */
     border-radius: 100px !important; /* Pill shape for mobile */
     backdrop-filter: blur(50px) !important; /* High blur for mobile */
@@ -679,7 +677,7 @@ a.emby-button.homeLibraryButton.raised:hover::before {
 /* Add card around description */
 .layout-desktop .detailSectionContent {
     background: var(--secondary-background-color) !important;
-    border-radius: 5px !important;
+    border-radius: var(--rounded-cards) !important;
     padding: 40px 20px 10px 20px !important;
     margin-top: 40px !important;
 }
@@ -847,19 +845,6 @@ a.emby-button.homeLibraryButton.raised:hover::before {
 
 /* --- CONFLICTING OVERRIDES (COMMENTED OUT) --- */
 
-/* Mobile Logo Override - COMMENTED OUT */
-/* @media (max-width: 1200px) { */
-    /* ... other mobile rules ... */
-    /*
-    .layout-mobile .detailLogo, .layout-tv .detailLogo, .layout-desktop .detailLogo  {
-        display: block !important;
-        width: 70% !important;
-        position: inherit !important; // CONFLICTING POSITION
-        top: 5vh  !important;
-    }
-    */
-    /* ... */
-/* } */
 
 /* High DPI Logo Override - COMMENTED OUT */
 /*
@@ -1108,6 +1093,11 @@ a.emby-button.homeLibraryButton.raised:hover::before {
     background: var(--secondary-background-color) !important;
     width: 300px !important; /* Match static drawer width */
 }
+/* Smaller sidebar width for mobile */
+.layout-mobile .MuiPaper-root.MuiDrawer-paperAnchorDockedLeft {
+    background: var(--secondary-background-transparent) !important;
+    width: 240px !important; /* Match static drawer width */
+}
 .MuiList-root.MuiList-subheader {
     padding-left: 10px !important;
 }
@@ -1203,7 +1193,7 @@ a.emby-button.homeLibraryButton.raised:hover::before {
 
 /* ... (Keep existing Backdrop Support styles) ... */
 /* Translucent cards on item detail page with backdrop */
-.layout-desktop #itemDetailPage:not(.noBackdropTransparency) .detailsGroupItem,
+/* .layout-desktop #itemDetailPage:not(.noBackdropTransparency) .detailsGroupItem,
 .layout-desktop #itemDetailPage:not(.noBackdropTransparency) .detailSectionContent,
 .layout-desktop #itemDetailPage:not(.noBackdropTransparency) .trackSelections,
 .layout-mobile #itemDetailPage:not(.noBackdropTransparency) .detailsGroupItem,
@@ -1211,7 +1201,7 @@ a.emby-button.homeLibraryButton.raised:hover::before {
 .layout-mobile #itemDetailPage:not(.noBackdropTransparency) .trackSelections {
     background: var(--primary-background-transparent) !important;
     backdrop-filter: blur(var(--blur)) !important;
-}
+} */
 
 /* Transparent/Gradient Drawer with backdrop */
 .layout-desktop .backgroundContainer.withBackdrop + div .mainDrawer,
@@ -1309,7 +1299,54 @@ a.emby-button.homeLibraryButton.raised:hover::before {
     font-family: Noto Sans, Noto Sans HK, Noto Sans JP, Noto Sans KR, Noto Sans SC, Noto Sans TC, sans-serif !important;
 }
 
-/* Ensure Sync Button is visible */
-.syncButton {
+
+/* ~~~~~~~~~~~~~~~~~~~~ Mobile Fixes and Changes ~~~~~~~~~~~~~~~~~~~~ */
+
+/* Force vertical stacking */
+.layout-mobile .detailPageWrapperContainer {
+    padding-top: 1em !important; /* Reset top padding */
+}
+
+/* Mobile  Poster styling */
+.layout-mobile .itemBackdrop { /* Use backdrop as main image */
+    margin: 0 !important; /* Remove default margin */
+    opacity: .2 !important;
+    /* Optional gradient mask */
+    mask-image: linear-gradient(to top, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 25%);
+}
+
+    /* Mobile Logo positioning */
+.layout-mobile .detailLogo {
     display: block !important;
+    position: inherit !important;
+    width: 70% !important;
+    max-height: 15vh;
+    margin: -8vh auto 1em auto; /* Pull up over bottom of backdrop, center, add bottom margin */
+    left: 15% !important;
+    top: 15% !important;
+    filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.7));
+}
+
+/* Bigger Logo if in landscape */
+@media (orientation: landscape) {
+    .layout-mobile .detailLogo {
+        width: 80% !important;
+        left: 20% !important;
+    }
+}
+
+/* Content Alignment */
+    .layout-mobile .mainDetailButtons {
+        justify-content: center; /* Center buttons */
+        padding-top: 10px !important;
+    }
+
+/* --- Mobile Cast & Crew Size (Standard Approach) --- */
+.layout-mobile #castContent .card.overflowPortraitCard {
+    width: 12vw !important;
+    font-size: 90% !important;
+}
+
+.layout-mobile .detailPageContent {
+    padding-right: 0 !important;
 }
