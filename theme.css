@@ -30,7 +30,7 @@ progress[aria-valuenow]:before,
 /* Apply Accent Color - Secondary Backgrounds */
 .MuiAlert-root.MuiAlert-standardInfo,
 .navMenuOption-selected,
-/* .MuiListItemButton-root.Mui-selected, */ /* Covered by Zesty header style */
+.MuiListItemButton-root.Mui-selected,
 .listItemIcon:not(.listItemIcon-transparent):not(.notification_important),
 .jstree-default .jstree-wholerow-clicked {
     background: var(--secondary-accent-color) !important;
@@ -132,6 +132,13 @@ html,
 
 
 /* ~~~~~~~~~~~~~~~~~~~~ LAYOUT - GENERAL ~~~~~~~~~~~~~~~~~~~~ */
+
+/* --- Rounded Progress Bars (Dashboard Tasks, etc.) --- */
+
+progress, progress::-webkit-progress-bar, progress::-webkit-progress-value {
+    border-radius: var(--rounded-cards) !important; /* Round the outer container */
+    overflow: hidden; /* Ensure inner parts respect the rounding */
+}
 
 /* Default Logo */
 .pageTitleWithDefaultLogo {
@@ -372,7 +379,7 @@ html,
 .navMenuOptionIcon,
 .navMenuOptionText {
     position: inherit !important;
-    left: -20% !important; /* Shift left */
+    right: 10% !important; /* Shift right */
     margin-top: 0 !important;
 }
 
@@ -669,27 +676,27 @@ a.emby-button.homeLibraryButton.raised:hover::before {
 
 /* Alternative mobile group section card */
 .layout-mobile .itemDetailsGroup {
-    background: var(--secondary-background-color) !important;
+    background: var(--secondary-background-transparent) !important;
     padding: 15px 20px 5px 20px !important;
     border-radius: var(--rounded-cards) !important;
 }
 
 /* Add card around description */
 .layout-desktop .detailSectionContent {
-    background: var(--secondary-background-color) !important;
+    background: var(--primary-background-transparent) !important;
     border-radius: var(--rounded-cards) !important;
     padding: 40px 20px 10px 20px !important;
     margin-top: 40px !important;
 }
 .layout-mobile .detailSectionContent {
-    background: var(--secondary-background-color) !important;
+    background: var(--primary-background-transparent) !important;
     border-radius: var(--rounded-cards) !important;
     padding: 10px 20px !important;
 }
 
 /* Add card around track selection */
 .trackSelections {
-    background: var(--secondary-background-color) !important;
+    background: var(--primary-background-transparent) !important;
     border-radius: var(--rounded-cards) !important; /* Use main rounding */
     padding: 10px 20px !important;
     margin-top: 20px !important;
@@ -1263,8 +1270,8 @@ a.emby-button.homeLibraryButton.raised:hover::before {
     -webkit-animation: backdrop-fadein .8s ease-in normal both !important;
     animation: backdrop-fadein .8s ease-in normal both !important
 }
-@keyframes backdrop-fadein { /* Define animation if not already present */
-    from { opacity: 0; } to { opacity: 0.3; } /* Adjust target opacity */
+@keyframes backdrop-fadein {
+    from { opacity: 0; } to { opacity: 1; }
 }
 
 
