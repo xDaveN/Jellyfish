@@ -194,11 +194,11 @@ html,
 
 /* Add hover color for header buttons */
 .headerRight .paper-icon-button-light:hover, .headerRight .paper-icon-button-light:hover:not(:disabled) {
-    background-color: var(--secondary-accent-color)  !important;
+    color: var(--secondary-accent-color) !important;
   }
 
 .headerRight .paper-icon-button-light:focus, .headerRight .paper-icon-button-light:focus:not(:disabled) {
-    background-color: var(--secondary-accent-color)  !important;
+    color: var(--secondary-accent-color) !important;
 }
 
 /* Text colors within the bar */
