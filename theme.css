@@ -603,13 +603,6 @@ a.emby-button.homeLibraryButton.raised:hover::before {
     }
 }
 
-/* Smaller Cast and Crew Section (Desktop Only) */
-@media (min-width: 1200px) {
-    #castContent .card.overflowPortraitCard {
-        width: 10%; /* Very small */
-    }
-}
-
 /* ~~~~~~~~~~~~~~~~~~~~ DETAILS PAGE (Restored Original Layout) ~~~~~~~~~~~~~~~~~~~~ */
 
 /* Resize show/movie image on details page */
@@ -634,12 +627,12 @@ a.emby-button.homeLibraryButton.raised:hover::before {
     left: 4% !important;
     top: 10% !important;
     position: absolute !important;
-    width: auto !important; /* Allow natural width */
-    max-width: 30%; /* Original constraint */
-    max-height: 20%; /* Original constraint */
+    width: auto !important;
+    max-width: 30%;
+    max-height: 30%; /* Change this to make the logo bigger or smaller */
+    height: 800px !important; /* Change this to make the logo bigger or smaller */
     z-index: 3; /* Original z-index */
     animation: slideInLogo 0.8s ease-out; /* Original animation */
-    border: none; /* Remove temporary border */
 }
 
 /* Transparent ribbon bar */
@@ -850,20 +843,6 @@ a.emby-button.homeLibraryButton.raised:hover::before {
     to { transform: rotate(360deg); }
 }
 
-/* --- CONFLICTING OVERRIDES (COMMENTED OUT) --- */
-
-
-/* High DPI Logo Override - COMMENTED OUT */
-/*
-.layout-desktop .detailLogo,
-.layout-tv .detailLogo {
-    right: auto !important;
-    left: 2% !important; // CONFLICTING POSITION
-    top: 10% !important; // CONFLICTING POSITION
-    width: 800px !important; // CONFLICTING SIZE
-    height: 300px !important // CONFLICTING SIZE
-}
-*/
 
 /* ~~~~~~~~~~~~~~~~~~~~ PLAYER & UP NEXT ~~~~~~~~~~~~~~~~~~~~ */
 
@@ -1349,10 +1328,21 @@ a.emby-button.homeLibraryButton.raised:hover::before {
     }
 
 /* --- Mobile Cast & Crew Size (Standard Approach) --- */
-.layout-mobile #castContent .card.overflowPortraitCard {
-    width: 12vw !important;
-    font-size: 90% !important;
+/* mobile */
+@media (min-width: 25em) {
+    .layout-mobile #castContent .card.overflowPortraitCard {
+        width: 30% !important;
+        font-size: 90% !important;
+    }
 }
+/* iPad */
+@media (min-width: 50em) {
+    .layout-mobile #castContent .card.overflowPortraitCard {
+        width: 18% !important;
+        font-size: 90% !important;
+    }
+}
+
 
 .layout-mobile .detailPageContent {
     padding-right: 0 !important;
