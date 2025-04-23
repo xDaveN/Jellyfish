@@ -1,6 +1,5 @@
 /* Cornered card indicators */
-.cardIndicators,
-.listItemIndicators {
+.cardIndicators, .listItemIndicators {
   right: -1px !important;
   top: -1px !important;
 }
@@ -9,12 +8,12 @@
   box-shadow: -2px 1px 4px 0 rgb(0 0 0 / .8) !important;
 }
 .countIndicator, .playedIndicator {
-  border-radius: 2px 0px 2px 15px !important;
-  box-shadow: -2px 1px 4px 0 rgb(0 0 0 / .8) !important;
-}
-.layout-mobile .countIndicator, .playedIndicator {
   border-radius: 1px 1px 1px 10px !important;
+  box-shadow: -2px 1px 4px 0 rgb(0 0 0 / .8) !important;
+  margin-right: -1px !important;
+  margin-top: -1px !important;
 }
+
 .mediaSourceIndicator {
   left: 0 !important;
   top: 0 !important;

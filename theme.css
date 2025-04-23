@@ -4,7 +4,7 @@
 
 /* ~~~~~~~~~~~~~~~~~~~~ VARIABLES ~~~~~~~~~~~~~~~~~~~~ */
 :root {
-    --rounded-cards: 15px;
+    --rounded-cards: 18px;
     --blur: 5px; /* Default blur for general elements */
 }
 
@@ -174,6 +174,25 @@ progress, progress::-webkit-progress-bar, progress::-webkit-progress-value {
 }
 
 
+/* --- Mobile Cast & Crew Size --- */
+/* mobile */
+@media (min-width: 25em) {
+    .layout-mobile #castContent .card.overflowPortraitCard {
+        width: 30% !important;
+        font-size: 90% !important;
+    }
+}
+/* iPad */
+@media (min-width: 50em) {
+    .layout-mobile #castContent .card.overflowPortraitCard {
+        width: 18% !important;
+        font-size: 90% !important;
+    }
+}
+
+.layout-desktop #castContent .card.overflowPortraitCard {
+    width: 10em !important;
+}
 /* ~~~~~~~~~~~~~~~~~~~~ LAYOUT - HEADER ~~~~~~~~~~~~~~~~~~~~ */
 
 /* Header Transparency & Base Positioning */
@@ -940,6 +959,21 @@ a.emby-button.homeLibraryButton.raised:hover::before {
 }
 
 /* IntroSkipper */
+
+.skip-button {
+    color: var(--primary-accent-color) !important;
+    margin-right: 5% !important;
+}
+
+ .layout-mobile .skip-button {
+    color: var(--primary-accent-color) !important;
+    margin-right: 5% !important;
+    margin-bottom: 5% !important;
+    font-size: .8em !important;
+    padding: 10px 10px !important;
+}
+
+
 #skipIntro .btnSkipIntro {
     transition: 0.2s;
     border-radius: 100px !important;
@@ -1326,22 +1360,6 @@ a.emby-button.homeLibraryButton.raised:hover::before {
         justify-content: center; /* Center buttons */
         padding-top: 10px !important;
     }
-
-/* --- Mobile Cast & Crew Size (Standard Approach) --- */
-/* mobile */
-@media (min-width: 25em) {
-    .layout-mobile #castContent .card.overflowPortraitCard {
-        width: 30% !important;
-        font-size: 90% !important;
-    }
-}
-/* iPad */
-@media (min-width: 50em) {
-    .layout-mobile #castContent .card.overflowPortraitCard {
-        width: 18% !important;
-        font-size: 90% !important;
-    }
-}
 
 
 .layout-mobile .detailPageContent {
