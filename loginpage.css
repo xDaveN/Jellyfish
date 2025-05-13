@@ -36,12 +36,12 @@ body:has(#loginPage:not(.hide)) .dialogContainer .formDialog {
 }
 
 body:has(#loginPage:not(.hide)) .dialogContainer .formDialogFooter .emby-button {
-  background-color: #a95cc3bb !important;
+  background-color: var(--primary-accent-color) !important;
   color: white !important;
 }
 
 body:has(#loginPage:not(.hide)) .formDialogHeader {
-  background-color: #a95cc3bb;
+  background-color: var(--primary-accent-color) !important;
   border-top-left-radius: 60px;
   border-top-right-radius: 60px;
   padding: 1em;
@@ -187,13 +187,21 @@ padding: 0;
 #loginPage .checkboxLabel, #loginPage button.emby-button[type="submit"] span, #loginPage button.emby-button[type="button"].btnCancel span, #loginPage button.emby-button[type="button"].btnQuick span {
   font-size: 0;
 }
+
+#loginPage .inputLabel {
+    color: var(--primary-accent-color);
+    font-weight: bolder;
+}
+
 #loginPage .checkboxLabel::after {
   content: "Password amnesia preventer!";
   font-size: 16px !important;
   font-family: inherit;
+  color: var(--primary-accent-color);
 }
 
 #loginPage .emby-input {
+  color: var(--primary-accent-color);
   transition: all 0.3s ease-in-out;
   border-radius: 5px;
   padding: 12px;
@@ -250,13 +258,13 @@ padding: 0;
 }
 
 #loginPage button.emby-button[type="button"].btnQuick {
-  background-color: #aa5cc38c !important;
+  background-color: var(--primary-accent-color) !important;
   color: white !important;
   filter: brightness(1.1);
 }
 
 #loginPage button.emby-button[type="button"].btnQuick:hover {
-  background-color: #a95cc3bb !important;
+  background-color: var(--primary-accent-color) !important;
   color: white !important;
   transition: background-color 0.3s ease, transform 0.3s ease;
   transform: scale(1.05);

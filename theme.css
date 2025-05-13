@@ -88,6 +88,16 @@ progress::-webkit-progress-value,
     }
 }
 
+/* color for headings in dashboard page */
+.dashboardSection h3 {
+ color: var(--primary-accent-color);
+}
+
+/* Hover color for movie cards */
+.card-hoverable:hover .cardOverlayContainer {
+background: var(--secondary-background-transparent);
+}
+
 /* Specific Button Backgrounds (Non-Accent) */
 #btnDeleteImage {
     background: #942626c2 !important; /* Red delete */
@@ -103,7 +113,7 @@ progress::-webkit-progress-value,
 html,
 .backgroundContainer:not(.withBackdrop):not(.backgroundContainer-transparent),
 .noBackdropTransparency .detailPageSecondaryContainer {
-    background-color: var(--primary-background-color) !important;
+    background-color: #ffffff00 !important;
 }
 .layout-desktop .mainDrawer,
 .layout-mobile .mainDrawer,
@@ -116,7 +126,7 @@ html,
 .layout-mobile .detailSectionContent,
 .trackSelections,
 .layout-desktop .detailsGroupItem {
-    background: var(--secondary-background-color) !important;
+    background: var(--secondary-background-transparent) !important;
 }
 
 .MuiPaper-root.MuiPopover-paper {
@@ -133,6 +143,14 @@ html,
 
 /* ~~~~~~~~~~~~~~~~~~~~ LAYOUT - GENERAL ~~~~~~~~~~~~~~~~~~~~ */
 
+
+/* reduce the size of poster cards in landscape */
+@media (min-width: 50em) and (orientation: landscape) {
+    .overflowPortraitCard {
+        width: 12% !important;
+    }
+}
+
 /* --- Rounded Progress Bars (Dashboard Tasks, etc.) --- */
 
 progress, progress::-webkit-progress-bar, progress::-webkit-progress-value {
@@ -142,7 +160,7 @@ progress, progress::-webkit-progress-bar, progress::-webkit-progress-value {
 
 /* Default Logo */
 .pageTitleWithDefaultLogo {
-    background-image: url("https://i.ibb.co/TqBxLXTx/jfish.png"); /* BW Logo */
+    background-image: url("https://i.ibb.co/TqBxLXTx/jfish.png");
     background-size: 110px !important;
 }
 .layout-desktop .pageTitleWithLogo {
@@ -378,6 +396,12 @@ progress, progress::-webkit-progress-bar, progress::-webkit-progress-value {
 .layout-desktop .dashboardDocument .mainDrawer-scrollContainer { /* Dashboard specific */
     padding-top: 75px !important; /* Adjusted from 0 for dynamic */
     margin-left: 10px !important;
+}
+
+/* Dashboard topbar styling */
+.css-fknfom {
+        background: none !important;
+        box-shadow: none !importantl;
 }
 
 /* Sidebar Buttons */
@@ -695,7 +719,7 @@ a.emby-button.homeLibraryButton.raised:hover::before {
 
 /* Add card around groups section */
 .layout-desktop .detailsGroupItem {
-    background: var(--secondary-background-color) !important;
+    background: var(--primary-background-transparent) !important;
     padding: 10px 20px !important;
     border-radius: 5px !important;
     width: fit-content !important;
