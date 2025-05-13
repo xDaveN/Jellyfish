@@ -25,7 +25,7 @@
 }
 
 .pageTitleWithDefaultLogo {
-    background-size: 140px !important;
+    background-size: 100% !important;
 }
 
 #loginPage .visualLoginForm:not(.hide) h1::before {

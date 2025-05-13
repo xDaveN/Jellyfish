@@ -23,4 +23,3 @@
     --primary-alt5: rgb(calc(var(--primary-r) - 30), calc(var(--primary-g) - 30), calc(var(--primary-b) - 30), 0.4);
     --primary-alt6: rgba(calc(var(--primary-r) - 30), calc(var(--primary-g) - 30), calc(var(--primary-b) - 30), 0.25);
 }
-
