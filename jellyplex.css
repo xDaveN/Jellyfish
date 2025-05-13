@@ -13,6 +13,7 @@
     --secondary-background-transparent: rgba(var(--primary-r), var(--primary-g), var(--primary-b), 0.6);
     --alt-accent-color: #ffffff20;
     --header-background-color: #ffffff6e; /* This is header and tabs background */
+    --logo: url("https://i.ibb.co/TqBxLXTx/jfish.png");
 
     /* Alternate accents*/
     --primary-alt1: rgb(calc(var(--primary-r) - 30), calc(var(--primary-g) - 30), calc(var(--primary-b) - 30), 1);

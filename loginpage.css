@@ -26,8 +26,8 @@
 }
 
 #loginPage {
-  background-color: darkgrey;
-  background: url(https://i.imgur.com/9vL4iNf.png) !important;
+  background-color: rgb(0, 0, 0);
+  background: url(https://i.imgur.com/Ewk3Pqw.png) !important;
   background-size: cover !important;
 }
 
@@ -92,7 +92,7 @@ body:has(#loginPage:not(.hide)) .standalonePage {
   display: block !important;
   width: 100% !important;
   height: 80px !important;
-  background: url('https://i.ibb.co/TqBxLXTx/jfish.png') no-repeat center center !important;
+  background: var(--logo) no-repeat center center !important;
   background-size: contain !important;
   text-indent: 0;
 }

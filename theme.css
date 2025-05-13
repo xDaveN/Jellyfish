@@ -113,7 +113,7 @@ background: var(--secondary-background-transparent);
 html,
 .backgroundContainer:not(.withBackdrop):not(.backgroundContainer-transparent),
 .noBackdropTransparency .detailPageSecondaryContainer {
-    background-color: #ffffff00 !important;
+    background-color: var(--primary-background-color) !important;
 }
 .layout-desktop .mainDrawer,
 .layout-mobile .mainDrawer,
@@ -160,7 +160,7 @@ progress, progress::-webkit-progress-bar, progress::-webkit-progress-value {
 
 /* Default Logo */
 .pageTitleWithDefaultLogo {
-    background-image: url("https://i.ibb.co/TqBxLXTx/jfish.png");
+    background-image: var(--logo);
     background-size: 110px !important;
 }
 .layout-desktop .pageTitleWithLogo {
@@ -401,7 +401,7 @@ progress, progress::-webkit-progress-bar, progress::-webkit-progress-value {
 /* Dashboard topbar styling */
 .css-fknfom {
         background: none !important;
-        box-shadow: none !importantl;
+        box-shadow: none !important;
 }
 
 /* Sidebar Buttons */
@@ -1160,7 +1160,6 @@ a.emby-button.homeLibraryButton.raised:hover::before {
 /* 10.9+ Dashboard Sidebar (MUI List) */
 .MuiPaper-root.MuiDrawer-paperAnchorDockedLeft {
     border-right: none !important;
-    background: var(--secondary-background-color) !important;
     width: 300px !important; /* Match static drawer width */
 }
 /* Smaller sidebar width for mobile */
