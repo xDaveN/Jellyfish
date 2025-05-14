@@ -477,7 +477,7 @@ progress, progress::-webkit-progress-bar, progress::-webkit-progress-value {
     transform: translateY(-50%); /* Hide top half when tabs visible */
 }
 .layout-mobile .headroom--not-top { /* Blurred background when scrolled */
-    background: var(--primary-background-transparent) !important;
+    background: var(--secondary-accent-color) !important;
     backdrop-filter: blur(var(--blur)) !important;
 }
 .layout-mobile .headroom--not-top .headerRight {
@@ -1288,10 +1288,7 @@ h3.tagline {
 /* Translucent cards on item detail page with backdrop */
 .layout-desktop #itemDetailPage:not(.noBackdropTransparency) .detailsGroupItem,
 .layout-desktop #itemDetailPage:not(.noBackdropTransparency) .detailSectionContent,
-.layout-desktop #itemDetailPage:not(.noBackdropTransparency) .trackSelections,
-.layout-mobile #itemDetailPage:not(.noBackdropTransparency) .detailsGroupItem,
-.layout-mobile #itemDetailPage:not(.noBackdropTransparency) .detailSectionContent,
-.layout-mobile #itemDetailPage:not(.noBackdropTransparency) .trackSelections {
+.layout-desktop #itemDetailPage:not(.noBackdropTransparency) .trackSelections {
     background: var(--secondary-background-transparent) !important;
     backdrop-filter: blur(var(--blur)) !important;
 }
