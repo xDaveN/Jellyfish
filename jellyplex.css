@@ -1,4 +1,4 @@
-/* Orange Theme*/
+/* Jelly Plex Theme*/
 :root {
     --primary-r: 255;
     --primary-g: 165;
@@ -6,13 +6,20 @@
     --primary-accent-color: rgba(var(--primary-r), var(--primary-g), var(--primary-b), 1.0);
     --secondary-accent-color: rgba(var(--primary-r), var(--primary-g), var(--primary-b), 0.1);
     /* Background Colors */
+    --primary-background-transparent: rgba(var(--primary-r), var(--primary-g), var(--primary-b) 0.1);
+    --secondary-background-transparent: rgba(var(--primary-r), var(--primary-g), var(--primary-b), 0.2);
     --primary-background-color: #101010; /* Main background */
     --secondary-background-color: #181818; /* Drawer, cards, dialogs */
     --tertiary-background-color: #252525; /* Popovers */
-    --primary-background-transparent: rgba(var(--primary-r), var(--primary-g), var(--primary-b) 0.1);
-    --secondary-background-transparent: rgba(var(--primary-r), var(--primary-g), var(--primary-b), 0.2);
     --alt-accent-color: #ffffff20;
     --header-background-color: #ffffff6e; /* This is header and tabs background */
+
+/* New variables for storing the calculated HEX values */
+    --hex-primary-accent-color: #FFA500FF;
+    --hex-secondary-accent-color: #FFA50019;
+    --hex-primary-background-transparent: #FFA50019;
+    --hex-secondary-background-transparent: #FFA50033;
+
     --logo: url("https://i.ibb.co/TqBxLXTx/jfish.png");
 
     /* Alternate accents*/

@@ -27,6 +27,10 @@ progress[aria-valuenow]:before,
     background: var(--primary-accent-color) !important;
 }
 
+.iconOsdProgressOuter {
+	  background: var(--secondary-accent-color) !important;
+  }
+
 /* Apply Accent Color - Secondary Backgrounds */
 .MuiAlert-root.MuiAlert-standardInfo,
 .navMenuOption-selected,
@@ -105,6 +109,14 @@ background: var(--secondary-background-transparent);
 #btnShutdown {
     background: #AE3739 !important; /* Red shutdown */
 }
+
+#btnRestartServer {
+    background: forestgreen;
+}
+button.raised.btnRefresh.emby-button {
+    background: blueviolet;
+}
+
 #skipIntro .emby-button {
     background: rgba(30, 30, 30, 0.7) !important; /* Intro Skipper */
 }
@@ -161,7 +173,7 @@ progress, progress::-webkit-progress-bar, progress::-webkit-progress-value {
 /* Default Logo */
 .pageTitleWithDefaultLogo {
     background-image: var(--logo);
-    background-size: 110px !important;
+    background-size: 100% !important;
 }
 .layout-desktop .pageTitleWithLogo {
     margin-left: 25px !important;
@@ -709,6 +721,11 @@ a.emby-button.homeLibraryButton.raised:hover::before {
     background: transparent !important;
 }
 
+/* add some gap before tagline */
+h3.tagline {
+    margin-top: 3em !important;
+}
+
 /* Add card around top-right buttons */
 .mainDetailButtons {
     background: #0000 !important; /* Keep transparent */
@@ -762,6 +779,7 @@ a.emby-button.homeLibraryButton.raised:hover::before {
     border-radius: var(--rounded-cards) !important; /* Use main rounding */
     padding: 10px 20px !important;
     margin-top: 20px !important;
+    max-width: 30em !important;
 }
 
 /* Fix for track select dropdowns */
@@ -939,6 +957,11 @@ a.emby-button.homeLibraryButton.raised:hover::before {
     backdrop-filter: unset !important;
 }
 
+/* hide menu in player */
+.osdHeader .headerButton:not(.headerBackButton):not(.headerCastButton):not(.headerSyncButton) {
+    display: none !important;
+}
+
 /* Player Progress Bar */
 .mdl-slider-background-flex {
     height: 10px !important;
@@ -958,12 +981,13 @@ a.emby-button.homeLibraryButton.raised:hover::before {
 }
 /* Player Thumb */
 .mdl-slider::-moz-range-thumb,
-.mdl-slider::-webkit-slider-thumb {
-    background: #ffffff00 !important; /* Transparent default */
-    height: 10px !important;
-    width: 8px !important;
+.mdl-slider::-webkit-slider-thumb,
+.mdl-slider::-ms-thumb {
+    background: var(--secondary-accent-color) !important;
+    height: 2px !important;
+    width: 2px !important;
     border-radius: 2px !important;
-    cursor: pointer; /* Add pointer */
+    cursor: pointer;
 }
 .mdl-slider-hoverthumb:hover::-moz-range-thumb,
 .mdl-slider-hoverthumb:hover::-webkit-slider-thumb {
@@ -1264,11 +1288,11 @@ a.emby-button.homeLibraryButton.raised:hover::before {
 /* Translucent cards on item detail page with backdrop */
 .layout-desktop #itemDetailPage:not(.noBackdropTransparency) .detailsGroupItem,
 .layout-desktop #itemDetailPage:not(.noBackdropTransparency) .detailSectionContent,
-.layout-desktop #itemDetailPage:not(.noBackdropTransparency) .trackSelections {
-/* .layout-mobile #itemDetailPage:not(.noBackdropTransparency) .detailsGroupItem,
+.layout-desktop #itemDetailPage:not(.noBackdropTransparency) .trackSelections,
+.layout-mobile #itemDetailPage:not(.noBackdropTransparency) .detailsGroupItem,
 .layout-mobile #itemDetailPage:not(.noBackdropTransparency) .detailSectionContent,
-.layout-mobile #itemDetailPage:not(.noBackdropTransparency) .trackSelections */
-    background: var(--primary-background-transparent) !important;
+.layout-mobile #itemDetailPage:not(.noBackdropTransparency) .trackSelections {
+    background: var(--secondary-background-transparent) !important;
     backdrop-filter: blur(var(--blur)) !important;
 }
 
