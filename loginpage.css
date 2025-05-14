@@ -208,7 +208,7 @@ body:has(#loginPage:not(.hide)) .standalonePage {
 /* Custom text for the "Remember me" checkbox label. */
 #loginPage .checkboxLabel::after {
   content: "Password amnesia preventer! 📝";
-  font-size: 18px !important; /* Ensure this doesn't inherit font-size: 0 */
+  font-size: 15px !important; /* Ensure this doesn't inherit font-size: 0 */
   font-family: inherit;
   color: #fff;
 }
