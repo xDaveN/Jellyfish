@@ -62,6 +62,7 @@ progress[aria-valuenow]:before,               /* Progress bar fill (pseudo-eleme
 .listItemIcon:not(.listItemIcon-transparent) /* Icons in list items (excluding transparent/important notifications) */
 {
     color: #ffffffee !important;
+    background-color: var(--secondary-accent-color) !important;
 }
 
 /* == Accent Color for Progress Bars == */
@@ -109,12 +110,17 @@ progress::-webkit-progress-value,             /* Progress bar fill for WebKit br
 .username,                                    /* Usernames (e.g., on profile pages) */
 .headerUsername,                              /* Username in the header */
 .sectionTitle,                                /* Titles of sections */
-.navMenuOption:hover:not(.navMenuOption-selected), /* Hovered main navigation items (not selected) */
-.MuiListItemButton-root.Mui-selected .MuiListItemIcon-root, /* Icons within selected Material UI list items */
-.MuiListItemButton-root.Mui-selected          /* Selected Material UI list items (text) */
+.navMenuOption:hover:not(.navMenuOption-selected) /* Hovered main navigation items (not selected) */
 {
     color: var(--primary-accent-color) !important;
 }
+
+.MuiListItemButton-root.Mui-selected .MuiListItemIcon-root, /* Icons within selected Material UI list items */
+.MuiListItemButton-root.Mui-selected          /* Selected Material UI list items (text) */
+{
+    color: #ffffffee !important;
+}
+
 
 /* == Accent Color for Hover Effects (Fine Pointer Devices) == */
 /* Applies accent color on hover for icon buttons, specifically for mouse users. */
@@ -133,8 +139,7 @@ progress::-webkit-progress-value,             /* Progress bar fill for WebKit br
 .dashboardSection span.material-icons.chevron_right {
     display: none;
 }
-/* == Hove
-r Color for Movie Card Overlays == */
+/* == Hover Color for Movie Card Overlays == */
 /* Sets a semi-transparent background on movie card hover. */
 .card-hoverable:hover .cardOverlayContainer {
     background: var(--secondary-background-transparent); /* Uses a theme variable, ensure this is defined or use a direct rgba value */
@@ -233,7 +238,7 @@ progress::-webkit-progress-value  /* Filled part of the progress bar (WebKit) */
 /* Desktop logo dimensions and positioning. */
 .layout-desktop .pageTitleWithLogo {
     margin-left: 25px !important;
-    height: 50px !important;
+    height: 60px !important;
     width: 140px !important;
 }
 /* Mobile logo dimensions and positioning. */
@@ -1149,23 +1154,28 @@ h3.tagline {
     transform: translateX(-3px) !important; /* Slight adjustment for visual alignment */
 }
 
-/* == Player Progress Bar Thumb Styling == */
-/* Customizes the draggable thumb on the player progress bar. */
+/* == Player Progress Bar Thumb Styling - Invisible Thumb == */
+/* Customizes the draggable thumb on the player progress bar to be invisible. */
 .mdl-slider::-moz-range-thumb,    /* Firefox */
 .mdl-slider::-webkit-slider-thumb, /* WebKit/Chrome/Safari */
 .mdl-slider::-ms-thumb            /* Edge/IE */
 {
-    background: var(--secondary-accent-color) !important; /* Uses secondary accent for the thumb */
-    height: 2px !important;  /* Very thin thumb */
-    width: 2px !important;   /* Very thin thumb */
-    border-radius: 2px !important;
-    cursor: pointer;
+    -webkit-appearance: none; /* Removes default WebKit styling */
+    appearance: none;         /* Removes default browser styling */
+    border: none;             /* Ensures no border is visible */
+    background: none !important; /* Makes the background transparent/non-existent */
+    height: 0px !important;   /* Sets height to 0, making it invisible */
+    width: 0px !important;    /* Sets width to 0, making it invisible */
+    border-radius: 0px !important; /* Consistent with 0px dimensions */
+    cursor: pointer;          /* Keeps the pointer cursor, though the element is invisible */
+    margin-top: 0px;          /* Neutral margin, no visual impact on a 0px element */
 }
-/* Hover effect for the thumb: scales up and changes color to white. */
+
+/* Hover effect for the thumb: remains invisible */
 .mdl-slider-hoverthumb:hover::-moz-range-thumb,
 .mdl-slider-hoverthumb:hover::-webkit-slider-thumb {
-    transform: scaleY(2); /* Vertical scaling on hover */
-    background: #fff !important; /* White color on hover */
+    transform: scaleY(2); /* Scaling a 0px height still results in 0px height */
+    background: none !important; /* Ensures it remains transparent on hover */
 }
 
 /* == "Up Next" Dialog Button Hover Effect == */
@@ -1423,7 +1433,7 @@ h3.tagline {
 /* Hover effect for non-selected MUI sidebar list item buttons. */
 .MuiList-subheader .MuiListItemButton-root.MuiListItemButton-gutters:hover:not(.Mui-selected) {
     transform: scale(1.05) !important;
-    background: rgba(44, 44, 44, 0.7) !important; /* Dark semi-transparent background on hover */
+    background: var(--secondary-background-transparent) !important; /* Dark semi-transparent background on hover */
 }
 /* Ensures MUI icons inherit color correctly. */
 .MuiListItemIcon-root.MuiSvgIcon-fontSizeMedium {
