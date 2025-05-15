@@ -479,6 +479,7 @@ progress::-webkit-progress-value  /* Filled part of the progress bar (WebKit) */
 }
 .layout-mobile .mainDrawer-scrollContainer {
     margin-top: 15px !important; /* Top margin for scrollable content */
+    background: var(--secondary-background-color) !important;
 }
 
 /* == Sidebar Scroll Container & Button Positioning == */
@@ -486,11 +487,13 @@ progress::-webkit-progress-value  /* Filled part of the progress bar (WebKit) */
 .layout-desktop .mainDrawer-scrollContainer { /* Applies to the dynamic desktop drawer now */
     margin-top: 15px !important;
     margin-left: 10px !important;
+    background: var(--secondary-background-color) !important;
 }
 /* Specific padding for the dashboard's static sidebar. */
 .layout-desktop .dashboardDocument .mainDrawer-scrollContainer {
     padding-top: 75px !important; /* Accounts for header height */
     margin-left: 10px !important;
+    background: var(--secondary-background-color) !important;
 }
 
 /* == Dashboard Top Bar Styling (MUI Override) == */
@@ -1282,6 +1285,11 @@ h3.tagline {
 .subtitleappearance-preview /* Preview area in subtitle settings */
 {
     border-radius: var(--rounded-cards) !important;
+}
+
+/* Background for dashboard menu on mobile */
+.MuiPaper-root.MuiPaper-elevation.MuiPaper-elevation16.MuiDrawer-paper.MuiDrawer-paperAnchorLeft {
+    background: var(--secondary-accent-color) !important;
 }
 
 /* Applies a smaller, consistent rounding to buttons and select elements. */
