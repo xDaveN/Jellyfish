@@ -479,7 +479,7 @@ progress::-webkit-progress-value  /* Filled part of the progress bar (WebKit) */
 }
 .layout-mobile .mainDrawer-scrollContainer {
     margin-top: 15px !important; /* Top margin for scrollable content */
-    background: var(--secondary-background-color) !important;
+    background: var(--secondary-background-transparent) !important;
 }
 
 /* == Sidebar Scroll Container & Button Positioning == */
@@ -487,7 +487,7 @@ progress::-webkit-progress-value  /* Filled part of the progress bar (WebKit) */
 .layout-desktop .mainDrawer-scrollContainer { /* Applies to the dynamic desktop drawer now */
     margin-top: 15px !important;
     margin-left: 10px !important;
-    background: var(--secondary-background-color) !important;
+    background: var(--secondary-background-transparent) !important;
 }
 /* Specific padding for the dashboard's static sidebar. */
 .layout-desktop .dashboardDocument .mainDrawer-scrollContainer {
