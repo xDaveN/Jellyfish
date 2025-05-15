@@ -53,11 +53,15 @@ progress[aria-valuenow]:before,               /* Progress bar fill (pseudo-eleme
 .MuiAlert-root.MuiAlert-standardInfo,          /* Info type Material UI alerts */
 .navMenuOption-selected,                        /* Selected items in the main navigation menu */
 .MuiListItemButton-root.Mui-selected,           /* Selected Material UI list item buttons */
-.listItemIcon:not(.listItemIcon-transparent):not(.notification_important), /* Icons in list items (excluding transparent/important notifications) */
 .jstree-default .jstree-wholerow-clicked,       /* Clicked rows in jsTree (e.g., metadata editor folder tree) */
 .iconOsdProgressOuter                           /* Outer ring of OSD circular progress indicators */
 {
     background: var(--secondary-accent-color) !important;
+}
+
+.listItemIcon:not(.listItemIcon-transparent) /* Icons in list items (excluding transparent/important notifications) */
+{
+    color: #ffffffee !important;
 }
 
 /* == Accent Color for Progress Bars == */
@@ -107,8 +111,7 @@ progress::-webkit-progress-value,             /* Progress bar fill for WebKit br
 .sectionTitle,                                /* Titles of sections */
 .navMenuOption:hover:not(.navMenuOption-selected), /* Hovered main navigation items (not selected) */
 .MuiListItemButton-root.Mui-selected .MuiListItemIcon-root, /* Icons within selected Material UI list items */
-.MuiListItemButton-root.Mui-selected,         /* Selected Material UI list items (text) */
-.listItemIcon:not(.listItemIcon-transparent):not(.notification_important) /* Text/icons within list item icons (already has secondary accent bg) */
+.MuiListItemButton-root.Mui-selected          /* Selected Material UI list items (text) */
 {
     color: var(--primary-accent-color) !important;
 }
@@ -124,9 +127,14 @@ progress::-webkit-progress-value,             /* Progress bar fill for WebKit br
 /* == Accent Color for Dashboard Headings == */
 .dashboardSection h3 {
  color: var(--primary-accent-color);
+ font-weight: bold !important;
 }
 
-/* == Hover Color for Movie Card Overlays == */
+.dashboardSection span.material-icons.chevron_right {
+    display: none;
+}
+/* == Hove
+r Color for Movie Card Overlays == */
 /* Sets a semi-transparent background on movie card hover. */
 .card-hoverable:hover .cardOverlayContainer {
     background: var(--secondary-background-transparent); /* Uses a theme variable, ensure this is defined or use a direct rgba value */
@@ -487,7 +495,7 @@ progress::-webkit-progress-value  /* Filled part of the progress bar (WebKit) */
 .layout-desktop .mainDrawer-scrollContainer { /* Applies to the dynamic desktop drawer now */
     margin-top: 15px !important;
     margin-left: 10px !important;
-    background: var(--secondary-background-transparent) !important;
+    /* background: var(--secondary-background-transparent) !important; */
 }
 /* Specific padding for the dashboard's static sidebar. */
 .layout-desktop .dashboardDocument .mainDrawer-scrollContainer {
