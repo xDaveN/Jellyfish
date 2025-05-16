@@ -53,11 +53,16 @@ progress[aria-valuenow]:before,               /* Progress bar fill (pseudo-eleme
 .MuiAlert-root.MuiAlert-standardInfo,          /* Info type Material UI alerts */
 .navMenuOption-selected,                        /* Selected items in the main navigation menu */
 .MuiListItemButton-root.Mui-selected,           /* Selected Material UI list item buttons */
-.jstree-default .jstree-wholerow-clicked,       /* Clicked rows in jsTree (e.g., metadata editor folder tree) */
-.iconOsdProgressOuter                           /* Outer ring of OSD circular progress indicators */
+.jstree-default .jstree-wholerow-clicked       /* Clicked rows in jsTree (e.g., metadata editor folder tree) */
 {
     background: var(--secondary-accent-color) !important;
 }
+
+.iconOsdProgressOuter                           /* Outer ring of OSD circular progress indicators */
+{
+    background: #ffffffc0 !important;
+}
+
 
 .listItemIcon:not(.listItemIcon-transparent) /* Icons in list items (excluding transparent/important notifications) */
 {
@@ -1155,27 +1160,48 @@ h3.tagline {
 }
 
 /* == Player Progress Bar Thumb Styling - Invisible Thumb == */
-/* Customizes the draggable thumb on the player progress bar to be invisible. */
-.mdl-slider::-moz-range-thumb,    /* Firefox */
-.mdl-slider::-webkit-slider-thumb, /* WebKit/Chrome/Safari */
-.mdl-slider::-ms-thumb            /* Edge/IE */
-{
-    -webkit-appearance: none; /* Removes default WebKit styling */
-    appearance: none;         /* Removes default browser styling */
-    border: none;             /* Ensures no border is visible */
-    background: none !important; /* Makes the background transparent/non-existent */
-    height: 0px !important;   /* Sets height to 0, making it invisible */
-    width: 0px !important;    /* Sets width to 0, making it invisible */
-    border-radius: 0px !important; /* Consistent with 0px dimensions */
-    cursor: pointer;          /* Keeps the pointer cursor, though the element is invisible */
-    margin-top: 0px;          /* Neutral margin, no visual impact on a 0px element */
+/* WebKit/Chrome/Safari */
+.mdl-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    background: transparent !important;
+    height: 0px !important;
+    width: 0px !important;
+    border-radius: 0px !important;
+    border: none;
+    cursor: pointer;
+    margin-top: 0px;
 }
 
-/* Hover effect for the thumb: remains invisible */
-.mdl-slider-hoverthumb:hover::-moz-range-thumb,
+/* Firefox */
+.mdl-slider::-moz-range-thumb {
+    background: transparent !important;
+    height: 0px !important;
+    width: 0px !important;
+    border-radius: 0px !important;
+    border: none;
+    cursor: pointer;
+}
+
+/* Internet Explorer */
+
+.mdl-slider::-ms-thumb {
+    background: transparent !important;
+    height: 0px !important;
+    width: 0px !important;
+    border-radius: 0px !important;
+    border: none;
+    cursor: pointer;
+    margin-top: 0px;
+}
+
+/* Hover effect for the thumb */
 .mdl-slider-hoverthumb:hover::-webkit-slider-thumb {
-    transform: scaleY(2); /* Scaling a 0px height still results in 0px height */
-    background: none !important; /* Ensures it remains transparent on hover */
+    background: transparent !important;
+}
+
+.mdl-slider-hoverthumb:hover::-moz-range-thumb {
+    background: transparent !important;
 }
 
 /* == "Up Next" Dialog Button Hover Effect == */
