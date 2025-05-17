@@ -1,0 +1,27 @@
+name: Update Theme Timestamp
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  update-timestamp:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@main
+
+      - name: Update timestamp in theme.css
+        env:
+          TZ: 'Europe/Dublin'
+        run: |
+          formatted_time=$(date +"%d %B %Y - %I:%M %p" | sed 's/AM/A.M./gI; s/PM/P.M./gI')
+          echo "Current formatted time: $formatted_time"
+          sed -i "s|--theme-updated-on: \".*\";|--theme-updated-on: \"$formatted_time\";|g" theme.css
+
+      - name: Commit if theme.css changed
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "⌚ Timestamp update: $formatted_time"

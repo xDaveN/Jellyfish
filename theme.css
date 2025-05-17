@@ -16,6 +16,7 @@
 /* ~~~~~~~~~~~~~~~~~~~~ GLOBAL CSS VARIABLES ~~~~~~~~~~~~~~~~~~~~ */
 /* Defines core variables used throughout the theme for consistency. */
 :root {
+    --theme-updated-on: "17 May 2025 - 5:10 P.M."; /* Date of last theme update */
     --rounded-cards: 15px; /* Standard border-radius for card-like elements. */
     --blur: 5px;           /* Default blur intensity for backdrop and other effects. */
 }
@@ -26,6 +27,19 @@ body, h1, h2, h3, h4 {
     font-family: 'Quicksand', sans-serif !important;
 }
 
+/* Show theme date in dashboard */
+.dashboardActionsContainer::before {
+    content: "Theme last updated on " var(--theme-updated-on, "..........");
+    display: block;
+    background-color: var(--tertiary-background-color);
+    color: #ddd;
+    border-radius: var(--rounded-cards);
+    padding: 10px 15px;
+    font-family: 'Quicksand', sans-serif;
+    font-weight: bold;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+    margin-bottom: 1em;
+}
 /* ~~~~~~~~~~~~~~~~~~~~ ACCENT COLOR APPLICATION ~~~~~~~~~~~~~~~~~~~~ */
 /* Styles that apply the theme's accent colors to various UI elements. */
 
@@ -133,6 +147,11 @@ progress::-webkit-progress-value,             /* Progress bar fill for WebKit br
     .paper-icon-button-light:hover:not(:disabled):not(.headerButton) { /* Exclude disabled buttons and general header buttons */
         color: var(--primary-accent-color) !important;
     }
+}
+
+.paper-icon-button-light:active:not(:disabled) { /* Active state for icon buttons */
+    color: var(--primary-accent-color) !important;
+    background-color: var(--secondary-background-transparent) !important;
 }
 
 /* == Accent Color for Dashboard Headings == */
