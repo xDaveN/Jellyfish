@@ -8,7 +8,7 @@
     /* Background Colors */
     --primary-background-transparent: rgba(var(--primary-r), var(--primary-g), var(--primary-b), 0.1);
     --secondary-background-transparent: rgba(var(--primary-r), var(--primary-g), var(--primary-b), 0.2);
-    --primary-background-color: #101010; /* Main background */
+    --primary-background-color: #000000; /* Main background */
     --secondary-background-color: #181818; /* Drawer, cards, dialogs */
     --tertiary-background-color: #252525; /* Popovers */
     --alt-accent-color: #ffffff20;
