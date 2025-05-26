@@ -1,0 +1,20 @@
+/* Replace Logo with streamberry logo, this should be the last line in CSS */
+:root {
+    --logo: url("https://i.ibb.co/h1gxW5jg/streamberry.png");
+}
+
+.pageTitleWithDefaultLogo {
+    background-size: 100% !important;
+}
+
+.layout-mobile .pageTitleWithDefaultLogo {
+    width: 130px !important;
+}
+
+#loginPage .visualLoginForm:not(.hide) h1::before {
+  background-size: 50% !important;
+}
+
+#loginPage .manualLoginForm:not(.hide) h1.sectionTitle::before {
+  background-size: 100% !important;
+}
