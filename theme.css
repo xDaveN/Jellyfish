@@ -1033,7 +1033,7 @@ h3.tagline {
 /* Customizes the text and appearance of the main Play button on the details page. */
 .layout-desktop .mainDetailButtons .btnPlay::after,
 .layout-mobile .mainDetailButtons .btnPlay::after {
-    content: "Sooo..?" !important; /* Custom text for the play button */
+    content: "Play?" !important; /* Custom text for the play button */
 }
 /* Desktop Play Button Styling. */
 .layout-desktop .mainDetailButtons .btnPlay {
@@ -1058,6 +1058,7 @@ h3.tagline {
 .layout-desktop .mainDetailButtons .btnPlay:hover,
 .layout-mobile .mainDetailButtons .btnPlay:hover  {
     filter: brightness(120%);
+    box-shadow: 0px 0px 15px 2px rgba(255, 255, 255, .5) !important;
 }
 /* Ensures detail buttons use row direction for flex layout (icon beside text). */
 .layout-desktop .mainDetailButtons .detailButton,
@@ -1651,6 +1652,16 @@ h3.tagline {
 }
 @keyframes backdrop-fadein {
     from { opacity: 0; } to { opacity: 1; } /* Simple fade-in from 0 to current opacity (which is .3) */
+}
+
+/* == Hides Backdrop in People Detail page and other adjustments == */
+#itemDetailPage:has(div.detailImageContainer .cardImageIcon.person) > .itemBackdrop {
+    height: 15%;
+}
+
+.layout-desktop #itemDetailPage:has(div.detailImageContainer .cardImageIcon.person) .mainDetailButtons {
+    backdrop-filter: none !important;
+    margin-top: 17% !important;
 }
 
 /* ~~~~~~~~~~~~~~~~~~~~ RESPONSIVENESS & FIXES ~~~~~~~~~~~~~~~~~~~~ */
