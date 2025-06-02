@@ -144,8 +144,9 @@ progress::-webkit-progress-value,             /* Progress bar fill for WebKit br
 /* == Accent Color for Hover Effects (Fine Pointer Devices) == */
 /* Applies accent color on hover for icon buttons, specifically for mouse users. */
 @media (hover: hover) and (pointer: fine) {
-    .paper-icon-button-light:hover:not(:disabled):not(.headerButton) { /* Exclude disabled buttons and general header buttons */
+    .paper-icon-button-light:hover:not(:disabled) { /* Exclude disabled buttons */
         color: var(--primary-accent-color) !important;
+        background-color: var(--secondary-background-transparent) !important;
     }
 }
 
@@ -211,13 +212,13 @@ html,
 .dialog,                                      /* Dialog boxes */
 .programCell-active,                          /* Active program cells in the TV guide */
 .channelsContainer,                           /* Container for TV channels */
-.layout-mobile .itemDetailsGroup,             /* Grouped item details on mobile */
+.layout-mobile .detailsGroupItem,             /* Grouped item details on mobile */
 .layout-desktop .detailSectionContent,        /* Content area within detail sections (Desktop) - Consider backdrop transparency rules */
 .layout-mobile .detailSectionContent,         /* Content area within detail sections (Mobile) */
 .trackSelections,                             /* Audio/Subtitle track selection area */
 .layout-desktop .detailsGroupItem             /* Individual items in a details group (Desktop) */
 {
-    background: var(--secondary-background-transparent) !important; /* Ensure --secondary-background-transparent is defined or use direct rgba */
+    background: var(--secondary-background-transparent) !important;
 }
 
 /* Tertiary background for popover elements. */
@@ -454,7 +455,6 @@ progress::-webkit-progress-value  /* Filled part of the progress bar (WebKit) */
     padding: 2px !important;
     top: -3px !important; /* Slight upward adjustment */
     border-radius: 5px !important;
-    backdrop-filter: blur(var(--blur)) !important; /* Apply theme blur */
     flex-grow: 0 !important; /* Prevent growing to fill space */
     -webkit-flex-grow: 0 !important;
 }
@@ -922,7 +922,7 @@ h3.tagline {
 /* == Alternative Mobile Group Section Card == */
 /* Provides distinct styling for the item details group on mobile. */
 .layout-mobile .itemDetailsGroup {
-    background: var(--secondary-background-transparent) !important;
+    /* background: var(--secondary-background-transparent) !important; */
     padding: 15px 20px 5px 20px !important;
     border-radius: var(--rounded-cards) !important;
 }
@@ -930,13 +930,13 @@ h3.tagline {
 /* == Card Styling for Description Area == */
 /* Wraps the item description/overview in a styled container. */
 .layout-desktop .detailSectionContent { /* This selector is also used for general section content, ensure this is intended or make more specific */
-    background: var(--primary-background-transparent) !important;
+    background: var(--secondary-background-transparent) !important;
     border-radius: var(--rounded-cards) !important;
     padding: 40px 20px 10px 20px !important;
     margin-top: 40px !important;
 }
 .layout-mobile .detailSectionContent {
-    background: var(--primary-background-transparent) !important;
+    background: var(--secondary-background-transparent) !important;
     border-radius: var(--rounded-cards) !important;
     padding: 10px 20px !important;
 }
@@ -944,7 +944,6 @@ h3.tagline {
 /* == Card Styling for Track Selection Area == */
 /* Wraps the audio/subtitle track selection controls. */
 .trackSelections {
-    background: var(--primary-background-transparent) !important;
     border-radius: var(--rounded-cards) !important;
     padding: 10px 20px !important;
     margin-top: 20px !important;
@@ -1379,6 +1378,8 @@ h3.tagline {
 }
 .headerUsername, .sectionTitle { /* Accent color for username in header and section titles */
     color: var(--primary-accent-color) !important;
+    text-shadow: 1px 1px 15px #ffffffdb; /* Subtle white shadow for emphasis */
+    font-weight: bold; /* Bold for emphasis */
 }
 
 /* == General Dashboard Styling == */
@@ -1744,4 +1745,37 @@ h3.tagline {
 }
 .layout-mobile .detailPageContent {
     padding-right: 0 !important; /* Remove right padding if any */
+}
+
+
+/* ~~~~~~~~~~~~~~~~~~~~ Book SPECIFIC FIXES AND CHANGES ~~~~~~~~~~~~~~~~~~~~ */
+
+.mainDetailButtons:has(button.btnPlaystate[data-type="Book"]) button.btnPlay::after {
+    content: "Read" !important;
+    margin-top: 4px;
+    margin-left: 4px;
+    font-weight: bold;
+}
+
+.mainDetailButtons:has(button.btnPlaystate[data-type="Book"]) .material-icons.play_arrow:before{
+    display:  none !important;
+}
+
+.mainDetailButtons:has(button.btnPlaystate[data-type="Book"]) .material-icons.play_arrow:after {
+    content: "\1F56E" !important;
+    margin-left: -8px;
+}
+
+.layout-desktop #itemDetailPage:has(button.btnPlaystate[data-type="Book"]) .itemBackdrop, .layout-mobile #itemDetailPage:has(button.btnPlaystate[data-type="Book"]) .itemBackdrop {
+    height: 15%;
+}
+
+ .layout-desktop #itemDetailPage:has(button.btnPlaystate[data-type="Book"])  .mainDetailButtons {
+    backdrop-filter: none !important;
+    margin-top: 9% !important;
+}
+
+.layout-desktop #itemDetailPage:has(button.btnPlaystate[data-type="Book"]) .itemMiscInfo {
+    margin-left: 11px !important;
+    margin-top: 11px !important;
 }
