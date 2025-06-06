@@ -479,7 +479,7 @@ progress::-webkit-progress-value  /* Filled part of the progress bar (WebKit) */
 
 /* == Hide Home Button (Except Dashboard) == */
 /* Hides the main home button in the header on most pages, but keeps it on the dashboard. */
-.layout-desktop .headerHomeButton:not(.dashboardDocument .headerHomeButton) {
+.layout-desktop .headerHomeButton:not(.dashboardDocument .headerHomeButton), .layout-desktop .headerHomeButton:not(.libraryDocument .headerHomeButton){
     display: none !important;
 }
 
@@ -886,7 +886,16 @@ a.emby-button.homeLibraryButton.raised:hover::before {
 /* == Tagline Spacing == */
 /* Adds top margin to the tagline for better separation. */
 h3.tagline {
-    margin-top: 3em !important;
+    margin-top: 2.5em !important;
+}
+
+.itemTags.focuscontainer-x {
+    margin-bottom: 25px !important; /* Spacing below the tags section */
+}
+
+.itemTags.focuscontainer-x > a.button-link.emby-button:hover {
+    transform: none; /* Prevents scaling on hover for tag buttons */
+    transition: none;
 }
 
 /* == Card Styling for Top-Right Buttons (Details Page) == */
@@ -977,7 +986,7 @@ h3.tagline {
 }
 .layout-desktop .itemMiscInfo { /* Miscellaneous info like year, runtime, rating */
     position: absolute !important;
-    margin-left: 20px !important;
+    margin-left: 12px !important;
     margin-top: 30px !important;
 }
 
@@ -1024,7 +1033,7 @@ h3.tagline {
 /* == Original Title / Episode Name Position Modification (Desktop) == */
 .layout-desktop .nameContainer .itemName.originalTitle,
 .layout-desktop .nameContainer .itemName.infoText.subtitle {
-    margin: .5em 20px !important; /* Consistent margin for original titles or subtitles */
+    margin: .8em 12px !important; /* Consistent margin for original titles or subtitles */
     padding: 0px !important;     /* Remove default padding if any */
 }
 
@@ -1352,7 +1361,7 @@ h3.tagline {
 
 /* Background for dashboard menu on mobile */
 .MuiPaper-root.MuiPaper-elevation.MuiPaper-elevation16.MuiDrawer-paper.MuiDrawer-paperAnchorLeft {
-    background: var(--secondary-accent-color) !important;
+    background: var(--secondary-background-color) !important;
 }
 
 /* Applies a smaller, consistent rounding to buttons and select elements. */
@@ -1387,6 +1396,11 @@ h3.tagline {
 .listItem-border {
     border: 0 !important;
 }
+
+.taskProgressInner { /* Inner progress bar for tasks */
+    background: var(--primary-accent-color);
+}
+
 /* Styles fieldsets in the dashboard with rounding, custom border, and padding. */
 .layout-desktop fieldset.verticalSection-extrabottompadding,
 .layout-tv fieldset.verticalSection-extrabottompadding {
