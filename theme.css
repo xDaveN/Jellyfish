@@ -745,6 +745,21 @@ progress::-webkit-progress-value  /* Filled part of the progress bar (WebKit) */
     transition: .2s !important;
     border-radius: var(--rounded-cards) !important;
 }
+
+.layout-desktop #childrenContent .listItem {
+    padding-left: 1em !important;
+    padding-right: 0.5em !important;
+    padding-top: 0.7em !important;
+    padding-bottom: 1em !important;
+    border-radius: 28px !important;
+}
+
+.listItem-content {
+    align-items: flex-start !important;
+}
+.playstatebutton-icon-played {
+    color: lawngreen !important; /* Accent color for watched state icon */
+}
 /* Hover effect for list items: background change and slight scaling. */
 .listItem:hover {
     background: rgba(44, 44, 44, 0.7) !important; /* Dark semi-transparent background */
@@ -803,7 +818,7 @@ a.emby-button.homeLibraryButton.raised:hover::before {
 /* == List Item Image Styling == */
 /* Ensures list item images (e.g., in search results) are contained and rounded. */
 .listItemImage {
-    background-size: contain !important; /* Image fits within bounds without cropping */
+    background-size: cover !important; /* Image fits within bounds without cropping */
     border-radius: var(--rounded-cards);
 }
 
@@ -1070,13 +1085,6 @@ h3.tagline {
     -webkit-flex-direction: row !important;
     flex-direction: row !important;
 }
-
-/* == List Item Image Crop (Redundant with earlier rule) == */
-/* This rule is identical to one in "CARDS & LIST ITEMS". Can be removed if not needed for specificity here. */
-/* .listItemImage {
-    background-size: contain !important;
-    border-radius: var(--rounded-cards);
-} */
 
 /* == Live TV Recording Fields Styling == */
 .recordingFields { /* Container for recording schedule options */
