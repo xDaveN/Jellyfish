@@ -18,7 +18,7 @@
 :root {
     --theme-updated-on: "06 June 2025 - 08:11 P.M."; /* Date of last theme update */
     --rounded-cards: 15px; /* Standard border-radius for card-like elements. */
-    --blur: 5px;           /* Default blur intensity for backdrop and other effects. */
+    --blur: 15px;           /* Default blur intensity for backdrop and other effects. */
 }
 
 /* ~~~~~~~~~~~~~~~~~~~~ GLOBAL FONT ~~~~~~~~~~~~~~~~~~~~ */
@@ -212,7 +212,7 @@ html,
 .dialog,                                      /* Dialog boxes */
 .programCell-active,                          /* Active program cells in the TV guide */
 .channelsContainer,                           /* Container for TV channels */
-.layout-mobile .detailsGroupItem,             /* Grouped item details on mobile */
+/* .layout-mobile .detailsGroupItem,             Grouped item details on mobile */
 .layout-desktop .detailSectionContent,        /* Content area within detail sections (Desktop) - Consider backdrop transparency rules */
 .layout-mobile .detailSectionContent,         /* Content area within detail sections (Mobile) */
 .trackSelections,                             /* Audio/Subtitle track selection area */
@@ -477,11 +477,6 @@ progress::-webkit-progress-value  /* Filled part of the progress bar (WebKit) */
     text-shadow: -2px 2px 12px #000000eb !important; /* Text shadow for mobile header icons for readability */
 }
 
-/* == Hide Home Button (Except Dashboard) == */
-/* Hides the main home button in the header on most pages, but keeps it on the dashboard. */
-.layout-desktop .headerHomeButton:not(.dashboardDocument .headerHomeButton), .layout-desktop .headerHomeButton:not(.libraryDocument .headerHomeButton){
-    display: none !important;
-}
 
 /* ~~~~~~~~~~~~~~~~~~~~ LAYOUT - MAIN DRAWER (SIDEBAR) ~~~~~~~~~~~~~~~~~~~~ */
 
@@ -493,7 +488,7 @@ progress::-webkit-progress-value  /* Filled part of the progress bar (WebKit) */
     border-top-right-radius : var(--rounded-cards) !important;
     border-bottom-right-radius : var(--rounded-cards) !important;
     background: var(--secondary-background-color) !important;
-    backdrop-filter: none !important; /* No blur when it's a solid background */
+    backdrop-filter: blur(25px) !important; /* No blur when it's a solid background */
     width: 275px !important;
     transition: transform .24s ease-out,left .26s ease-out,-webkit-transform .24s ease-out !important; /* Smooth transition for sliding */
 }
@@ -612,7 +607,7 @@ progress::-webkit-progress-value  /* Filled part of the progress bar (WebKit) */
 }
 /* When scrolled (not at the top), apply a blurred background to the mobile header. */
 .layout-mobile .headroom--not-top {
-    background: var(--secondary-accent-color) !important; /* Blurred background using secondary accent */
+    background: var(--secondary-background-trans) !important; /* Blurred background using secondary accent */
     backdrop-filter: blur(var(--blur)) !important;
 }
 /* Remove background from the right header section when scrolled (it inherits from headroom--not-top). */
@@ -703,9 +698,9 @@ progress::-webkit-progress-value  /* Filled part of the progress bar (WebKit) */
 
 /* == Hide "Next Up" Section == */
 /* Completely hides the "Next Up" section from the home page or series pages. */
-div.nextUpSection {
+/* div.nextUpSection {
     display: none;
-}
+} */
 
 /* == Hide "Upcoming on TV" Section == */
 /* Hides the "Upcoming" schedule list and section title for TV series. */
@@ -802,7 +797,7 @@ a.emby-button.homeLibraryButton.raised:hover::before {
     background-color: rgba(31, 31, 31, 0.2); /* Dark semi-transparent overlay */
     z-index: 1; /* Above the button's background but below its text/icon */
     transition: background-color 0.1s ease;
-    border-radius: 100px; /* Match pill shape if applicable, or var(--rounded-cards) */
+    border-radius: 18px;
 }
 
 /* == List Item Image Styling == */
@@ -929,12 +924,13 @@ h3.tagline {
 }
 
 /* == Alternative Mobile Group Section Card == */
-/* Provides distinct styling for the item details group on mobile. */
-.layout-mobile .itemDetailsGroup {
-    /* background: var(--secondary-background-transparent) !important; */
+/* Apply styles only if all children with class 'hide' are not hidden */
+.itemDetailsGroup:not(:has(.detailsGroupItem:not(.hide))) {
+    background: var(--secondary-background-transparent) !important;
     padding: 15px 20px 5px 20px !important;
     border-radius: var(--rounded-cards) !important;
 }
+
 
 /* == Card Styling for Description Area == */
 /* Wraps the item description/overview in a styled container. */
@@ -1135,7 +1131,6 @@ h3.tagline {
 /* == Player OSD Element Styling == */
 /* Applies blur and rounding to Up Next container, Toasts, and Slider Bubbles. */
 .upNextContainer:not(#skipIntro), /* "Up Next" dialog, excluding the Intro Skipper variant */
-.toastVisible,                    /* Notification toasts */
 .sliderBubble                     /* Bubble showing time/chapter when scrubbing progress bar */
 {
     backdrop-filter: blur(var(--blur)) !important;
@@ -1149,7 +1144,9 @@ h3.tagline {
 /* Specific styling for toasts. */
 .toastVisible {
     background-color: var(--primary-background-transparent) !important;
-    border-radius: 30px !important; /* More pronounced rounding for toasts */
+    backdrop-filter: blur(25px) !important;
+    border-radius: 18px !important;
+    text-shadow: 2px 2px black;
 }
 /* Specific background for slider bubbles. */
 .sliderBubble {
@@ -1182,6 +1179,7 @@ h3.tagline {
 }
 .mdl-slider-background-upper { /* The unfilled (remaining) part of the track */
     border-top-right-radius: 100px !important;
+    border-radius: 100px !important; /* Pill shape */
     border-bottom-right-radius: 100px !important;
     background: hsla(0, 0%, 100%, .2) !important; /* Matches track background */
     transform: translateX(-3px) !important; /* Slight adjustment for visual alignment */
@@ -1481,7 +1479,7 @@ h3.tagline {
 }
 /* Styling for list item buttons within the MUI sidebar. */
 .MuiList-subheader .MuiListItemButton-root.MuiListItemButton-gutters {
-    border-radius: 100px !important; /* Pill shape */
+    border-radius: 18px !important;
     margin: 2px 0px !important;
     transition: .2s !important;
     height: 45px !important;
@@ -1509,7 +1507,7 @@ h3.tagline {
     width: 85% !important;
     margin-inline: auto !important;
     padding: 8px 16px !important;
-    border-radius: 100px !important; /* Pill shape for collapsed items too */
+    border-radius: 18px !important;
 }
 
 
