@@ -170,6 +170,11 @@ progress::-webkit-progress-value,             /* Progress bar fill for WebKit br
     background: var(--secondary-background-transparent); /* Uses a theme variable, ensure this is defined or use a direct rgba value */
 }
 
+ .cardOverlayContainer > .cardOverlayFab-primary {
+	  background-color: transparent !important;
+  }
+
+
 /* ~~~~~~~~~~~~~~~~~~~~ SPECIFIC ELEMENT BACKGROUNDS (NON-ACCENT) ~~~~~~~~~~~~~~~~~~~~ */
 /* Defines specific background colors for particular buttons or elements, not tied to the theme accent. */
 
@@ -212,11 +217,9 @@ html,
 .dialog,                                      /* Dialog boxes */
 .programCell-active,                          /* Active program cells in the TV guide */
 .channelsContainer,                           /* Container for TV channels */
-/* .layout-mobile .detailsGroupItem,             Grouped item details on mobile */
 .layout-desktop .detailSectionContent,        /* Content area within detail sections (Desktop) - Consider backdrop transparency rules */
 .layout-mobile .detailSectionContent,         /* Content area within detail sections (Mobile) */
-.trackSelections,                             /* Audio/Subtitle track selection area */
-.layout-desktop .detailsGroupItem             /* Individual items in a details group (Desktop) */
+.trackSelections                            /* Audio/Subtitle track selection area */
 {
     background: var(--secondary-background-transparent) !important;
 }
@@ -746,10 +749,10 @@ progress::-webkit-progress-value  /* Filled part of the progress bar (WebKit) */
     border-radius: var(--rounded-cards) !important;
 }
 
-.layout-desktop #childrenContent .listItem {
+#childrenContent .listItem {
     padding-left: 1em !important;
     padding-right: 0.5em !important;
-    padding-top: 0.7em !important;
+    padding-top: 1em !important;
     padding-bottom: 1em !important;
     border-radius: 28px !important;
 }
@@ -920,7 +923,6 @@ h3.tagline {
 /* == Card Styling for "Groups" Section (Desktop) == */
 /* Styles the container for grouped information (e.g., ratings, genres, runtime). */
 .layout-desktop .detailsGroupItem {
-    background: var(--primary-background-transparent) !important; /* Use a theme transparent background */
     padding: 10px 20px !important;
     border-radius: 5px !important;
     width: fit-content !important; /* Fit to content width */
@@ -940,7 +942,7 @@ h3.tagline {
 
 /* == Alternative Mobile Group Section Card == */
 /* Apply styles only if all children with class 'hide' are not hidden */
-.itemDetailsGroup:not(:has(.detailsGroupItem:not(.hide))) {
+.itemDetailsGroup:has(.detailsGroupItem:not(.hide)) {
     background: var(--secondary-background-transparent) !important;
     padding: 15px 20px 5px 20px !important;
     border-radius: var(--rounded-cards) !important;
@@ -1596,7 +1598,6 @@ h3.tagline {
 
 /* == Translucent Cards on Item Detail Page (with Backdrop) == */
 /* Makes various sections on the item detail page translucent when a backdrop is shown and transparency is not disabled. */
-.layout-desktop #itemDetailPage:not(.noBackdropTransparency) .detailsGroupItem,
 .layout-desktop #itemDetailPage:not(.noBackdropTransparency) .detailSectionContent,
 .layout-desktop #itemDetailPage:not(.noBackdropTransparency) .trackSelections {
     background: var(--secondary-background-transparent) !important; /* Use theme's transparent background */
