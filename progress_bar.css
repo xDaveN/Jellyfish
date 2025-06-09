@@ -22,7 +22,7 @@
 .libraryPage .itemProgressBar,
 #itemDetailPage .itemProgressBar {
     height: 8px;
-    background: rgba(0,0,0,0.4);
+    background: var(--secondary-background-transparent) !important;
     margin: .5em .8em;
 }
 /*Accommodate play button on mobile*/
@@ -38,6 +38,6 @@
   .libraryPage .itemProgressBar,
   #itemDetailPage .itemProgressBar{
     backdrop-filter: blur(4px);
-    background: rgba(0, 0, 0, 0.35) !important;
+    background: var(--secondary-background-transparent) !important;
   }
 }
