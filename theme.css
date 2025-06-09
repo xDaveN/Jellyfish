@@ -923,8 +923,7 @@ h3.tagline {
 /* == Card Styling for "Groups" Section (Desktop) == */
 /* Styles the container for grouped information (e.g., ratings, genres, runtime). */
 .layout-desktop .detailsGroupItem {
-    padding: 10px 20px !important;
-    border-radius: 5px !important;
+    padding: 5px 15px !important;
     width: fit-content !important; /* Fit to content width */
     max-width: max-content !important;
     display: flex;                /* Use flex for layout of items within */
@@ -940,12 +939,13 @@ h3.tagline {
     margin: unset;     /* Reset margin */
 }
 
-/* == Alternative Mobile Group Section Card == */
 /* Apply styles only if all children with class 'hide' are not hidden */
 .itemDetailsGroup:has(.detailsGroupItem:not(.hide)) {
     background: var(--secondary-background-transparent) !important;
-    padding: 15px 20px 5px 20px !important;
+    padding: 5px 0px !important;
     border-radius: var(--rounded-cards) !important;
+    width: fit-content !important;
+    max-width: max-content !important;
 }
 
 
