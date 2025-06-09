@@ -8,10 +8,10 @@
   box-shadow: -2px 1px 4px 0 rgb(0 0 0 / .8) !important;
 }
 .countIndicator, .playedIndicator {
-  border-radius: 0px var(--rounded-cards) !important;
+  border-radius: 0px 10px !important;
   box-shadow: -2px 1px 4px 0 rgb(0 0 0 / .8) !important;
-  margin-right: -1px !important;
-  margin-top: -1px !important;
+  /* margin-right: -1px !important;
+  margin-top: -1px !important; */
 }
 
 .mediaSourceIndicator {
