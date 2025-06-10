@@ -171,7 +171,8 @@ progress::-webkit-progress-value,             /* Progress bar fill for WebKit br
 }
 
  .cardOverlayContainer > .cardOverlayFab-primary {
-	  background-color: transparent !important;
+    background-color: transparent !important;
+    color: var(--primary-accent-color);
   }
 
 
@@ -294,6 +295,10 @@ progress::-webkit-progress-value  /* Filled part of the progress bar (WebKit) */
 /* Margin for titles within action sheets (a type of dialog). */
 .actionSheetTitle {
     margin: 10px 20px !important;
+}
+
+.actionSheetContent {
+    background: var(--secondary-background-transparent);
 }
 
 /* == Mobile Cast & Crew Card Size == */
@@ -765,8 +770,8 @@ progress::-webkit-progress-value  /* Filled part of the progress bar (WebKit) */
 }
 /* Hover effect for list items: background change and slight scaling. */
 .listItem:hover {
-    background: rgba(44, 44, 44, 0.7) !important; /* Dark semi-transparent background */
-    transform: scale(1.015);                      /* Slight zoom effect */
+    background: var(--alt-acent-color) !important; /* Dark semi-transparent background */
+    transform: scale(1.05);                      /* Slight zoom effect */
 }
 
 /* == Card Hover Effects (Outline & Dim) == */
@@ -823,6 +828,8 @@ a.emby-button.homeLibraryButton.raised:hover::before {
 .listItemImage {
     background-size: cover !important; /* Image fits within bounds without cropping */
     border-radius: var(--rounded-cards);
+    max-height: fit-content;
+    min-height: 10em !important;
 }
 
 /* == Indicators (Watched, Count, Media Source) == */
@@ -899,7 +906,9 @@ a.emby-button.homeLibraryButton.raised:hover::before {
 /* == Tagline Spacing == */
 /* Adds top margin to the tagline for better separation. */
 h3.tagline {
-    margin-top: 2.5em !important;
+    margin-top: 1.5em !important;
+    border-left: 0.25em solid white;
+    padding: 0 0.5em;
 }
 
 .itemTags.focuscontainer-x {
@@ -914,9 +923,6 @@ h3.tagline {
 /* == Card Styling for Top-Right Buttons (Details Page) == */
 /* Wraps the main action buttons (Play, Watched, Favorite) in a blurred card-like container. */
 .mainDetailButtons {
-    background: #0000 !important; /* Transparent background for the container itself */
-    border-radius: 5px !important;
-    backdrop-filter: blur(var(--blur)) !important; /* Apply theme blur */
     margin-top: 1.5em;          /* Spacing above the buttons */
 }
 
@@ -942,7 +948,7 @@ h3.tagline {
 /* Apply styles only if all children with class 'hide' are not hidden */
 .itemDetailsGroup:has(.detailsGroupItem:not(.hide)) {
     background: var(--secondary-background-transparent) !important;
-    padding: 5px 0px !important;
+    padding: 10px 0px 0px 0px !important;
     border-radius: var(--rounded-cards) !important;
     width: fit-content !important;
     max-width: max-content !important;
@@ -1000,7 +1006,7 @@ h3.tagline {
 .layout-desktop .itemMiscInfo { /* Miscellaneous info like year, runtime, rating */
     position: absolute !important;
     margin-left: 12px !important;
-    margin-top: 30px !important;
+    margin-top: 10px !important;
 }
 
 /* == Description Box Positioning (Desktop) == */
@@ -1043,12 +1049,17 @@ h3.tagline {
 .layout-desktop .nameContainer .parentName { order: 1; } /* Show title */
 .layout-desktop .nameContainer .itemName   { order: 2; } /* Episode title */
 
-/* == Original Title / Episode Name Position Modification (Desktop) == */
-.layout-desktop .nameContainer .itemName.originalTitle,
+/* == Episode Name Position Modification (Desktop) == */
 .layout-desktop .nameContainer .itemName.infoText.subtitle {
     margin: .8em 12px !important; /* Consistent margin for original titles or subtitles */
     padding: 0px !important;     /* Remove default padding if any */
 }
+
+/* Hide original title (titles in original language) */
+.nameContainer .itemName.originalTitle {
+    display: none;
+}
+
 
 /* == Play Button Modification == */
 /* Customizes the text and appearance of the main Play button on the details page. */
@@ -1682,8 +1693,9 @@ h3.tagline {
 }
 
 .layout-desktop #itemDetailPage:has(div.detailImageContainer .cardImageIcon.person) .mainDetailButtons {
-    backdrop-filter: none !important;
-    margin-top: 17% !important;
+    position: absolute;
+    right: 6em;
+    top: 6em;
 }
 
 /* ~~~~~~~~~~~~~~~~~~~~ RESPONSIVENESS & FIXES ~~~~~~~~~~~~~~~~~~~~ */
