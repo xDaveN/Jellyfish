@@ -16,3 +16,8 @@
 {
     content: attr(title);
 }
+
+.osdControls .btnUserRating
+{
+    display: none !important;
+}

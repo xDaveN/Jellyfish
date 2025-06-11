@@ -83,7 +83,7 @@ progress[aria-valuenow]:before,               /* Progress bar fill (pseudo-eleme
 }
 
 
-.listItemIcon:not(.listItemIcon-transparent) /* Icons in list items (excluding transparent/important notifications) */
+.listItemIcon:not(.listItemIcon-transparent, .notification_important) /* Icons in list items (excluding transparent/important notifications) */
 {
     color: #ffffffee !important;
     background-color: var(--secondary-accent-color) !important;
@@ -773,11 +773,19 @@ progress::-webkit-progress-value  /* Filled part of the progress bar (WebKit) */
 .playstatebutton-icon-played {
     color: lawngreen !important; /* Accent color for watched state icon */
 }
+
+
 /* Hover effect for list items: background change and slight scaling. */
-.listItem:hover {
-    background: var(--alt-accent-color) !important; /* Dark semi-transparent background */
-    transform: scale(1.04);                      /* Slight zoom effect */
+.listItem {
+    transition: background 0.2s ease, box-shadow 0.2s ease, translate 0.2s ease !important;
 }
+
+.listItem:hover {
+    background: var(--alt-accent-color) !important;
+    translate: 0 -3px !important;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25) !important;
+}
+
 
 /* == Card Hover Effects (Outline & Dim) == */
 /* Adds an accent-colored border and a dimming overlay on hover for various card types. */
@@ -1166,7 +1174,7 @@ h3.tagline {
 
 /* Rotten Tomato rating hover effect. */
 .mediaInfoItem.mediaInfoCriticRating:hover {
-    transform: scale(1.1) rotate(5deg);
+    transform: scale(1.1) rotate(-5deg);
     transition: transform 0.2s ease-in-out;
 }
 
