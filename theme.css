@@ -996,8 +996,8 @@ h3.tagline {
 .trackSelections .selectContainer .detailTrackSelect {
     padding: 0 10px;
     margin-left: 10px !important;
-    background: none;
-    border: none;
+    background: none !important;
+    border: none !important;
 }
 
 /* == Title Positioning (Desktop) == */
@@ -1403,14 +1403,12 @@ h3.tagline {
     border-radius: var(--rounded-cards) !important;
 }
 
-.emby-input, .emby-textarea, .paperList, .fab, .emby-select-withcolor {
-    background: var(--alt-accent-color) !important;
+.emby-input, .emby-textarea, .emby-select-withcolor {
+    border: 0.1em solid var(--alt-accent-color) !important;
 }
 
-.localnav {
-    border-radius: 50px;
+.emby-input, .emby-textarea, .paperList, .fab, .emby-select-withcolor, .visualCardBox, .emby-button.raised.button-alt  {
     background: var(--alt-accent-color) !important;
-    width: fit-content !important;
 }
 
 /* Background for dashboard menu on mobile */
@@ -1463,10 +1461,10 @@ h3.tagline {
     padding: 10px 35px 20px 35px !important;
 }
 /* Styles tab navigation within the dashboard (e.g., in server settings sections). */
-.layout-desktop .localnav {
-    border-radius: 5px !important;
-    background: var(--secondary-background-color) !important; /* Use theme background */
-    width: fit-content !important; /* Fit to content width */
+.localnav {
+    border-radius: 50px;
+    background: var(--alt-accent-color) !important;
+    width: fit-content !important;
 }
 /* Removes default background from buttons within dashboard tab navigation. */
 .layout-desktop a[data-role="button"] {
