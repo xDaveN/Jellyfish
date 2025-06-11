@@ -27,11 +27,16 @@ body, h1, h2, h3, h4 {
     font-family: 'Quicksand', sans-serif !important;
 }
 
+/* hide scrollbars */
+* {
+  scrollbar-color : transparent transparent !important
+}
+
 /* Show theme date in dashboard */
 .dashboardActionsContainer::before {
     content: "Theme last updated on " var(--theme-updated-on, "..........");
     display: block;
-    background-color: var(--tertiary-background-color);
+    background-color: var(--alt-accent-color);
     color: #ddd;
     border-radius: var(--rounded-cards);
     padding: 10px 15px;
@@ -204,11 +209,15 @@ button.raised.btnRefresh.emby-button {
 /* Sets base background colors for main layout areas and components. */
 
 /* Primary background for the entire page and containers without backdrops. */
-html,
+html
+{
+    background-color: var(--primary-background-color) !important;
+}
+
 .backgroundContainer:not(.withBackdrop):not(.backgroundContainer-transparent), /* Main page background, excluding when a backdrop is shown */
 .noBackdropTransparency .detailPageSecondaryContainer /* Secondary container on detail pages when backdrop transparency is off */
 {
-    background-color: var(--primary-background-color) !important;
+    background-color: var(--secondary-background-transparent) !important;
 }
 
 /* Secondary, often slightly transparent, backgrounds for elements like drawers, dialogs, and content sections. */
@@ -220,14 +229,10 @@ html,
 .channelsContainer,                           /* Container for TV channels */
 .layout-desktop .detailSectionContent,        /* Content area within detail sections (Desktop) - Consider backdrop transparency rules */
 .layout-mobile .detailSectionContent,         /* Content area within detail sections (Mobile) */
-.trackSelections                            /* Audio/Subtitle track selection area */
+.trackSelections,                            /* Audio/Subtitle track selection area */
+.MuiPaper-root.MuiPopover-paper
 {
     background: var(--secondary-background-transparent) !important;
-}
-
-/* Tertiary background for popover elements. */
-.MuiPaper-root.MuiPopover-paper {
-    background: var(--tertiary-background-color) !important;
 }
 
 /* ~~~~~~~~~~~~~~~~~~~~ DYNAMIC BACKGROUNDS (ACTIVE DEVICES) ~~~~~~~~~~~~~~~~~~~~ */
@@ -770,8 +775,8 @@ progress::-webkit-progress-value  /* Filled part of the progress bar (WebKit) */
 }
 /* Hover effect for list items: background change and slight scaling. */
 .listItem:hover {
-    background: var(--alt-acent-color) !important; /* Dark semi-transparent background */
-    transform: scale(1.05);                      /* Slight zoom effect */
+    background: var(--alt-accent-color) !important; /* Dark semi-transparent background */
+    transform: scale(1.04);                      /* Slight zoom effect */
 }
 
 /* == Card Hover Effects (Outline & Dim) == */
@@ -945,13 +950,21 @@ h3.tagline {
     margin: unset;     /* Reset margin */
 }
 
+.detailsGroupItem .content {
+    padding: 0 10px;
+    margin-left: 10px !important;
+}
+
 /* Apply styles only if all children with class 'hide' are not hidden */
 .itemDetailsGroup:has(.detailsGroupItem:not(.hide)) {
     background: var(--secondary-background-transparent) !important;
     padding: 10px 0px 0px 0px !important;
     border-radius: var(--rounded-cards) !important;
-    width: fit-content !important;
-    max-width: max-content !important;
+    max-width: 40em !important;
+}
+
+.layout-mobile .itemDetailsGroup:has(.detailsGroupItem:not(.hide)) {
+    padding: 10px 20px !important;
 }
 
 
@@ -975,7 +988,7 @@ h3.tagline {
     border-radius: var(--rounded-cards) !important;
     padding: 10px 20px !important;
     margin-top: 20px !important;
-    max-width: 30em !important; /* Limits width of the selection box */
+    max-width: 40em !important; /* Limits width of the selection box */
 }
 
 /* == Fix for Track Select Dropdowns == */
@@ -1144,6 +1157,17 @@ h3.tagline {
 @keyframes spin {
     from { transform: rotate(0deg); }
     to { transform: rotate(360deg); }
+}
+
+.mediaInfoItem.mediaInfoCriticRating:hover {
+    transform: scale(1.1); /* Slightly larger scale than default theming might provide */
+    transition: transform 0.2s ease-in-out;
+}
+
+/* Rotten Tomato rating hover effect. */
+.mediaInfoItem.mediaInfoCriticRating:hover {
+    transform: scale(1.1) rotate(5deg);
+    transition: transform 0.2s ease-in-out;
 }
 
 
@@ -1372,10 +1396,21 @@ h3.tagline {
 /* Applies consistent rounding to various form elements and lists in settings/dashboard. */
 .emby-input,
 .emby-textarea,
+.emby-select,
 .paperList,           /* General list container */
 .subtitleappearance-preview /* Preview area in subtitle settings */
 {
     border-radius: var(--rounded-cards) !important;
+}
+
+.emby-input, .emby-textarea, .paperList, .fab, .emby-select-withcolor {
+    background: var(--alt-accent-color) !important;
+}
+
+.localnav {
+    border-radius: 50px;
+    background: var(--alt-accent-color) !important;
+    width: fit-content !important;
 }
 
 /* Background for dashboard menu on mobile */
@@ -1392,7 +1427,7 @@ h3.tagline {
 .raised, /* General raised buttons */
 .MuiToggleButton-root.MuiToggleButtonGroup-groupedHorizontal /* Material UI Toggle Buttons (Jellyfin 10.9+) */
 {
-    border-radius: 5px !important;
+    border-radius: var(--rounded-cards) !important;
 }
 
 /* == Profile Page Styling == */
