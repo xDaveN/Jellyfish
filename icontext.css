@@ -1,0 +1,18 @@
+.layout-desktop .btnShuffle,
+.layout-desktop .listViewUserDataButtons,
+.layout-desktop .material-icons.detailButton-icon.check,
+.layout-desktop .material-icons.detailButton-icon.favorite,
+.layout-desktop .material-icons.detailButton-icon.more_vert,
+.layout-desktop .material-icons.detailButton-icon.replay,
+.layout-desktop .material-icons.detailButton-icon.theaters
+{
+    display: none;
+}
+.layout-desktop .btnMoreCommands::after,
+.layout-desktop .btnPlayTrailer::after,
+.layout-desktop .btnPlaystate::after,
+.layout-desktop .btnUserRating::after,
+.layout-desktop .btntheaters::after
+{
+    content: attr(title);
+}
