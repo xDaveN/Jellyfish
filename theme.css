@@ -23,7 +23,7 @@
 
 /* ~~~~~~~~~~~~~~~~~~~~ GLOBAL FONT ~~~~~~~~~~~~~~~~~~~~ */
 /* Sets the primary font for the theme. */
-body, h1, h2, h3, h4 {
+body, h1, h2, h3, h4, h5,h6, p {
     font-family: 'Quicksand', sans-serif !important;
 }
 
@@ -761,10 +761,32 @@ progress::-webkit-progress-value  /* Filled part of the progress bar (WebKit) */
 
 #childrenContent .listItem {
     padding-left: 1em !important;
-    padding-right: 0.5em !important;
+    padding-right: 1em !important;
     padding-top: 1em !important;
     padding-bottom: 1em !important;
     border-radius: 28px !important;
+}
+
+
+@media (orientation: portrait) {
+    .layout-mobile .listItemImage {
+        min-height: 5em !important;
+    }
+}
+
+.listItemImageButton:hover {
+    background: none !important;
+    transform: scale(1.5);
+}
+
+.listItemImageButton{
+    background: none !important;
+    color: white !important
+}
+
+
+.layout-mobile #childrenContent .listItem {
+    margin-right: 2em !important;
 }
 
 .listItem-content {
@@ -1079,6 +1101,21 @@ h3.tagline {
 /* Hide original title (titles in original language) */
 .nameContainer .itemName.originalTitle {
     display: none;
+}
+
+.itemDetailsGroup:has(.detailsGroupItem:not(.hide)) {
+    padding: 10px 40px 0px 0px !important;
+}
+
+.nameContainer:has(.itemName.subtitle) .parentName {
+    display: none !important;
+}
+
+.layout-desktop .nameContainer .itemName.infoText.subtitle {
+    margin: 5px 0px !important;
+    padding: 0px !important;
+    font-weight: bolder;
+    font-size: x-large;
 }
 
 
@@ -1499,6 +1536,16 @@ h3.tagline {
     margin: 0px !important;
 }
 
+/* == Dashboard Table Styling == */
+.detailTableBodyRow-shaded:nth-child(even) {
+    background: var(--primary-background-transparent) !important;
+}
+
+/* == Revoke Button Styling (API page)== */
+.btnRevoke {
+    background: #ff000069;
+}
+
 /* == IntroSkipper Settings Details (Within Dashboard) == */
 /* Styles for <summary> elements (used for collapsible sections) in IntroSkipper settings. */
 .layout-desktop summary {
@@ -1785,8 +1832,8 @@ h3.tagline {
 /* Uses the item backdrop as the main image on mobile detail pages, with opacity and a gradient mask. */
 .layout-mobile .itemBackdrop {
     margin: 0 !important;
-    opacity: .3 !important; /* Match opacity from backdrop support section */
-    background-position: center !important;
+    opacity: .5 !important; /* Match opacity from backdrop support section */
+    background-position: top !important;
     mask-image: linear-gradient(to top, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 30%); /* Fades out the bottom of the backdrop */
 }
 
