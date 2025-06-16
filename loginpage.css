@@ -25,6 +25,10 @@
   animation: fadeIn 1s ease-in; /* Apply a fade-in animation on load */
 }
 
+#loginPage .padded-bottom-page {
+    padding-bottom: 1em !important;
+}
+
 /* Defines the fade-in animation. */
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(10px); }
