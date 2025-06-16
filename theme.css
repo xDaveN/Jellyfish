@@ -32,6 +32,10 @@ body, h1, h2, h3, h4, h5,h6, p {
   scrollbar-color : transparent transparent !important
 }
 
+.emby-button.block, .material-icons.check:before {
+    color: var(--text-color) !important
+}
+
 /* Show theme date in dashboard */
 .dashboardActionsContainer::before {
     content: "Theme last updated on " var(--theme-updated-on, "..........");
@@ -407,7 +411,7 @@ progress::-webkit-progress-value  /* Filled part of the progress bar (WebKit) */
 /* Defines hover and focus appearance for header tabs, using primary accent. */
 .raised:hover .homeLibraryText,
 .emby-tab-button:hover .emby-button-foreground {
-	color: #fff !important; /* Text color on hover (e.g., white for contrast with accent background) */
+	color: var(--text-color) !important; /* Text color on hover (e.g., white for contrast with accent background) */
 	transition: color 0.2s ease;
 }
 #indexPage .homeLibraryButton:hover,
@@ -432,10 +436,10 @@ progress::-webkit-progress-value  /* Filled part of the progress bar (WebKit) */
 .emby-tab-button-active {
   background-color: var(--primary-accent-color) !important;
   border-radius: 100px !important; /* Pill shape */
-  color: #fff !important; /* Text color for active tab (e.g., white) */
+  color: var(--text-color) !important; /* Text color for active tab (e.g., white) */
 }
 .emby-tab-button-active > .emby-button-foreground {
-  color: #fff !important; /* Ensure foreground text also matches active state color */
+  color: var(--text-color) !important; /* Ensure foreground text also matches active state color */
 }
 
 /* == Header Tabs & Right Section Positioning (Desktop) == */
@@ -784,7 +788,6 @@ progress::-webkit-progress-value  /* Filled part of the progress bar (WebKit) */
     color: white !important
 }
 
-
 .layout-mobile #childrenContent .listItem {
     margin-right: 2em !important;
 }
@@ -871,7 +874,14 @@ a.emby-button.homeLibraryButton.raised:hover::before {
 /* General styling for various indicators on cards/list items. */
 .playedIndicator { /* "Watched" checkmark indicator */
     background: #48b648 !important; /* Green background */
+    color: white
 }
+
+.countIndicator {
+    color: var(--text-color) !important; /* Text color for count indicators */
+}
+
+
 /* Desktop-specific indicator styling (squared look). */
 @media (min-width: 1200px) {
     .playedIndicator, .indicator { /* General class for indicators */
