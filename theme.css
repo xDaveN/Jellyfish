@@ -32,7 +32,7 @@ body, h1, h2, h3, h4, h5,h6, p {
   scrollbar-color : transparent transparent !important
 }
 
-.emby-button.block, .material-icons.check:before {
+.emby-button.block, .dashboardDocument .material-icons.check:before {
     color: var(--text-color) !important
 }
 
@@ -1371,7 +1371,7 @@ h3.tagline {
 /* == IntroSkipper Plugin == */
 /* General styling for the skip button provided by IntroSkipper. */
 .skip-button {
-    color: var(--primary-accent-color) !important;
+    color: var(--primary-alt1) !important;
     margin-right: 5% !important;
 }
 
@@ -1382,7 +1382,7 @@ h3.tagline {
 
 /* Mobile-specific styling for the skip button. */
  .layout-mobile .skip-button {
-    color: var(--primary-accent-color) !important;
+    color: var(--primary-alt1) !important;
     margin-right: 5% !important;
     margin-bottom: 5% !important;
     font-size: .8em !important;
