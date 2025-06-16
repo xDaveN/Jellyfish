@@ -12,9 +12,10 @@
     --secondary-background-color: #181818; /* Drawer, cards, dialogs */
     --tertiary-background-color: #252525; /* Popovers */
     --alt-accent-color: #ffffff20;
+    --text-color: #000000;
     --header-background-color: #ffffff6e; /* This is header and tabs background */
     --logo: url("https://i.ibb.co/TqBxLXTx/jfish.png");
-    --background-image: url(https://images.pexels.com/photos/114979/pexels-photo-114979.jpeg);
+    --background-image: url(https://cdn.jsdelivr.net/gh/n00bcodr/JellyfinTheme/colors/images/lavender.jpg);
     --footer-message: "🪻 Lavender haze, lost in streaming daze!";
 
     /* HEX values for compatibility */

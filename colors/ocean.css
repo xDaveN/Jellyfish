@@ -1,4 +1,4 @@
-/* Jellyfin Sky Blue Pastel Theme */
+/* Jellyfin Ocean Blue Pastel Theme */
 :root {
     --primary-r: 135;
     --primary-g: 206;
@@ -11,9 +11,10 @@
     --secondary-background-color: #181818; /* Drawer, cards, dialogs */
     --tertiary-background-color: #252525; /* Popovers */
     --alt-accent-color: #ffffff20;
+    --text-color: #000000;
     --header-background-color: #ffffff6e; /* This is header and tabs background */
     --logo: url("https://i.ibb.co/TqBxLXTx/jfish.png");
-    --background-image: url(https://images.pexels.com/photos/281260/pexels-photo-281260.jpeg);
+    --background-image: url(https://cdn.jsdelivr.net/gh/n00bcodr/JellyfinTheme/colors/images/ocean.jpg);
     --footer-message: "🌊 Wave after wave, stream what you crave!";
 
     /* HEX values for compatibility */

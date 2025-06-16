@@ -11,9 +11,10 @@
     --secondary-background-color: #181818; /* Drawer, cards, dialogs */
     --tertiary-background-color: #252525; /* Popovers */
     --alt-accent-color: #ffffff20;
+    --text-color: #ffffff; /* Text color for better contrast */
     --header-background-color: #ffffff6e; /* This is header and tabs background */
     --logo: url("https://i.ibb.co/TqBxLXTx/jfish.png");
-    --background-image: url(https://images.pexels.com/photos/255379/pexels-photo-255379.jpeg);
+    --background-image: url(https://cdn.jsdelivr.net/gh/n00bcodr/JellyfinTheme/colors/images/coal.jpg);
     --footer-message: "🪨 Hot like coal, streamin’ rock and roll!";
 
     /* HEX values for compatibility */

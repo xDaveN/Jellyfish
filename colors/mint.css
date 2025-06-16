@@ -11,9 +11,10 @@
     --secondary-background-color: #181818; /* Drawer, cards, dialogs */
     --tertiary-background-color: #252525; /* Popovers */
     --alt-accent-color: #ffffff20;
+    --text-color: #000000;
     --header-background-color: #ffffff6e; /* This is header and tabs background */
     --logo: url("https://i.ibb.co/TqBxLXTx/jfish.png");
-    --background-image: url(https://images.pexels.com/photos/9175415/pexels-photo-9175415.jpeg);
+    --background-image: url(https://cdn.jsdelivr.net/gh/n00bcodr/JellyfinTheme/colors/images/mint.jpg);
     --footer-message: "🌿 Streaming in mint condition!";
 
     /* HEX values for compatibility */

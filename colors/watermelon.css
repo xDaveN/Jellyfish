@@ -1,4 +1,4 @@
-/* Jellyfin Red Pastel Theme */
+/* Jellyfin Watermelon Red Pastel Theme */
 :root {
     --primary-r: 255;
     --primary-g: 105;
@@ -11,9 +11,10 @@
     --secondary-background-color: #181818; /* Drawer, cards, dialogs */
     --tertiary-background-color: #252525; /* Popovers */
     --alt-accent-color: #ffffff20;
+    --text-color: #000000;
     --header-background-color: #ffffff6e; /* This is header and tabs background */
     --logo: url("https://i.ibb.co/TqBxLXTx/jfish.png");
-    --background-image: url(https://images.pexels.com/photos/1036657/pexels-photo-1036657.jpeg);
+    --background-image: url(https://cdn.jsdelivr.net/gh/n00bcodr/JellyfinTheme/colors/images/watermelon.jpg);
     --footer-message: "🍉 Streaming with a touch of rose!";
 
     /* HEX values for compatibility */
