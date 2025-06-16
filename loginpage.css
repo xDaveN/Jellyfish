@@ -60,6 +60,11 @@
     /* Removed redundant padding-top: 2em for #loginPage form; it's already in the group above. */
 }
 
+#loginPage .cardText {
+    white-space: normal !important;
+    font-weight: bold;
+    text-shadow: -1px 1px 5px var(--text-color);
+}
 /* Styling for the user image container within user cards. */
 #loginPage .cardImageContainer {
     border-radius: 50% !important; /* Circular user images */
@@ -178,7 +183,7 @@ body:has(#loginPage:not(.hide)) .standalonePage {
 .loginDisclaimer p {
     text-align: left !important;
     font-size: 100% !important;
-    text-shadow: -1px 1px 12px #ffffff; /* White text shadow for readability */
+    text-shadow: -1px 1px 12px var(--text-color); /* White text shadow for readability */
 }
 
 /* Adds a custom footer message to the login page. */
@@ -186,9 +191,10 @@ body:has(#loginPage:not(.hide)) .standalonePage {
   content: var(--footer-message, "🧀 This server runs on snacks and sarcasm.");
   display: block;
   text-align: center;
-  font-size: 0.9em;
+  font-size: 1em;
   color: #fff;
-  opacity: 0.3; /* Subtle text */
+  opacity: 0.5; /* Subtle text */
+  text-shadow: -1px 1px 5px black;
   margin-top: 1em;
 }
 
@@ -257,8 +263,7 @@ body:has(#loginPage:not(.hide)) .standalonePage {
 }
 #loginPage button.emby-button[type="button"].btnCancel {
   background-color: #dc3545a8 !important; /* Semi-transparent red */
-  color: white !important;
-  filter: brightness(1.1); /* Slight brightness increase */
+  color: var(--text-color) !important;
 }
 #loginPage button.emby-button[type="button"].btnCancel:hover {
   background-color: #dc3545 !important; /* Solid red on hover */
@@ -272,12 +277,12 @@ body:has(#loginPage:not(.hide)) .standalonePage {
   content: "🪼 Quick Connect 🔗" !important;
   font-size: 16px !important;
   font-family: inherit;
+  color: var(--text-color) !important;
 }
 #loginPage button.emby-button[type="button"].btnQuick {
   background-color: var(--primary-accent-color) !important; /* Uses theme accent color */
-  color: white !important;
-  filter: brightness(1.1);
 }
+
 #loginPage button.emby-button[type="button"].btnQuick:hover {
   background-color: var(--secondary-accent-color) !important; /* Could use a slightly darker/brighter shade on hover */
   color: white !important;
