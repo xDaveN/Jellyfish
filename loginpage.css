@@ -18,11 +18,13 @@
 }
 
 /* Styles the overall login page. */
-#loginPage {
-  background-color: rgb(0, 0, 0); /* Fallback background color */
-  background: var(--background-image, url(https://i.imgur.com/Ewk3Pqw.png)) !important; /* Custom background image */
-  background-size: cover !important; /* Ensure background image covers the entire page */
-  animation: fadeIn 1s ease-in; /* Apply a fade-in animation on load */
+body:has(#loginPage) .backdropContainer {
+    background: var(--background-image, url(https://i.imgur.com/Ewk3Pqw.png)) !important;
+    background-size: cover !important;
+    background-position: center !important;
+    filter: blur(5px) brightness(.5);
+    animation: fadeIn 1s ease-in;
+    z-index: -2;
 }
 
 #loginPage .padded-bottom-page {
@@ -108,6 +110,7 @@ body:has(#loginPage:not(.hide)) .formDialogHeader {
   border-top-right-radius: 60px; /* Match dialog rounding */
   padding: 1em;
   margin-left: .2em !important; /* Slight left margin */
+  color: var(--text-color);
 }
 
 /* Styles the title text within the dialog header. */
@@ -246,7 +249,7 @@ body:has(#loginPage:not(.hide)) .standalonePage {
 }
 #loginPage button.emby-button[type="submit"] {
   background-color: #28a745a8 !important; /* Semi-transparent green */
-  color: white !important;
+  color: var(--text-color) !important;
 }
 #loginPage button.emby-button[type="submit"]:hover {
   background-color: #28a745 !important; /* Solid green on hover */
