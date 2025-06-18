@@ -32,7 +32,7 @@ body, h1, h2, h3, h4, h5,h6, p {
   scrollbar-color : transparent transparent !important
 }
 
-.emby-button.block, .dashboardDocument .material-icons.check:before {
+.emby-button.block, .dashboardDocument .material-icons.check:before, .displayPreferencesPage .material-icons.check:before {
     color: var(--text-color) !important
 }
 #btnCancel, #btnResetPassword {
@@ -257,7 +257,7 @@ html
 /* Reduces the width of portrait-oriented cards on wider screens in landscape. */
 @media (min-width: 50em) and (orientation: landscape) {
     .overflowPortraitCard { /* Typically used for cast/crew or "More like this" sections */
-        width: 15% !important;
+        width: 13% !important;
     }
 }
 
@@ -1091,6 +1091,10 @@ h3.tagline {
 }
 
 /* == If Rating is not present, move details up == */
+.layout-mobile #itemDetailPage:has(div.detailImageContainer .cardImageIcon.person) .detailPageWrapperContainer:has(.itemMiscInfo.itemMiscInfo-primary.hide) p.overview.detail-clamp-text {
+    margin-top: 0%;
+}
+
 .detailPageWrapperContainer:has(.itemMiscInfo.itemMiscInfo-primary.hide) p.overview.detail-clamp-text {
     margin-top: -3%;
 }
@@ -1686,7 +1690,7 @@ h3.tagline {
 /* Rounding and accent color for the play button in the media bar (Now Playing bar). */
 .play-button { /* This is a general class, ensure it targets the correct play button */
     border-radius: 15px !important;
-    color: var(--primary-accent-color) !important;
+    color: var(--primary-alt1) !important;
 }
 
 
@@ -1796,7 +1800,7 @@ h3.tagline {
 }
 
 /* == Hides Backdrop in People Detail page and other adjustments == */
-#itemDetailPage:has(div.detailImageContainer .cardImageIcon.person) > .itemBackdrop {
+.layout-desktop #itemDetailPage:has(div.detailImageContainer .cardImageIcon.person) > .itemBackdrop {
     height: 15%;
 }
 
@@ -1925,4 +1929,16 @@ h3.tagline {
 .layout-desktop #itemDetailPage:has(button.btnPlaystate[data-type="Book"]) .itemMiscInfo {
     margin-left: 11px !important;
     margin-top: 11px !important;
+}
+
+/* ~~~~~~~~~~~~~~~~~~~~ Hide aphrodite-overlay tag ~~~~~~~~~~~~~~~~~~~~ */
+
+/* Hide tags section if the only tag is aphrodite-overlay */
+.itemTags:has(a[href*="aphrodite-overlay"]:only-child) {
+    display: none;
+}
+
+/* If the tag is present but not the only one, hide it specifically */
+.itemTags a[href*="aphrodite-overlay"] {
+    display: none;
 }
