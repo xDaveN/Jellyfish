@@ -1004,7 +1004,7 @@ h3.tagline {
     background: var(--secondary-background-transparent) !important;
     padding: 10px 0px 0px 0px !important;
     border-radius: var(--rounded-cards) !important;
-    max-width: 40em !important;
+    max-width: 70em !important;
 }
 
 .layout-mobile .itemDetailsGroup:has(.detailsGroupItem:not(.hide)) {
@@ -1032,7 +1032,7 @@ h3.tagline {
     border-radius: var(--rounded-cards) !important;
     padding: 10px 20px !important;
     margin-top: 20px !important;
-    max-width: 40em !important; /* Limits width of the selection box */
+    max-width: 70em !important; /* Limits width of the selection box */
 }
 
 /* == Fix for Track Select Dropdowns == */
@@ -1040,8 +1040,15 @@ h3.tagline {
 .trackSelections .selectContainer .detailTrackSelect {
     padding: 0 10px;
     margin-left: 10px !important;
-    background: none !important;
+    /* background: none !important; */
     border: none !important;
+    max-width: 70em !important; /* Ensures dropdowns fit within the track selection area */
+    width: 70em !important; /* Matches the width of the track selection area */
+}
+
+/* hide the dropdown arrow in track selections */
+.detailSection .trackSelections .selectArrowContainer {
+    display: none;
 }
 
 /* == Title Positioning (Desktop) == */
@@ -1800,6 +1807,13 @@ h3.tagline {
 }
 
 /* == Hides Backdrop in People Detail page and other adjustments == */
+
+@media (orientation: portrait) {
+.layout-mobile #itemDetailPage:has(div.detailImageContainer .cardImageIcon.person) > .itemBackdrop {
+    height: 18%;
+}
+}
+
 .layout-desktop #itemDetailPage:has(div.detailImageContainer .cardImageIcon.person) > .itemBackdrop {
     height: 15%;
 }
@@ -1864,7 +1878,8 @@ h3.tagline {
     margin: 0 !important;
     opacity: .5 !important; /* Match opacity from backdrop support section */
     background-position: top !important;
-    mask-image: linear-gradient(to top, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 20%); /* Fades out the bottom of the backdrop */
+    mask-image: linear-gradient(to top, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 15%); /* Fades out the bottom of the backdrop */
+    background-attachment: fixed !important;
 }
 
 /* == Mobile Logo Positioning (Details Page) == */
