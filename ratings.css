@@ -1,0 +1,128 @@
+/*
+ * ===================================================================
+ * Custom CSS for Media Ratings
+ * ===================================================================
+ * This stylesheet applies a color-coded system to media ratings
+ * for easy identification of content suitability.
+ *
+ * This CSS works in conjunction with a custom JavaScript script (scripts/ratings.js)
+ * that adds 'rating' attributes to the .mediaInfoOfficialRating elements, enabling
+ * dynamic styling based on the rating value.
+ *
+ * Color Scheme:
+ * - Green: General Audiences
+ * - Yellow: Parental Guidance Suggested (Text: Dark)
+ * - Orange: Parents Strongly Cautioned (Text: Dark)
+ * - Red/Purple: Restricted / Adults Only / Special Restrictions
+ * - Grey: Unrated or Informational (Text: Dark)
+ * ===================================================================
+ */
+
+/* --- Default Fallback Style (Dark Background, White Text) --- */
+.mediaInfoOfficialRating {
+    background-color: #607D8B !important; /* Blue Grey - for unlisted ratings */
+    color: #FFFFFF !important; /* Default to white text */
+    border-radius: 4px !important;
+    font-weight: bold !important;
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5) !important; /* Increased blur radius for softer shadow */
+    text-transform: uppercase !important;
+}
+
+
+/* --- Indian Ratings (CBFC) --- */
+
+/* Unrestricted (Dark Background, White Text) */
+.mediaInfoOfficialRating[rating='IN-U'] {
+    background-color: #4CAF50 !important; /* Green */
+}
+
+/* Unrestricted with Parental Guidance (Light Background, Dark Text) */
+.mediaInfoOfficialRating[rating='IN-UA'],
+.mediaInfoOfficialRating[rating='IN-UA-7'],
+.mediaInfoOfficialRating[rating='IN-UA-13'],
+.mediaInfoOfficialRating[rating='IN-UA-16'],
+.mediaInfoOfficialRating[rating='IN-U/A 16+'] { /* Added new rating 'IN-U/A 16+' */
+    background-color: #FFC107 !important; /* Amber */
+    color: #000000 !important; /* Dark text for light background */
+}
+
+/* Adults Only (Dark Background, White Text) */
+.mediaInfoOfficialRating[rating='IN-A'] {
+    background-color: #E53935 !important; /* Red */
+}
+
+/* Special Class of Persons (Dark Background, White Text) */
+.mediaInfoOfficialRating[rating='IN-S'] {
+    background-color: #8E24AA !important; /* Purple */
+}
+
+
+/* --- US Movie Ratings (MPAA) --- */
+
+/* General Audiences (Dark Background, White Text) */
+.mediaInfoOfficialRating[rating='G'] {
+    background-color: #4CAF50 !important; /* Green */
+}
+
+/* Parental Guidance Suggested (Light Background, Dark Text) */
+.mediaInfoOfficialRating[rating='PG'] {
+    background-color: #FFC107 !important; /* Amber */
+    color: #000000 !important; /* Dark text for light background */
+}
+
+/* Parents Strongly Cautioned (Medium-Light Background, Dark Text) */
+.mediaInfoOfficialRating[rating='PG-13'] {
+    background-color: #FF9800 !important; /* Orange */
+    color: #000000 !important; /* Dark text for medium-light background */
+}
+
+/* Restricted (Dark Background, White Text) */
+/* No One 17 and Under Admitted (Dark Background, White Text) */
+.mediaInfoOfficialRating[rating='R'],
+.mediaInfoOfficialRating[rating='NC-17'] {
+    background-color: #B71C1C !important; /* Dark Red */
+}
+
+
+/* --- US Television Ratings --- */
+
+/* All Children (Dark Background, White Text) */
+.mediaInfoOfficialRating[rating='TV-Y'] {
+    background-color: #4CAF50 !important; /* Green */
+}
+
+/* Older Children (Very Light Background, Dark Text) */
+.mediaInfoOfficialRating[rating='TV-Y7'] {
+    background-color: #CDDC39 !important; /* Lime */
+    color: #000000 !important; /* Dark text for very light background */
+}
+
+/* General Audience (Dark Background, White Text) */
+.mediaInfoOfficialRating[rating='TV-G'] {
+    background-color: #4CAF50 !important; /* Green */
+}
+
+/* Parental Guidance Suggested (Light Background, Dark Text) */
+.mediaInfoOfficialRating[rating='TV-PG'] {
+    background-color: #FFC107 !important; /* Amber */
+    color: #000000 !important; /* Dark text for light background */
+}
+
+/* Parents Strongly Cautioned (Medium-Light Background, Dark Text) */
+.mediaInfoOfficialRating[rating='TV-14'] {
+    background-color: #FF9800 !important; /* Orange */
+    color: #000000 !important; /* Dark text for medium-light background */
+}
+
+/* Mature Audience Only (Dark Background, White Text) */
+.mediaInfoOfficialRating[rating='TV-MA'] {
+    background-color: #B71C1C !important; /* Dark Red */
+}
+
+/* --- Other/Unrated (Medium-Light Background, Dark Text) --- */
+.mediaInfoOfficialRating[rating='Unrated'],
+.mediaInfoOfficialRating[rating='Not Rated'],
+.mediaInfoOfficialRating[rating='NR'] {
+    background-color: #9E9E9E !important; /* Grey */
+    color: #000000 !important; /* Dark text for medium-light background */
+}

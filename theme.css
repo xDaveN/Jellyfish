@@ -1879,7 +1879,6 @@ h3.tagline {
     opacity: .5 !important; /* Match opacity from backdrop support section */
     background-position: top !important;
     mask-image: linear-gradient(to top, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 15%); /* Fades out the bottom of the backdrop */
-    background-attachment: fixed !important;
 }
 
 /* == Mobile Logo Positioning (Details Page) == */
