@@ -288,7 +288,7 @@ progress::-webkit-progress-value  /* Filled part of the progress bar (WebKit) */
     height: 30px !important;
     width: 100px !important;
     margin: 0 1em 0 .5em !important;
-    padding: 8px !important;
+    padding: 10px !important;
 }
 /* General page title margin (when logo is not present or text only). */
 [dir="ltr"] .pageTitle {
@@ -527,12 +527,10 @@ progress::-webkit-progress-value  /* Filled part of the progress bar (WebKit) */
 /* == Sidebar Styling (Mobile) == */
 /* Basic styling for the mobile sidebar. */
 .layout-mobile .mainDrawer {
-    background: var(--secondary-background-color) !important;
     width: 275px !important;
 }
 .layout-mobile .mainDrawer-scrollContainer {
     margin-top: 15px !important; /* Top margin for scrollable content */
-    background: var(--secondary-background-transparent) !important;
 }
 
 /* == Sidebar Scroll Container & Button Positioning == */
@@ -1543,14 +1541,24 @@ h3.tagline {
     width: fit-content !important;
 }
 /* Removes default background from buttons within dashboard tab navigation. */
-.layout-desktop a[data-role="button"] {
+.dashboardDocument a[data-role="button"] {
     background: none !important;
 }
 /* Styles the active tab in dashboard navigation with accent color and pill shape. */
-.layout-desktop div[data-role="controlgroup"] a.ui-btn-active {
+.dashboardDocument div[data-role="controlgroup"] a.ui-btn-active {
     background: var(--primary-accent-color) !important;
     border-radius: 100px !important; /* Pill shape */
 }
+
+/* Styles the subheader in lists (e.g., in settings or dashboard) with custom font and padding. */
+.MuiListSubheader-root {
+    font-weight: bolder;
+    font-variant: petite-caps;
+    font-size: large;
+    font-family: 'Quicksand';
+    padding-left: 2px;
+}
+
 
 /* == Specific Dashboard Page Adjustments == */
 /* Adds top margin to specific dashboard pages for better layout. */
@@ -1614,7 +1622,7 @@ h3.tagline {
 }
 /* Styling for list items within the subheader section of the MUI sidebar. */
 .MuiList-subheader .MuiListItem-root.MuiListItem-gutters {
-    width: 85% !important;          /* Relative width */
+    /* width: 85% !important;          Relative width */
     margin-inline: auto !important; /* Centering */
 }
 /* Styling for list item buttons within the MUI sidebar. */
@@ -1739,8 +1747,10 @@ h3.tagline {
 .layout-desktop .backgroundContainer.withBackdrop + div .mainDrawer, /* Desktop */
 .layout-mobile .backgroundContainer.withBackdrop + div .mainDrawer  /* Mobile */
 {
-    background: linear-gradient(to right, rgba(16,16,16,0.56), transparent) !important; /* Darker gradient */
+    background: var(--secondary-background-transparent) !important; /* Darker gradient */
     backdrop-filter: blur(var(--blur)) !important;
+    border-top-right-radius: 30px !important; /* Rounded corners for the drawer */
+    border-bottom-right-radius: 30px !important; /* Rounded corners for the drawer */
 }
 /* Fallback: Solid background for the drawer when backdrop transparency is disabled. */
 .layout-desktop:has(#itemDetailPage.noBackdropTransparency) .mainDrawer,
@@ -1761,11 +1771,6 @@ h3.tagline {
         width: 250px; /* Assumed width of the static drawer */
         background: var(--secondary-background-color);
         z-index: 997; /* Position below the main drawer but above page content */
-    }
-    /* Solid background for mobile JMP drawer when backdrop is present (gradient might be too complex/performant). */
-    .layout-mobile .backgroundContainer.withBackdrop + div .mainDrawer {
-        background: var(--secondary-background-color) !important;
-        backdrop-filter: none !important;
     }
 }
 
