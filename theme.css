@@ -12,6 +12,8 @@
 /* Fetches external icon packs for use within the theme. */
 @import url("https://cdn.jsdelivr.net/gh/prayag17/Jellyfin-Icons/round.css"); /* Round icons by prayag17 */
 @import url("https://cdn.jsdelivr.net/gh/Druidblack/jellyfin-icon-metadata@main/public-icon.css"); /* Metadata icons by Druidblack */
+@import url("https://cdn.jsdelivr.net/gh/n00bcodr/JellyfinTheme/loginpage.css");
+@import url("https://cdn.jsdelivr.net/gh/n00bcodr/JellyfinTheme/colors/jellyblue.css");
 
 /* ~~~~~~~~~~~~~~~~~~~~ GLOBAL CSS VARIABLES ~~~~~~~~~~~~~~~~~~~~ */
 /* Defines core variables used throughout the theme for consistency. */
