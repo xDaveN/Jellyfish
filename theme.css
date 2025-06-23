@@ -49,11 +49,12 @@ body, h1, h2, h3, h4, h5,h6, p {
     background-color: var(--alt-accent-color);
     color: #ddd;
     border-radius: var(--rounded-cards);
-    padding: 10px 15px;
+    padding: 15px 15px;
     font-family: 'Quicksand', sans-serif;
     font-weight: bold;
     box-shadow: 0 1px 3px rgba(0,0,0,0.2);
     margin-bottom: 1em;
+    margin-left: 2px;
 }
 /* ~~~~~~~~~~~~~~~~~~~~ ACCENT COLOR APPLICATION ~~~~~~~~~~~~~~~~~~~~ */
 /* Styles that apply the theme's accent colors to various UI elements. */
@@ -569,6 +570,7 @@ progress::-webkit-progress-value  /* Filled part of the progress bar (WebKit) */
     margin-bottom: 3px !important;
     border-radius: 10px !important; /* Rounded corners */
     transition: .2s !important;     /* Smooth transitions for hover effects */
+    text-shadow: 0px 0px 5px var(--text-color);
 }
 /* Hover effect for non-selected sidebar buttons. */
 .navMenuOption:hover:not(.navMenuOption-selected) {
@@ -784,7 +786,7 @@ progress::-webkit-progress-value  /* Filled part of the progress bar (WebKit) */
 
 .listItemImageButton:hover {
     background: none !important;
-    transform: scale(1.5);
+    translate: 0 -3px !important;
 }
 
 .listItemImageButton{
@@ -1235,11 +1237,6 @@ h3.tagline {
     to { transform: rotate(360deg); }
 }
 
-.mediaInfoItem.mediaInfoCriticRating:hover {
-    transform: scale(1.1); /* Slightly larger scale than default theming might provide */
-    transition: transform 0.2s ease-in-out;
-}
-
 /* Rotten Tomato rating hover effect. */
 .mediaInfoItem.mediaInfoCriticRating:hover {
     transform: scale(1.1) rotate(-5deg);
@@ -1641,7 +1638,7 @@ h3.tagline {
 }
 /* Hover effect for non-selected MUI sidebar list item buttons. */
 .MuiList-subheader .MuiListItemButton-root.MuiListItemButton-gutters:hover:not(.Mui-selected) {
-    transform: scale(1.05) !important;
+    translate: 0 -3px !important;
     background: var(--secondary-background-transparent) !important; /* Dark semi-transparent background on hover */
 }
 /* Ensures MUI icons inherit color correctly. */
@@ -1786,6 +1783,8 @@ h3.tagline {
 .layout-mobile:has(.backgroundContainer.withBackdrop) .navMenuOption:hover:not(.navMenuOption-selected) {
     background: var(--primary-background-transparent) !important; /* Use theme's transparent background on hover */
     backdrop-filter: blur(var(--blur)) !important;
+    color: var(--text-color) !important; /* Ensure text is readable */
+    text-shadow: 0px 0px 5px var(--text-color);
 }
 
 /* == Mobile Backdrop Image Adjustments == */
