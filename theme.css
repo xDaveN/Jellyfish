@@ -1053,6 +1053,19 @@ h3.tagline {
     display: none;
 }
 
+/* Fixes for mobile and smaller screens to make containers fit trackselections */
+.trackSelections>.selectContainer {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.trackSelections>.selectContainer:hover {
+    overflow: auto;
+    white-space: normal;
+    text-overflow: initial;
+}
+
 /* == Title Positioning (Desktop) == */
 /* Repositions the main title and related info on the details page. */
 .layout-desktop .infoWrapper { /* Container for title, year, ratings etc. */
