@@ -1006,6 +1006,7 @@ h3.tagline {
     padding: 10px 0px 0px 0px !important;
     border-radius: var(--rounded-cards) !important;
     max-width: 70em !important;
+    backdrop-filter: blur(var(--blur)) !important;
 }
 
 .layout-mobile .itemDetailsGroup:has(.detailsGroupItem:not(.hide)) {
