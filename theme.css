@@ -12,8 +12,8 @@
 /* Fetches external icon packs for use within the theme. */
 @import url("https://cdn.jsdelivr.net/gh/prayag17/Jellyfin-Icons/round.css"); /* Round icons by prayag17 */
 @import url("https://cdn.jsdelivr.net/gh/Druidblack/jellyfin-icon-metadata@main/public-icon.css"); /* Metadata icons by Druidblack */
-@import url("https://cdn.jsdelivr.net/gh/n00bcodr/JellyfinTheme/loginpage.css");
-@import url("https://cdn.jsdelivr.net/gh/n00bcodr/JellyfinTheme/colors/jellyblue.css");
+@import url("https://cdn.jsdelivr.net/gh/n00bcodr/Jellyfish/loginpage.css");
+@import url("https://cdn.jsdelivr.net/gh/n00bcodr/Jellyfish/colors/jellyblue.css");
 
 /* ~~~~~~~~~~~~~~~~~~~~ GLOBAL CSS VARIABLES ~~~~~~~~~~~~~~~~~~~~ */
 /* Defines core variables used throughout the theme for consistency. */
@@ -541,7 +541,6 @@ progress::-webkit-progress-value  /* Filled part of the progress bar (WebKit) */
 .layout-desktop .mainDrawer-scrollContainer { /* Applies to the dynamic desktop drawer now */
     margin-top: 15px !important;
     margin-left: 10px !important;
-    /* background: var(--secondary-background-transparent) !important; */
 }
 /* Specific padding for the dashboard's static sidebar. */
 .layout-desktop .dashboardDocument .mainDrawer-scrollContainer {
