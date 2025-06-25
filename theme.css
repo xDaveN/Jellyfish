@@ -1402,13 +1402,14 @@ h3.tagline {
 /* == IntroSkipper Plugin == */
 /* General styling for the skip button provided by IntroSkipper. */
 .skip-button {
-    color: var(--primary-alt1) !important;
+    background: var(--primary-accent-color) !important;
+    color: var(--text-color) !important;
     margin-right: 5% !important;
 }
 
 .skip-button:hover {
     transform: scale(1.05);
-    box-shadow: 0 0 30px rgba(var(--primary-r), var(--primary-g), var(--primary-b), 0.6) !important; /* Accent-colored shadow */
+    box-shadow: 0 0 30px rgba(var(--primary-r), var(--primary-g), var(--primary-b), 0.8) !important; /* Accent-colored shadow */
 }
 
 /* Mobile-specific styling for the skip button. */
@@ -1465,6 +1466,12 @@ h3.tagline {
 /* Style for "watched" or passed markers (e.g., intro already skipped). */
 .sliderMarker.watched {
     background-color: #FFFFFF90 !important; /* Semi-transparent white */
+}
+
+
+.btnStartNow {
+    background: var(--primary-accent-color) !important;
+    color: var(--text-color) !important;
 }
 
 /* == InPlayerEpisodePreview Plugin (Desktop) == */
