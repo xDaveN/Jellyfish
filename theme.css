@@ -35,7 +35,8 @@ body, h1, h2, h3, h4, h5,h6, p {
 }
 
 .emby-button.block, .dashboardDocument .material-icons.check:before, .displayPreferencesPage .material-icons.check:before {
-    color: var(--text-color) !important
+    color: var(--text-color) !important;
+    background-color: var(--secondary-accent-color);
 }
 #btnCancel, #btnResetPassword {
     background: rgb(180 96 96) !important;
@@ -96,7 +97,7 @@ progress[aria-valuenow]:before,               /* Progress bar fill (pseudo-eleme
 
 .listItemIcon:not(.listItemIcon-transparent, .notification_important) /* Icons in list items (excluding transparent/important notifications) */
 {
-    color: #ffffffee !important;
+    color: #ffffff !important;
     background-color: var(--secondary-accent-color) !important;
 }
 
@@ -153,7 +154,7 @@ progress::-webkit-progress-value,             /* Progress bar fill for WebKit br
 .MuiListItemButton-root.Mui-selected .MuiListItemIcon-root, /* Icons within selected Material UI list items */
 .MuiListItemButton-root.Mui-selected          /* Selected Material UI list items (text) */
 {
-    color: #ffffffee !important;
+    color: #ffffff !important;
 }
 
 
@@ -162,13 +163,13 @@ progress::-webkit-progress-value,             /* Progress bar fill for WebKit br
 @media (hover: hover) and (pointer: fine) {
     .paper-icon-button-light:hover:not(:disabled) { /* Exclude disabled buttons */
         color: var(--primary-accent-color) !important;
-        background-color: var(--secondary-background-transparent) !important;
+        background-color: transparent !important;
     }
 }
 
 .paper-icon-button-light:active:not(:disabled) { /* Active state for icon buttons */
     color: var(--primary-accent-color) !important;
-    background-color: var(--secondary-background-transparent) !important;
+    background-color: transparent !important;
 }
 
 /* == Accent Color for Dashboard Headings == */
@@ -1374,6 +1375,10 @@ h3.tagline {
 .material-icons.fast_rewind::before { content: "\e059"; }  /* Changes to 'skip_previous' icon */
 .material-icons.fast_forward::before { content: "\e057"; } /* Changes to 'skip_next' icon */
 
+.btnPip {
+    display: none !important; /* Hides the Picture-in-Picture button */
+}
+
 /* ~~~~~~~~~~~~~~~~~~~~ PLUGIN SUPPORT ~~~~~~~~~~~~~~~~~~~~ */
 /* Styles for enhancing or fixing compatibility with various Jellyfin plugins. */
 
@@ -1476,7 +1481,11 @@ h3.tagline {
 
 /* == InPlayerEpisodePreview Plugin (Desktop) == */
 /* Adjusts layout and font sizes for the InPlayerEpisodePreview popup on desktop. */
-.layout-desktop #popupFocusContainer { padding: 10px !important; }
+.layout-desktop #popupFocusContainer {
+    padding: 10px !important;
+    background: var(--secondary-background-transparent) !important;
+    backdrop-filter: blur(var(--blur)) !important;
+}
 .layout-desktop #popupTitleContainer { margin: 0px !important; padding: 10px 0px !important; }
 .layout-desktop #popupContentContainer .previewEpisodeDetails { position: unset !important; margin: 0px 0px 6px 10px !important; font-size: 13.5px !important; }
 .layout-desktop #popupContentContainer .previewEpisodeTitle { font-size: 16.5px !important; }
@@ -1519,6 +1528,7 @@ h3.tagline {
 .MuiToggleButton-root.MuiToggleButtonGroup-groupedHorizontal /* Material UI Toggle Buttons (Jellyfin 10.9+) */
 {
     border-radius: var(--rounded-cards) !important;
+    background: var(--alt-accent-color);
 }
 
 /* == Profile Page Styling == */
@@ -1532,8 +1542,12 @@ h3.tagline {
 }
 .headerUsername, .sectionTitle { /* Accent color for username in header and section titles */
     color: var(--primary-accent-color) !important;
-    text-shadow: 1px 1px 15px #ffffffdb; /* Subtle white shadow for emphasis */
+    text-shadow: 1px 1px 15px var(--text-color);
     font-weight: bold; /* Bold for emphasis */
+}
+ /* remove chevron in section titles */
+.sectionTitleTextButton>.material-icons {
+    display: none;
 }
 
 /* == General Dashboard Styling == */
@@ -1798,6 +1812,9 @@ h3.tagline {
 .layout-desktop:has(.backgroundContainer.withBackdrop) .navMenuOption-selected,
 .layout-mobile:has(.backgroundContainer.withBackdrop) .navMenuOption-selected {
     backdrop-filter: blur(var(--blur)) !important;
+    background: var(--primary-background-transparent) !important;
+    color: var(--text-color) !important; /* Ensure text is readable */
+    text-shadow: 0px 0px 5px var(--text-color);
 }
 .layout-desktop:has(.backgroundContainer.withBackdrop) .navMenuOption:hover:not(.navMenuOption-selected),
 .layout-mobile:has(.backgroundContainer.withBackdrop) .navMenuOption:hover:not(.navMenuOption-selected) {
