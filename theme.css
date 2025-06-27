@@ -614,7 +614,7 @@ progress::-webkit-progress-value  /* Filled part of the progress bar (WebKit) */
     left: 280px !important;
 }
 
-div#dashboardPage {
+.layout-desktop div#dashboardPage {
     left: 260px !important;
 }
 
