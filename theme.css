@@ -611,9 +611,17 @@ progress::-webkit-progress-value  /* Filled part of the progress bar (WebKit) */
 }
 /* Adjusts the main page content on the dashboard to accommodate the static sidebar. */
 .layout-desktop .dashboardDocument .mainAnimatedPage {
-    left: 310px !important; /* Margin to prevent overlap with the 300px sidebar + small gap */
+    left: 280px !important;
 }
 
+div#dashboardPage {
+    left: 260px !important;
+}
+
+.localUsers .cardText-secondary {
+    height: 4em !important;
+    font-size: 10px;
+}
 /* ~~~~~~~~~~~~~~~~~~~~ LAYOUT - MOBILE HEADER ~~~~~~~~~~~~~~~~~~~~ */
 /* Styles specific to the mobile header behavior and appearance. */
 
@@ -1630,9 +1638,7 @@ h3.tagline {
 
 /* == Dashboard Fixes for Jellyfin 10.9.x == */
 /* Adjusts layout for specific pages due to changes in Jellyfin 10.9.x. */
-.layout-desktop #userProfilesPage { /* User profiles page content area */
-    left: 310px !important; /* Adjusted for potentially wider static dashboard drawer */
-}
+
 .MuiAlert-message { color: #fff !important; } /* Ensure Material UI alert messages are white */
 .MuiDataGrid-root.MuiDataGrid-withBorderColor { border-radius: var(--rounded-cards) !important; } /* Rounding for DataGrid */
 .infoBanner { border-radius: var(--rounded-cards) !important; } /* Rounding for info banners */
@@ -1642,7 +1648,7 @@ h3.tagline {
 /* Styles for the newer MUI-based sidebar in the dashboard. */
 .MuiPaper-root.MuiDrawer-paperAnchorDockedLeft { /* The drawer paper itself */
     border-right: none !important; /* Remove default right border */
-    width: 300px !important;       /* Match static drawer width used elsewhere */
+    width: 260px !important;
 }
 /* Smaller sidebar width for mobile dashboard. */
 .layout-mobile .MuiPaper-root.MuiDrawer-paperAnchorDockedLeft {
