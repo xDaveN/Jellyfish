@@ -1,0 +1,32 @@
+/* Jellyfin Forest Theme */
+:root {
+    --primary-r: 34;
+    --primary-g: 139;
+    --primary-b: 34;
+    --primary-accent-color: rgba(var(--primary-r), var(--primary-g), var(--primary-b), 1.0);
+    --secondary-accent-color: rgba(var(--primary-r), var(--primary-g), var(--primary-b), 0.6);
+    --primary-background-transparent: rgba(var(--primary-r), var(--primary-g), var(--primary-b), 0.1);
+    --secondary-background-transparent: rgba(var(--primary-r), var(--primary-g), var(--primary-b), 0.2);
+    --primary-background-color: #0D1B0D; /* Main background */
+    --secondary-background-color: #1A2E1A; /* Drawer, cards, dialogs */
+    --tertiary-background-color: #2A3E2A; /* Popovers */
+    --alt-accent-color: #ffffff20;
+    --text-color: #000000;
+    --header-background-color: #ffffff6e; /* This is header and tabs background */
+    --logo: url("https://i.ibb.co/TqBxLXTx/jfish.png");
+    --background-image: url(https://images.unsplash.com/photo-1441974231531-c6227db76b6e);
+    --footer-message: "🌲 Lost in the forest of entertainment!";
+
+    /* HEX values for compatibility */
+    --hex-primary-accent-color: #228B22FF;
+    --hex-secondary-accent-color: #228B2233;
+    --hex-primary-background-transparent: #228B2219;
+    --hex-secondary-background-transparent: #228B2233;
+
+    /* Alternate accents */
+    --primary-alt1: rgba(50, 205, 50, 1); /* Lime green accent */
+    --primary-alt2: rgba(50, 205, 50, 0.85);
+    --primary-alt3: rgba(50, 205, 50, 0.7);
+    --primary-alt4: rgba(50, 205, 50, 0.55);
+    --primary-alt5: rgba(50, 205, 50, 0.4);
+}
