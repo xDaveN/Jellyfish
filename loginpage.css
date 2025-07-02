@@ -312,6 +312,24 @@ body:has(#loginPage:not(.hide)) .standalonePage {
     display: none !important;
 }
 
+/* ~~~~~~~~~~~~~~~~~~~~ MANUAL LOGIN FORM - Show User Image and Hide Username ~~~~~~~~~~~~~~~~~~~~ */
+/* works only with custom javascript that sets the user image in the container and hides username*/
+
+/* Style for the image container */
+#userProfileImageContainer {
+    text-align: center;
+}
+
+/* Style for the image itself */
+#userProfileImageContainer img {
+    width: 125px;
+    height: 125px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 1px solid var(--secondary-accent-color);
+}
+
+
 /* ~~~~~~~~~~~~~~~~~~~~ RESPONSIVE STYLING (MAX-WIDTH: 600px) ~~~~~~~~~~~~~~~~~~~~ */
 @media (max-width: 600px) {
   /* Adjusts form and container widths for small screens. */
