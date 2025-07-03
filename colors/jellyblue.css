@@ -15,6 +15,7 @@
     --text-color: #000000;
     --header-background-color: #ffffff6e; /* This is header and tabs background */
     --logo: url("https://i.ibb.co/TqBxLXTx/jfish.png");
+    --background-image: url(https://cdn.jsdelivr.net/gh/n00bcodr/Jellyfish/colors/images/jellyblue.jpg);
 
     /* New variables for storing the calculated HEX values */
     --hex-primary-accent-color: #00A4DCFF;

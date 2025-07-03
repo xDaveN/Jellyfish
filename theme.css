@@ -25,7 +25,7 @@
 
 /* ~~~~~~~~~~~~~~~~~~~~ GLOBAL FONT ~~~~~~~~~~~~~~~~~~~~ */
 /* Sets the primary font for the theme. */
-body, h1, h2, h3, h4, h5,h6, p {
+body, h1, h2, h3, h4, h5, h6, p {
     font-family: 'Quicksand', sans-serif !important;
 }
 
@@ -38,10 +38,6 @@ body, h1, h2, h3, h4, h5,h6, p {
     color: var(--text-color) !important;
     background-color: var(--secondary-accent-color);
 }
-#btnCancel, #btnResetPassword {
-    background: rgb(180 96 96) !important;
-}
-
 
 /* Show theme date in dashboard */
 .dashboardActionsContainer::before {
@@ -93,7 +89,6 @@ progress[aria-valuenow]:before,               /* Progress bar fill (pseudo-eleme
 {
     background: #ffffffc0 !important;
 }
-
 
 .listItemIcon:not(.listItemIcon-transparent, .notification_important) /* Icons in list items (excluding transparent/important notifications) */
 {
@@ -216,6 +211,11 @@ button.raised.btnRefresh.emby-button {
 #skipIntro .emby-button {
     background: rgba(30, 30, 30, 0.7) !important;
 }
+/* Red background for cancel and reset password buttons. */
+#btnCancel, #btnResetPassword {
+    background: rgb(180 96 96) !important;
+}
+
 
 /* ~~~~~~~~~~~~~~~~~~~~ GENERAL BACKGROUND COLORS ~~~~~~~~~~~~~~~~~~~~ */
 /* Sets base background colors for main layout areas and components. */
@@ -739,6 +739,12 @@ progress::-webkit-progress-value  /* Filled part of the progress bar (WebKit) */
 #seriesScheduleSection {
     display: none !important;
 }
+
+.separator-icon {
+    color: var(--primary-accent-color) !important;
+    font-size: 2vh !important;
+}
+
 
 /* ~~~~~~~~~~~~~~~~~~~~ CARDS & LIST ITEMS ~~~~~~~~~~~~~~~~~~~~ */
 
@@ -1926,7 +1932,7 @@ h3.tagline {
 .layout-mobile .itemBackdrop {
     margin: 0 !important;
     opacity: .5 !important; /* Match opacity from backdrop support section */
-    background-position: top !important;
+    height: 50vh !important;
     mask-image: linear-gradient(to top, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 15%); /* Fades out the bottom of the backdrop */
 }
 
