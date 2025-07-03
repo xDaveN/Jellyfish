@@ -1,13 +1,11 @@
-// This script is designed to be embedded directly into Jellyfin's index.html
-// It uses Jellyfin's native ApiClient.ajax for authenticated requests,
-// constructing the correct API URL and adding the X-Emby-Token header.
-
 (function() {
     'use strict';
 
-    // IMPORTANT: Replace with your actual Jellyfin API Key
-    // You can generate one in Jellyfin: Dashboard -> API Keys
-    const API_KEY = 'YOUR_JELLYFIN_API_KEY_HERE';
+    // --- Configuration Options ---
+    // Change this to 'Movie,Series' if you want to include both movies and TV shows
+    // Set to 'Movie' for movies only, or 'Series' for TV shows only.
+    const ITEM_TYPES_TO_INCLUDE = 'Movie';
+    // --- End Configuration Options ---
 
     const getJellyfinServerAddress = () => window.location.origin;
 
@@ -37,12 +35,16 @@
                 button#randomMovieButton {
                     padding: 0px !important;
                     margin: 0px 5px 0px 10px !important;
+                    display: inline-flex;
+                    align-items: center;
+                    justify-content: center;
                 }
             `;
             document.head.appendChild(style);
             console.log("Jellyfin Random Movie: Custom CSS injected.");
         }
     };
+
     const getRandomMovie = async () => {
         const userId = ApiClient.getCurrentUserId();
 
@@ -52,47 +54,37 @@
             return null;
         }
 
-        if (!API_KEY || API_KEY === 'YOUR_JELLYFIN_API_KEY_HERE') {
-            console.error("Jellyfin Random Movie: API Key is not set in the script. Please update the API_KEY constant.");
-            alert("API Key is missing. Please set your Jellyfin API Key in the script.");
-            return null;
-        }
-
         const serverAddress = getJellyfinServerAddress();
         const timestamp = Date.now(); // Cache buster
-        const fetchLimit = 20; // Fetch 20 random movies, then pick one client-side
+        const fetchLimit = 20; // Fetch 20 random items, then pick one client-side
 
-        // Construct the full API URL
-        const apiUrl = `${serverAddress}/Users/${userId}/Items?IncludeItemTypes=Movie&Recursive=true&SortBy=Random&Limit=${fetchLimit}&Fields=ExternalUrls&_=${timestamp}`;
-        console.log("Jellyfin Random Movie: Fetching random movie from:", apiUrl);
+        // Construct the full API URL using the configurable ITEM_TYPES_TO_INCLUDE
+        const apiUrl = `${serverAddress}/Users/${userId}/Items?IncludeItemTypes=${ITEM_TYPES_TO_INCLUDE}&Recursive=true&SortBy=Random&Limit=${fetchLimit}&Fields=ExternalUrls&_=${timestamp}`;
+        console.log("Jellyfin Random Movie: Fetching random item from:", apiUrl);
 
         try {
-            // Use ApiClient.ajax for requests within the Jellyfin UI context
             const response = await ApiClient.ajax({
                 type: 'GET',
-                url: apiUrl, // Full absolute URL
+                url: apiUrl,
                 headers: {
-                    'X-Emby-Token': API_KEY,
                     'Content-Type': 'application/json'
                 },
-                dataType: 'json' // Expect JSON response, ApiClient.ajax will parse it
+                dataType: 'json'
             });
 
-            // ApiClient.ajax returns the parsed JSON directly if dataType is 'json'
             const data = response;
 
             if (data && data.Items && data.Items.length > 0) {
-                // Pick a truly random movie from the fetched batch client-side
+                // Pick a truly random item from the fetched batch client-side
                 const randomIndex = Math.floor(Math.random() * data.Items.length);
                 return data.Items[randomIndex];
             } else {
-                throw new Error("No movies found or API returned empty list.");
+                throw new Error("No items found or API returned empty list.");
             }
         } catch (error) {
-            console.error("Jellyfin Random Movie: Error fetching random movie:", error);
-            // Attempt to get a more specific error message from the API response
+            console.error("Jellyfin Random Movie: Error fetching random item:", error);
             const errorMessage = error.responseJSON && error.responseJSON.Message ? error.responseJSON.Message : error.statusText || error.message || 'Unknown API Error';
-            alert(`Error getting random movie: ${errorMessage}. Check console for details.`);
+            alert(`Error getting random item: ${errorMessage}. Check console for details.`);
             return null;
         }
     };
@@ -106,74 +98,73 @@
             console.log("Jellyfin Random Movie: Navigating to:", movieUrl);
             window.location.href = movieUrl;
         } else {
-            console.error("Jellyfin Random Movie: Invalid movie object or ID:", movie);
-            alert("Could not navigate to movie details. Movie ID is missing.");
+            console.error("Jellyfin Random Movie: Invalid item object or ID:", movie);
+            alert("Could not navigate to item details. Item ID is missing.");
         }
     };
 
     const addButton = () => {
-        const headerRight = document.querySelector('.headerRight');
-        const searchInputContainer = document.querySelector('.searchInput');
-
-        if (!headerRight && !searchInputContainer) {
-            console.log("Jellyfin Random Movie: Suitable button container not found. Retrying...");
-            return;
-        }
-
+        // Find existing container or create a new one
         let buttonContainer = document.getElementById('randomMovieButtonContainer');
         if (!buttonContainer) {
             buttonContainer = document.createElement('div');
             buttonContainer.id = 'randomMovieButtonContainer';
         }
 
+        // Find existing button or create a new one
         let randomButton = document.getElementById('randomMovieButton');
         if (!randomButton) {
             randomButton = document.createElement('button');
             randomButton.id = 'randomMovieButton';
             randomButton.className = 'random-movie-button emby-button button-flat button-flat-hover';
-            randomButton.title = 'Play a random movie from your library';
-            randomButton.innerHTML = `
-                <i class="md-icon random-icon">casino</i>
-            `;
+            randomButton.title = 'Play a random item from your library'; // Updated title for clarity
+            randomButton.innerHTML = `<i class="md-icon random-icon">casino</i>`;
 
+            // Add event listener for the button click
             randomButton.addEventListener('click', async () => {
                 randomButton.disabled = true;
-                randomButton.innerHTML = '<i class="md-icon random-icon">more_horiz</i>'; // Loading state icon
+                randomButton.innerHTML = '<i class="md-icon random-icon">hourglass_empty</i>'; // Loading state icon
 
                 try {
-                    const movie = await getRandomMovie();
-                    if (movie) {
-                        navigateToMovie(movie);
+                    const item = await getRandomMovie();
+                    if (item) {
+                        navigateToMovie(item);
                     }
                 } catch (error) {
-                    console.error("Jellyfin Random Movie: Failed to get random movie:", error);
-                    alert("Failed to find a random movie. Check console for details.");
+                    console.error("Jellyfin Random Movie: Failed to get random item:", error);
+                    alert("Failed to find a random item. Check console for details.");
                 } finally {
                     randomButton.disabled = false;
-                    randomButton.innerHTML = `
-                        <i class="md-icon random-icon">casino</i>
-                    `;
+                    randomButton.innerHTML = `<i class="md-icon random-icon">casino</i>`;
                 }
             });
 
+            // Append the button to its container
             buttonContainer.appendChild(randomButton);
+            const headerRight = document.querySelector('.headerRight');
+            const searchInputContainer = document.querySelector('.searchInput');
 
             if (headerRight) {
+                // If headerRight exists, prepend the container to it
                 headerRight.prepend(buttonContainer);
                 console.log("Jellyfin Random Movie: Button added to headerRight.");
             } else if (searchInputContainer) {
+                // Otherwise, if searchInputContainer exists, insert after it
                 searchInputContainer.parentNode.insertBefore(buttonContainer, searchInputContainer.nextSibling);
                 console.log("Jellyfin Random Movie: Button added after searchInput.");
+            } else {
+                console.warn("Jellyfin Random Movie: Suitable button container not found. Button might not be visible.");
             }
+        } else {
+            console.log("Jellyfin Random Movie: Button already exists, no need to recreate.");
         }
     };
 
     const waitForApiClient = () => {
-        // Ensure ApiClient and its necessary methods are available
         if (typeof ApiClient !== 'undefined' && typeof ApiClient.getCurrentUserId === 'function' && typeof ApiClient.ajax === 'function') {
             console.log("Jellyfin Random Movie: ApiClient is available. Starting UI observation.");
-            injectMaterialIcons(); // Ensure Material Icons are loaded
-            injectCustomCss();   // Inject custom CSS
+            injectMaterialIcons();
+            injectCustomCss();
             const observer = new MutationObserver((mutations, obs) => {
                 const headerRight = document.querySelector('.headerRight');
                 const searchInputContainer = document.querySelector('.searchInput');
@@ -186,7 +177,7 @@
 
             observer.observe(document.body, { childList: true, subtree: true });
 
-            // Also try to add the button immediately if UI is already ready
+            // Also try to add the button immediately if UI is already ready on page load
             const headerRight = document.querySelector('.headerRight');
             const searchInputContainer = document.querySelector('.searchInput');
             if (headerRight || searchInputContainer) {
