@@ -1,9 +1,8 @@
-
 (function() {
     'use strict';
 
     const getServerAddress = () => window.location.origin;
-    const getUserImageUrl = (userId) => userId ? `${getServerAddress()}/Users/${userId}/Images/Primary?quality=90` : '';
+    const getUserImageUrl = (userId) => userId ? `${getServerAddress()}/Users/${userId}/Images/Primary?quality=40` : '';
 
     const updateProfilePicture = () => {
         console.log("updateProfilePicture called.");
@@ -37,7 +36,7 @@
                     const style = cardImageContainer.style.backgroundImage;
                     const urlMatch = style.match(/url\(['"]?(.*?)['"]?\)/);
                     if (urlMatch && urlMatch[1]) {
-                        imageUrl = urlMatch[1].replace(/width=\d+&?/g, '').replace(/height=\d+&?/g, '').replace(/tag=[^&]+&?/g, '');
+                        imageUrl = urlMatch[1].replace(/width=\d+&?/g, '').replace(/height=\d+&?/g, '').replace(/tag=[^&]+&?/g, '').replace(/quality=\d+&?/g, 'quality=40&');
                         if (imageUrl.endsWith('&')) imageUrl = imageUrl.slice(0, -1);
                         console.log("Extracted image URL from card style:", imageUrl);
                     }
@@ -66,6 +65,9 @@
             }
         }
 
+        // Apply CSS styles to image container
+        imageContainer.style.textAlign = 'center';
+
         imageContainer.innerHTML = '';
 
         if (imageUrl) {
@@ -73,7 +75,10 @@
             const imgElement = document.createElement('img');
             imgElement.src = imageUrl;
             imgElement.alt = `Profile picture for ${currentUsername}`;
-            // Adding margins to the image via JS as well, to align with your new CSS
+            imgElement.style.width = '125px';
+            imgElement.style.height = '125px';
+            imgElement.style.borderRadius = '50%';
+            imgElement.style.objectFit = 'cover';
             imageContainer.appendChild(imgElement);
 
             // Now, explicitly hide the input field and its label using JS
