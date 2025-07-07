@@ -1,4 +1,3 @@
-<script>
 (function() {
     console.log("Jellyfin Rating Script: Script loaded."); // Changed log message
 
@@ -29,4 +28,3 @@
     setInterval(applyRatingAttributes, checkInterval);
     console.log(`Jellyfin Rating Script: Started continuous polling every ${checkInterval}ms.`);
 })();
-</script>

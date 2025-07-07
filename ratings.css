@@ -24,7 +24,8 @@
     color: #FFFFFF !important; /* Default to white text */
     border-radius: 4px !important;
     font-weight: bold !important;
-    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5) !important; /* Increased blur radius for softer shadow */
+    padding: 0px 5px;
+    text-shadow: 1px 1px 10px rgba(0, 0, 0, 0.7) !important; /* Increased blur radius for softer shadow */
     text-transform: uppercase !important;
 }
 
