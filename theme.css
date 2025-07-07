@@ -18,7 +18,7 @@
 /* ~~~~~~~~~~~~~~~~~~~~ GLOBAL CSS VARIABLES ~~~~~~~~~~~~~~~~~~~~ */
 /* Defines core variables used throughout the theme for consistency. */
 :root {
-    --theme-updated-on: "04 July 2025 - 06:26 A.M."; /* Date of last theme update */
+    --theme-updated-on: "07 July 2025 - 08:39 A.M."; /* Date of last theme update */
     --rounded-cards: 15px; /* Standard border-radius for card-like elements. */
     --blur: 15px;           /* Default blur intensity for backdrop and other effects. */
 }
