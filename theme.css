@@ -80,9 +80,19 @@ progress[aria-valuenow]:before,               /* Progress bar fill (pseudo-eleme
 .MuiAlert-root.MuiAlert-standardInfo,          /* Info type Material UI alerts */
 .navMenuOption-selected,                        /* Selected items in the main navigation menu */
 .MuiListItemButton-root.Mui-selected,           /* Selected Material UI list item buttons */
-.jstree-default .jstree-wholerow-clicked       /* Clicked rows in jsTree (e.g., metadata editor folder tree) */
+.jstree-default .jstree-wholerow-clicked,       /* Clicked rows in jsTree (e.g., metadata editor folder tree) */
+.formDialogHeader, /* for metadata edit form */
+.formDialogFooter
 {
     background: var(--secondary-accent-color) !important;
+}
+
+.formDialogHeader, .formDialogFooter {
+      backdrop-filter: blur(25px);
+  }
+
+.formDialogContent {
+    background: var(--secondary-background-transparent);
 }
 
 .iconOsdProgressOuter                           /* Outer ring of OSD circular progress indicators */
@@ -199,21 +209,33 @@ progress::-webkit-progress-value,             /* Progress bar fill for WebKit br
 #btnShutdown {
     background: #AE3739 !important;
 }
-/* Green background for restart server button. */
-#btnRestartServer {
-    background: forestgreen;
+/* Green background for restart server button and Save Metadata button */
+#btnRestartServer, .button-submit {
+    background: forestgreen !important;
 }
-/* Violet background for refresh button. */
-button.raised.btnRefresh.emby-button {
-    background: blueviolet;
+/* Violet background for refresh button and reset metadata button */
+button.raised.btnRefresh.emby-button, .button-reset {
+    background: blueviolet !important;
 }
 /* Dark, semi-transparent background for the Intro Skipper button. */
 #skipIntro .emby-button {
     background: rgba(30, 30, 30, 0.7) !important;
 }
 /* Red background for cancel and reset password buttons. */
-#btnCancel, #btnResetPassword {
+#btnCancel, #btnResetPassword, .button-cancel {
     background: rgb(180 96 96) !important;
+}
+
+.button-cancel::before {
+    content: "❌ ";
+}
+
+.button-reset::before {
+    content: "🔄️ ";
+}
+
+.button-submit::before {
+    content: "💾 ";
 }
 
 
@@ -1393,6 +1415,10 @@ h3.tagline {
     display: none !important; /* Hides the Picture-in-Picture button */
 }
 
+.osdControls .btnUserRating {
+    display: none !important;
+}
+
 /* ~~~~~~~~~~~~~~~~~~~~ PLUGIN SUPPORT ~~~~~~~~~~~~~~~~~~~~ */
 /* Styles for enhancing or fixing compatibility with various Jellyfin plugins. */
 
@@ -1424,6 +1450,7 @@ h3.tagline {
     background: var(--primary-accent-color) !important;
     color: var(--text-color) !important;
     margin-right: 5% !important;
+    border-radius: var(--rounded-cards) !important;
 }
 
 .skip-button:hover {
