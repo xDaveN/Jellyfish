@@ -81,9 +81,8 @@ progress[aria-valuenow]:before,               /* Progress bar fill (pseudo-eleme
 .navMenuOption-selected,                        /* Selected items in the main navigation menu */
 .MuiListItemButton-root.Mui-selected,           /* Selected Material UI list item buttons */
 .jstree-default .jstree-wholerow-clicked,       /* Clicked rows in jsTree (e.g., metadata editor folder tree) */
-.formDialogHeader, /* for metadata edit form */
-.formDialogFooter
-{
+.formDialog:has(.editItemMetadataForm) .formDialogHeader,
+.formDialog:has(.editItemMetadataForm) .formDialogFooter {
     background: var(--secondary-accent-color) !important;
 }
 
@@ -283,7 +282,7 @@ html
 /* Reduces the width of portrait-oriented cards on wider screens in landscape. */
 @media (min-width: 50em) and (orientation: landscape) {
     .overflowPortraitCard { /* Typically used for cast/crew or "More like this" sections */
-        width: 13% !important;
+        width: 15% !important;
     }
 }
 
@@ -1583,8 +1582,8 @@ h3.tagline {
 }
 .headerUsername, .sectionTitle { /* Accent color for username in header and section titles */
     color: var(--primary-accent-color) !important;
-    text-shadow: 1px 1px 15px var(--text-color);
-    font-weight: bold; /* Bold for emphasis */
+    text-shadow: -1px 1px 15px #000000;
+    font-weight: bold;
 }
  /* remove chevron in section titles */
 .sectionTitleTextButton>.material-icons {

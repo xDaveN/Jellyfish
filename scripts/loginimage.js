@@ -1,77 +1,106 @@
 (function() {
     'use strict';
+    console.log('🔒🖼️Login Image: Initializing...');
+
+    /**
+     * Checks if a user is currently logged in by verifying the existence of the ApiClient
+     * and the current user's session information.
+     * @returns {boolean} True if a user is logged in, false otherwise.
+     */
+    const isUserLoggedIn = () => {
+        console.log('🔒🖼️Login Image: Checking login status.');
+        try {
+            const loggedIn = window.ApiClient && window.ApiClient._currentUser && window.ApiClient._currentUser.Id;
+            if (loggedIn) {
+                console.log('🔒🖼️Login Image: User is logged in.');
+                return true;
+            } else {
+                console.log('🔒🖼️Login Image: User is not logged in.');
+                return false;
+            }
+        } catch (error) {
+            console.error('🔒🖼️❌Login Image: Error checking login status.', error);
+            return false;
+        }
+    };
+
+    // These functions handle the main purpose of the script: displaying the user's profile image.
 
     const getServerAddress = () => window.location.origin;
     const getUserImageUrl = (userId) => userId ? `${getServerAddress()}/Users/${userId}/Images/Primary?quality=40` : '';
 
+    /**
+     * Finds the user's profile image and displays it above the password field.
+     * It also hides the username input field, as the user is selected from a card.
+     */
     const updateProfilePicture = () => {
-        console.log("updateProfilePicture called.");
+        console.log('🔒🖼️Login Image: updateProfilePicture called.');
         const userNameInput = document.getElementById('txtManualName');
         const manualLoginForm = document.querySelector('.manualLoginForm');
         const userLabel = manualLoginForm ? manualLoginForm.querySelector('label[for="txtManualName"]') : null;
 
+        // Don't run if the form isn't ready or is hidden
         if (!userNameInput || !manualLoginForm || manualLoginForm.classList.contains('hide')) {
-            console.log("Manual login form not yet visible or input not fully ready. Skipping update.");
-            // Ensure input and label are visible if the script isn't active in this state
+            console.log('🔒🖼️Login Image: Form not ready or hidden, skipping update.');
             if (userNameInput) userNameInput.style.display = '';
             if (userLabel) userLabel.style.display = '';
             return;
         }
 
         const currentUsername = userNameInput.value;
-        console.log("Current Username:", currentUsername);
-
+        console.log("🔒🖼️Login Image: Current username: '${currentUsername}'");
         let userId = null;
         let imageUrl = null;
 
+        // Try to get user ID and image URL from the user cards on the login page
         const userCardsContainer = document.getElementById('divUsers');
         if (userCardsContainer && currentUsername) {
             const userCardContent = userCardsContainer.querySelector(`.cardContent[data-username="${currentUsername}"]`);
             if (userCardContent) {
                 userId = userCardContent.dataset.userid;
-                console.log("Found userId from card:", userId);
-
+                console.log(`🔒🖼️Login Image: Found user ID from card: ${userId}`);
                 const cardImageContainer = userCardContent.querySelector('.cardImageContainer');
                 if (cardImageContainer && cardImageContainer.style.backgroundImage) {
                     const style = cardImageContainer.style.backgroundImage;
                     const urlMatch = style.match(/url\(['"]?(.*?)['"]?\)/);
                     if (urlMatch && urlMatch[1]) {
+                        // Clean up the URL to get a version with quality set to 40 for better performance
                         imageUrl = urlMatch[1].replace(/width=\d+&?/g, '').replace(/height=\d+&?/g, '').replace(/tag=[^&]+&?/g, '').replace(/quality=\d+&?/g, 'quality=40&');
                         if (imageUrl.endsWith('&')) imageUrl = imageUrl.slice(0, -1);
-                        console.log("Extracted image URL from card style:", imageUrl);
+                        console.log(`🔒🖼️Login Image: Found image URL from card style: ${imageUrl}`);
                     }
                 }
             } else {
-                console.log("No user card found for username:", currentUsername);
+                 console.log(`🔒🖼️Login Image: No user card found for username: '${currentUsername}'`);
             }
         }
 
+        // If we got a user ID but no image from the card, construct the URL manually
         if (userId && !imageUrl) {
             imageUrl = getUserImageUrl(userId);
-            console.log("Falling back to constructed image URL:", imageUrl);
+            console.log(`🔒🖼️Login Image: Constructed image URL: ${imageUrl}`);
         }
 
+        // Find or create the container for the profile image
         let imageContainer = document.getElementById('userProfileImageContainer');
         if (!imageContainer) {
+            console.log('🔒🖼️Login Image: Creating image container for the first time.');
             imageContainer = document.createElement('div');
             imageContainer.id = 'userProfileImageContainer';
             const inputContainer = manualLoginForm.querySelector('.inputContainer');
             if (inputContainer) {
                 manualLoginForm.insertBefore(imageContainer, inputContainer);
-                console.log("Created and inserted image container.");
             } else {
                 manualLoginForm.prepend(imageContainer);
-                console.log("Created and prepended image container.");
             }
         }
 
-        // Apply CSS styles to image container
         imageContainer.style.textAlign = 'center';
-
         imageContainer.innerHTML = '';
 
+        // If an image URL was found, display the image and hide the username input
         if (imageUrl) {
-            console.log("Attempting to display image:", imageUrl);
+            console.log(`🔒🖼️Login Image: Displaying image: ${imageUrl}`);
             const imgElement = document.createElement('img');
             imgElement.src = imageUrl;
             imgElement.alt = `Profile picture for ${currentUsername}`;
@@ -81,75 +110,102 @@
             imgElement.style.objectFit = 'cover';
             imageContainer.appendChild(imgElement);
 
-            // Now, explicitly hide the input field and its label using JS
             if (userNameInput) userNameInput.style.display = 'none';
             if (userLabel) userLabel.style.display = 'none';
-            console.log("User input and label hidden by JS.");
-
         } else {
-            console.log("No image URL to display.");
+            // If no image, ensure the username input is visible
+            console.log('🔒🖼️Login Image: No image URL found. Ensuring username input is visible.');
             imageContainer.innerHTML = '';
-            // Ensure input and label are visible if no image is displayed by JS
             if (userNameInput) userNameInput.style.display = '';
             if (userLabel) userLabel.style.display = '';
-            console.log("User input and label shown by JS (no image).");
         }
     };
 
+    /**
+     * Sets up MutationObservers to watch for changes to the login form,
+     * such as selecting a different user or showing/hiding the form.
+     */
     const setupObservers = () => {
+        console.log('🔒🖼️Login Image: Setting up MutationObservers.');
+        const userNameInput = document.getElementById('txtManualName');
+        const manualLoginForm = document.querySelector('.manualLoginForm');
+
+        // Observe changes to the username input value (when a user card is clicked)
+        const nameObserver = new MutationObserver(() => {
+            console.log('🔒🖼️Login Image: Username input value changed.');
+            updateProfilePicture();
+        });
+        nameObserver.observe(userNameInput, { attributes: true, attributeFilter: ['value'] });
+
+        // Observe changes to the form's visibility (e.g., switching to passwordless login)
+        const formObserver = new MutationObserver(() => {
+            console.log('🔒🖼️Login Image: Login form class attribute changed.');
+            if (!manualLoginForm.classList.contains('hide')) {
+                console.log('🔒🖼️Login Image: Login form is now visible.');
+                updateProfilePicture();
+            } else {
+                // If the form is hidden, reset the state
+                console.log('🔒🖼️Login Image: Login form is now hidden. Resetting state.');
+                const userLabel = manualLoginForm.querySelector('label[for="txtManualName"]');
+                if (userNameInput) userNameInput.style.display = '';
+                if (userLabel) userLabel.style.display = '';
+                const imgContainer = document.getElementById('userProfileImageContainer');
+                if (imgContainer) imgContainer.innerHTML = '';
+            }
+        });
+        formObserver.observe(manualLoginForm, { attributes: true, attributeFilter: ['class'] });
+
+        // Trigger an initial update in case the form is already visible on load
+        if (!manualLoginForm.classList.contains('hide')) {
+            console.log('🔒🖼️Login Image: Form already visible on load. Triggering initial update.');
+            updateProfilePicture();
+        } else {
+            console.log('🔒🖼️Login Image: Form initially hidden.');
+            const userLabel = manualLoginForm.querySelector('label[for="txtManualName"]');
+            if(userNameInput) userNameInput.style.display = '';
+            if (userLabel) userLabel.style.display = '';
+        }
+    };
+
+
+    // --- Initialization and Page Check Logic ---
+    // This part ensures the script only runs on the login page.
+
+    let attempts = 0;
+    const maxAttempts = 200; // Try to find the login form for 20 seconds (200 * 100ms)
+
+    /**
+     * The main initialization function. It checks for the correct page context
+     * before running the script's core logic.
+     */
+    const initialize = () => {
+        // Condition 1: If a user is already logged in, we are not on the login page. Stop the script.
+        if (isUserLoggedIn()) {
+            console.log('🔒🖼️Login Image: User is logged in, stopping script.');
+            return;
+        }
+
+        // Condition 2: Check for the login form elements.
         const userNameInput = document.getElementById('txtManualName');
         const manualLoginForm = document.querySelector('.manualLoginForm');
 
         if (userNameInput && manualLoginForm) {
-            console.log("Found txtManualName and manualLoginForm. Setting up observers.");
-
-            const nameObserver = new MutationObserver((mutations) => {
-                mutations.forEach(mutation => {
-                    if (mutation.type === 'attributes' && mutation.attributeName === 'value') {
-                        console.log("txtManualName value attribute changed.");
-                        updateProfilePicture();
-                    }
-                });
-            });
-            nameObserver.observe(userNameInput, { attributes: true });
-
-            const formObserver = new MutationObserver((mutations) => {
-                mutations.forEach(mutation => {
-                    if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
-                        console.log("manualLoginForm class attribute changed.");
-                        if (!manualLoginForm.classList.contains('hide')) {
-                            console.log("manualLoginForm is now visible. Triggering update.");
-                            updateProfilePicture();
-                        } else {
-                            // If form becomes hidden, make sure input/label are visible again
-                            const userLabel = manualLoginForm.querySelector('label[for="txtManualName"]');
-                            userNameInput.style.display = '';
-                            if (userLabel) userLabel.style.display = '';
-                            const imgContainer = document.getElementById('userProfileImageContainer');
-                            if (imgContainer) imgContainer.innerHTML = ''; // Clear image
-                            console.log("manualLoginForm is now hidden. Input/label reset.");
-                        }
-                    }
-                });
-            });
-            formObserver.observe(manualLoginForm, { attributes: true });
-
-            if (!manualLoginForm.classList.contains('hide')) {
-                console.log("manualLoginForm already visible on load. Triggering initial update.");
-                updateProfilePicture();
-            } else {
-                console.log("manualLoginForm is initially hidden.");
-                // Ensure input and label are visible if it's hidden on load
-                const userLabel = manualLoginForm.querySelector('label[for="txtManualName"]');
-                userNameInput.style.display = '';
-                if (userLabel) userLabel.style.display = '';
-            }
-
+            // Elements found, so we are on the login page. Run the main script logic.
+            console.log('🔒🖼️Login Image: Login form found. Setting up observers.');
+            setupObservers();
         } else {
-            console.log("Waiting for txtManualName and manualLoginForm to be available...");
-            setTimeout(setupObservers, 100);
+            // Elements not found yet. Try again after a short delay.
+            attempts++;
+            if (attempts < maxAttempts) {
+                console.log(`🔒🖼️Login Image: Login form not found. Attempt ${attempts}/${maxAttempts}.`);
+                setTimeout(initialize, 100);
+            } else {
+                console.log('🔒🖼️Login Image: Max attempts reached. Stopping script.');
+            }
         }
     };
 
-    setupObservers();
+    // Start the initialization process when the script loads.
+    initialize();
+
 })();
