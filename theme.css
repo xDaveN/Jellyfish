@@ -80,17 +80,18 @@ progress[aria-valuenow]:before,               /* Progress bar fill (pseudo-eleme
 .MuiAlert-root.MuiAlert-standardInfo,          /* Info type Material UI alerts */
 .navMenuOption-selected,                        /* Selected items in the main navigation menu */
 .MuiListItemButton-root.Mui-selected,           /* Selected Material UI list item buttons */
-.jstree-default .jstree-wholerow-clicked,       /* Clicked rows in jsTree (e.g., metadata editor folder tree) */
-.formDialog:has(.editItemMetadataForm) .formDialogHeader,
-.formDialog:has(.editItemMetadataForm) .formDialogFooter {
+.jstree-default .jstree-wholerow-clicked        /* Clicked rows in jsTree (e.g., metadata editor folder tree) */ {
     background: var(--secondary-accent-color) !important;
 }
 
-.formDialogHeader, .formDialogFooter {
-      backdrop-filter: blur(25px);
-  }
+.dialog-fixedSize.dialog-small .formDialogHeader,
+.dialog-fixedSize.dialog-small .formDialogFooter {
+    background: var(--secondary-accent-color) !important;
+    backdrop-filter: blur(25px);
+}
 
-.formDialogContent {
+/* This targets the main content area inside those same dialogs */
+.dialog-fixedSize.dialog-small .formDialogContent {
     background: var(--secondary-background-transparent);
 }
 
@@ -209,7 +210,7 @@ progress::-webkit-progress-value,             /* Progress bar fill for WebKit br
     background: #AE3739 !important;
 }
 /* Green background for restart server button and Save Metadata button */
-#btnRestartServer, .button-submit {
+#btnRestartServer {
     background: forestgreen !important;
 }
 /* Violet background for refresh button and reset metadata button */
@@ -223,18 +224,6 @@ button.raised.btnRefresh.emby-button, .button-reset {
 /* Red background for cancel and reset password buttons. */
 #btnCancel, #btnResetPassword, .button-cancel {
     background: rgb(180 96 96) !important;
-}
-
-.button-cancel::before {
-    content: "❌ ";
-}
-
-.button-reset::before {
-    content: "🔄️ ";
-}
-
-.button-submit::before {
-    content: "💾 ";
 }
 
 
@@ -777,11 +766,18 @@ progress::-webkit-progress-value  /* Filled part of the progress bar (WebKit) */
 .cardPadder,
 .cardImageContainer,
 .blurhash-canvas,     /* Canvas used for blurhash placeholders */
-.cardContent
+.cardContent,
+.cardOverlayContainer
  {
     border-radius: var(--rounded-cards) !important;
     overflow: hidden !important; /* Crucial for rounded corners on elements with backgrounds/images */
 }
+
+.itemSelectionPanel {
+    border: 1px solid var(--primary-accent-color) !important;
+    border-radius: var(--rounded-cards) !important;
+}
+
 
 /* Removes default background from card padders to rely on cardBox or image. */
 .cardPadder {
