@@ -1,0 +1,119 @@
+/*
+================================================================================
+|                                                                              |
+|                         JELLYFIN JELLYFISH THEME                            |
+|                         Base Variables (_variables.css)                      |
+|                                                                              |
+================================================================================
+
+This file contains the core CSS custom properties (variables) used throughout
+the Jellyfish theme. These variables provide a consistent foundation for colors,
+spacing, typography, and other design tokens.
+
+Usage: Import this file first in your main theme file.
+*/
+
+:root {
+  /* ===== CORE THEME STRUCTURE ===== */
+  
+  /* Default color values - will be overridden by color scheme files */
+  --primary-r: 0;
+  --primary-g: 164;
+  --primary-b: 220;
+  
+  /* ===== PRIMARY COLOR SYSTEM ===== */
+  /* These use the RGB values above to create consistent color variations */
+  --primary-accent-color: rgba(var(--primary-r), var(--primary-g), var(--primary-b), 1.0);
+  --secondary-accent-color: rgba(var(--primary-r), var(--primary-g), var(--primary-b), 0.6);
+  --primary-background-transparent: rgba(var(--primary-r), var(--primary-g), var(--primary-b), 0.1);
+  --secondary-background-transparent: rgba(var(--primary-r), var(--primary-g), var(--primary-b), 0.2);
+  
+  /* ===== BACKGROUND COLOR SYSTEM ===== */
+  --primary-background-color: #000000;    /* Main app background */
+  --secondary-background-color: #181818;  /* Cards, drawers, dialogs */
+  --tertiary-background-color: #252525;   /* Popovers, tooltips */
+  --alt-accent-color: #ffffff20;          /* Alternative accent with transparency */
+  
+  /* ===== TEXT SYSTEM ===== */
+  --text-color: #ffffff;                  /* Primary text color */
+  --text-shadow-default: -1px 1px 5px rgba(0, 0, 0, 0.8); /* Standard text shadow */
+  
+  /* ===== HEADER SYSTEM ===== */
+  --header-background-color: #ffffff6e;   /* Semi-transparent header background */
+  
+  /* ===== BRANDING SYSTEM ===== */
+  --logo: url("https://i.ibb.co/TqBxLXTx/jfish.png"); /* Default Jellyfish logo */
+  --background-image: none;               /* Background image (set by color schemes) */
+  --footer-message: "🧀 This server runs on snacks and sarcasm."; /* Default footer message */
+  
+  /* ===== HEX COLOR COMPATIBILITY ===== */
+  /* Pre-calculated HEX values for components that don't support rgba() */
+  --hex-primary-accent-color: #00A4DCFF;
+  --hex-secondary-accent-color: #00A4DC33;
+  --hex-primary-background-transparent: #00A4DC19;
+  --hex-secondary-background-transparent: #00A4DC33;
+  
+  /* ===== ALTERNATE ACCENT SYSTEM ===== */
+  /* Calculated variations of the primary color for gradients and hover states */
+  --primary-alt1: rgba(calc(var(--primary-r) - 30), calc(var(--primary-g) - 30), calc(var(--primary-b) - 30), 1);
+  --primary-alt2: rgba(calc(var(--primary-r) - 30), calc(var(--primary-g) - 30), calc(var(--primary-b) - 30), 0.85);
+  --primary-alt3: rgba(calc(var(--primary-r) - 30), calc(var(--primary-g) - 30), calc(var(--primary-b) - 30), 0.7);
+  --primary-alt4: rgba(calc(var(--primary-r) - 30), calc(var(--primary-g) - 30), calc(var(--primary-b) - 30), 0.55);
+  --primary-alt5: rgba(calc(var(--primary-r) - 30), calc(var(--primary-g) - 30), calc(var(--primary-b) - 30), 0.4);
+  
+  /* ===== LAYOUT SYSTEM ===== */
+  --rounded-cards: 8px;                   /* Standard border radius for cards */
+  --standard-padding: 1em;                /* Standard padding unit */
+  --standard-margin: 1em;                 /* Standard margin unit */
+  
+  /* ===== ANIMATION SYSTEM ===== */
+  --transition-fast: 0.2s ease;          /* Fast transitions */
+  --transition-standard: 0.3s ease;      /* Standard transitions */
+  --transition-slow: 0.5s ease;          /* Slow transitions */
+  
+  /* ===== SHADOW SYSTEM ===== */
+  --shadow-light: 0 2px 4px rgba(0, 0, 0, 0.1);
+  --shadow-medium: 0 4px 8px rgba(0, 0, 0, 0.2);
+  --shadow-heavy: 0 8px 16px rgba(0, 0, 0, 0.3);
+  
+  /* ===== RATING SYSTEM COLORS ===== */
+  /* Standardized colors for content ratings across different countries */
+  --rating-general: #2E7D32;             /* Green - General/All audiences */
+  --rating-parental-guidance: #F57F17;   /* Yellow - Parental guidance */
+  --rating-teen: #E65100;                /* Orange - Teen/13+ content */
+  --rating-mature: #D84315;              /* Red-Orange - Mature/15-16+ */
+  --rating-adult: #C62828;               /* Red - Adult/18+ content */
+  --rating-restricted: #880E4F;          /* Dark Pink - Restricted content */
+  --rating-unrated: #616161;             /* Grey - Unrated/Unknown */
+  --rating-educational: #1565C0;         /* Blue - Educational content */
+  
+  /* ===== RESPONSIVE BREAKPOINTS ===== */
+  --mobile-max: 600px;                   /* Maximum width for mobile styles */
+  --tablet-max: 1024px;                  /* Maximum width for tablet styles */
+  --desktop-min: 1025px;                 /* Minimum width for desktop styles */
+  
+  /* ===== Z-INDEX SYSTEM ===== */
+  --z-background: -2;                    /* Background elements */
+  --z-content: 0;                        /* Normal content */
+  --z-overlay: 1;                        /* Overlays and modals */
+  --z-header: 10;                        /* Header elements */
+  --z-tooltip: 100;                      /* Tooltips and popovers */
+  
+  /* ===== THEME METADATA ===== */
+  --theme-name: "Jellyfish";
+  --theme-version: "2.0";
+  --theme-updated-on: "01 January 2025 - 12:00 P.M.";
+}
+
+/* ===== FALLBACK SUPPORT ===== */
+/* Provide fallbacks for older browsers that don't support CSS custom properties */
+@supports not (color: var(--primary-accent-color)) {
+  :root {
+    /* Fallback colors using the default blue theme */
+    --primary-accent-color: #00A4DC;
+    --secondary-accent-color: rgba(0, 164, 220, 0.6);
+    --primary-background-color: #000000;
+    --secondary-background-color: #181818;
+    --text-color: #ffffff;
+  }
+}

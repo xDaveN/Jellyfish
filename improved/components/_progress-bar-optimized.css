@@ -1,0 +1,150 @@
+/*
+================================================================================
+|                                                                              |
+|                         JELLYFIN JELLYFISH THEME                            |
+|                         Optimized Progress Bar (_progress-bar-optimized.css)|
+|                                                                              |
+================================================================================
+
+Streamlined progress bar styling with consistent design patterns and improved
+performance. Consolidates all progress bar related styles with clear sections.
+*/
+
+/* ===== PROGRESS BAR FOUNDATION ===== */
+
+/* Clear default footer styling to make progress bar stand out */
+#indexPage .innerCardFooterClear,
+.libraryPage .innerCardFooterClear,
+#itemDetailPage .innerCardFooterClear {
+  background-color: transparent !important;
+  box-shadow: none !important;
+}
+
+/* ===== PROGRESS BAR CONTAINER ===== */
+
+/* Main progress bar container styling */
+#indexPage .itemProgressBar,
+.libraryPage .itemProgressBar,
+#itemDetailPage .itemProgressBar {
+  height: 8px !important;
+  background: var(--secondary-background-transparent) !important;
+  margin: .5em .8em !important;
+  border-radius: var(--rounded-cards) !important;
+}
+
+/* ===== PROGRESS BAR FOREGROUND ===== */
+
+/* The actual progress indicator */
+#indexPage .itemProgressBarForeground,
+.libraryPage .itemProgressBarForeground,
+#itemDetailPage .itemProgressBarForeground {
+  background-color: var(--primary-accent-color) !important;
+  border-radius: var(--rounded-cards) !important;
+}
+
+/* ===== BACKDROP FILTER SUPPORT ===== */
+
+/* Enhanced visual effect for browsers that support backdrop-filter */
+@supports (backdrop-filter: blur(15px)) {
+  #indexPage .itemProgressBar,
+  .libraryPage .itemProgressBar,
+  #itemDetailPage .itemProgressBar {
+    backdrop-filter: blur(4px) !important;
+    background: var(--secondary-background-transparent) !important;
+  }
+}
+
+/* ===== RESPONSIVE ADJUSTMENTS ===== */
+
+/* Mobile optimizations */
+@media (max-width: 600px) {
+  #indexPage .itemProgressBar,
+  .libraryPage .itemProgressBar,
+  #itemDetailPage .itemProgressBar {
+    height: 6px !important;
+    margin: .3em .6em !important;
+  }
+}
+
+/* Tablet optimizations */
+@media (min-width: 601px) and (max-width: 1024px) {
+  #indexPage .itemProgressBar,
+  .libraryPage .itemProgressBar,
+  #itemDetailPage .itemProgressBar {
+    height: 7px !important;
+    margin: .4em .7em !important;
+  }
+}
+
+/* ===== ACCESSIBILITY ENHANCEMENTS ===== */
+
+/* High contrast mode support */
+@media (prefers-high-contrast: high) {
+  #indexPage .itemProgressBarForeground,
+  .libraryPage .itemProgressBarForeground,
+  #itemDetailPage .itemProgressBarForeground {
+    border: 1px solid var(--text-color) !important;
+  }
+  
+  #indexPage .itemProgressBar,
+  .libraryPage .itemProgressBar,
+  #itemDetailPage .itemProgressBar {
+    border: 1px solid var(--text-color) !important;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  #indexPage .itemProgressBarForeground,
+  .libraryPage .itemProgressBarForeground,
+  #itemDetailPage .itemProgressBarForeground {
+    transition: none !important;
+  }
+}
+
+/* ===== HOVER EFFECTS ===== */
+
+/* Subtle hover effect for better user feedback */
+.cardBox:hover .itemProgressBar {
+  opacity: 1 !important;
+  transform: scaleY(1.1) !important;
+  transition: opacity var(--transition-fast), transform var(--transition-fast) !important;
+}
+
+/* ===== DARK MODE OPTIMIZATIONS ===== */
+
+@media (prefers-color-scheme: dark) {
+  #indexPage .itemProgressBar,
+  .libraryPage .itemProgressBar,
+  #itemDetailPage .itemProgressBar {
+    /* Progress bars are already optimized for dark backgrounds */
+    /* Additional dark mode specific adjustments can be added here */
+  }
+}
+
+/* ===== PERFORMANCE OPTIMIZATIONS ===== */
+
+/* Use transform instead of changing dimensions for better performance */
+#indexPage .itemProgressBarForeground,
+.libraryPage .itemProgressBarForeground,
+#itemDetailPage .itemProgressBarForeground {
+  will-change: transform !important;
+  transform-origin: left center !important;
+}
+
+/* ===== FALLBACK STYLES ===== */
+
+/* Fallback for browsers that don't support CSS custom properties */
+@supports not (color: var(--primary-accent-color)) {
+  #indexPage .itemProgressBarForeground,
+  .libraryPage .itemProgressBarForeground,
+  #itemDetailPage .itemProgressBarForeground {
+    background-color: #00A4DC !important;
+  }
+  
+  #indexPage .itemProgressBar,
+  .libraryPage .itemProgressBar,
+  #itemDetailPage .itemProgressBar {
+    background: rgba(0, 164, 220, 0.2) !important;
+  }
+}

@@ -1,0 +1,93 @@
+/*
+================================================================================
+|                                                                              |
+|                         JELLYFIN JELLYFISH THEME                            |
+|                         JellyBlue Color Scheme (jellyblue-optimized.css)    |
+|                                                                              |
+================================================================================
+
+The classic JellyBlue theme - a vibrant blue color scheme that serves as the
+default for the Jellyfish theme. This optimized version uses the new base
+system for consistency and maintainability.
+*/
+
+/* Import the base color system */
+@import url("_color-base.css");
+
+/* ===== JELLYBLUE THEME DEFINITION ===== */
+:root {
+  /* ===== PRIMARY COLOR (Vibrant Blue) ===== */
+  --primary-r: 0;
+  --primary-g: 164;
+  --primary-b: 220;
+  
+  /* ===== THEME BRANDING ===== */
+  --logo: url("https://i.ibb.co/TqBxLXTx/jfish.png");
+  --background-image: url(https://cdn.jsdelivr.net/gh/n00bcodr/Jellyfish/colors/images/jellyblue.jpg);
+  --footer-message: "🌊 Diving deep into the blue streams!";
+  
+  /* ===== TEXT SYSTEM ===== */
+  --text-color: #ffffff; /* White text for good contrast on blue */
+  
+  /* ===== PRE-CALCULATED HEX VALUES ===== */
+  /* For components that require HEX format */
+  --hex-primary-accent-color: #00A4DCFF;
+  --hex-secondary-accent-color: #00A4DC99;
+  --hex-primary-background-transparent: #00A4DC1A;
+  --hex-secondary-background-transparent: #00A4DC33;
+  
+  /* ===== THEME METADATA ===== */
+  --theme-variant: "JellyBlue";
+  --theme-description: "Classic vibrant blue theme";
+}
+
+/* ===== THEME-SPECIFIC ADJUSTMENTS ===== */
+
+/* Enhance blue theme with subtle gradients */
+.cardBox:hover {
+  background: linear-gradient(135deg, 
+    var(--secondary-background-color), 
+    var(--primary-background-transparent)) !important;
+}
+
+/* Blue theme specific button styling */
+.emby-button-tv:focus,
+.emby-button:focus {
+  background-color: var(--primary-accent-color) !important;
+  color: white !important;
+}
+
+/* ===== ACCESSIBILITY ENHANCEMENTS ===== */
+
+/* Ensure sufficient contrast for blue theme */
+@media (prefers-contrast: high) {
+  :root {
+    --primary-r: 0;
+    --primary-g: 140;  /* Slightly darker blue for better contrast */
+    --primary-b: 200;
+  }
+}
+
+/* ===== RESPONSIVE ADJUSTMENTS ===== */
+
+/* Mobile optimizations for blue theme */
+@media (max-width: 600px) {
+  :root {
+    /* Slightly more transparent backgrounds on mobile for better performance */
+    --primary-background-transparent: rgba(var(--primary-r), var(--primary-g), var(--primary-b), 0.08);
+    --secondary-background-transparent: rgba(var(--primary-r), var(--primary-g), var(--primary-b), 0.15);
+  }
+}
+
+/* ===== DARK MODE COMPATIBILITY ===== */
+@media (prefers-color-scheme: dark) {
+  /* JellyBlue is already optimized for dark mode */
+  /* Additional dark mode specific adjustments can be added here */
+}
+
+/* ===== THEME VALIDATION ===== */
+/* Ensure the blue theme is working correctly */
+.jellyblue-theme-test {
+  color: var(--primary-accent-color);
+  background-color: var(--primary-background-transparent);
+}
