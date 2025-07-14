@@ -1,318 +1,450 @@
 (function() {
-    let currentVideo = null;
-    let currentItemId = null;
-    let userId = null;
-    let token = null;
-    let lastItemIdCheck = 0;
-    let cleanupListeners = null;
+    'use strict';
 
-    // Create overlay with all styling
-    const overlay = document.createElement("div");
-    overlay.id = "video-overlay";
-    overlay.style.cssText = `
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0, 0, 0, 0.7);
-        z-index: 0;
-        display: none;
-        align-items: center;
-        justify-content: center;
-        color: white;
-    `;
+    class JellyfinPauseScreen {
+        constructor() {
+            this.currentVideo = null;
+            this.currentItemId = null;
+            this.userId = null;
+            this.token = null;
+            this.lastItemIdCheck = 0;
+            this.cleanupListeners = null;
+            this.imageCache = new Map();
+            this.observer = null;
 
-    const overlayContent = document.createElement("div");
-    overlayContent.id = "overlay-content";
-    overlayContent.style.cssText = "display: flex; align-items: center; justify-content: center; text-align: center;";
+            // DOM elements
+            this.overlay = null;
+            this.overlayContent = null;
+            this.overlayLogo = null;
+            this.overlayPlot = null;
+            this.overlayDetails = null;
+            this.overlayDisc = null;
 
-    const overlayLogo = document.createElement("img");
-    overlayLogo.id = "overlay-logo";
-    overlayLogo.style.cssText = "width: 50vw; height: auto; margin-right: 50vw; display: none;";
-
-    const overlayPlot = document.createElement("div");
-    overlayPlot.id = "overlay-plot";
-    overlayPlot.style.cssText = "top: 38vh; max-width: 40%; height: 50vh; display: block; right: 5vw; position: absolute;";
-
-    const overlayDetails = document.createElement("div");
-    overlayDetails.id = "overlay-details";
-    overlayDetails.style.cssText = "position: absolute; top: 55%; left: 19vw; margin-left: 12vw; transform: translateX(-50%); width: 50vw; font-size: 20px; display: flex; justify-content: center; gap: 30px; font-family: inherit;";
-
-    overlayContent.appendChild(overlayLogo);
-    overlayContent.appendChild(overlayPlot);
-    overlay.appendChild(overlayContent);
-    overlay.appendChild(overlayDetails);
-
-    const overlayDisc = document.createElement("img");
-    overlayDisc.id = "overlay-disc";
-    overlayDisc.style.cssText = `
-        position: absolute;
-        top: 5vh;
-        right: 4vw;
-        width: 10vw;
-        height: auto;
-        display: none;
-        animation: spin 10s linear infinite;
-    `;
-    overlay.appendChild(overlayDisc);
-
-    const discStyle = document.createElement("style");
-    discStyle.textContent = `
-        @keyframes spin {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
+            this.init();
         }
-    `;
-    document.head.appendChild(discStyle);
 
-    document.body.appendChild(overlay);
+        init() {
+            const credentials = this.getCredentials();
+            if (!credentials) {
+                console.error("Jellyfin credentials not found");
+                return;
+            }
 
-    const styleOverride = document.createElement("style");
-    styleOverride.textContent = `
-        .videoOsdBottom {
-            z-index: 1 !important;
+            this.userId = credentials.userId;
+            this.token = credentials.token;
+
+            this.createOverlay();
+            this.setupVideoObserver();
         }
-        video {
-            z-index: -1 !important;
-        }
-    `;
-    document.head.appendChild(styleOverride);
 
-    // Click handler for overlay
-    overlay.addEventListener('click', function(event) {
-        if (event.target === overlay) {
-            overlay.style.display = "none";
-            if (currentVideo && currentVideo.paused) {
-                currentVideo.play();
+        getCredentials() {
+            const creds = localStorage.getItem("jellyfin_credentials");
+            if (!creds) return null;
+
+            try {
+                const parsed = JSON.parse(creds);
+                const server = parsed.Servers?.[0];
+                return server ? { token: server.AccessToken, userId: server.UserId } : null;
+            } catch {
+                return null;
             }
         }
-    });
 
-    const getCredentials = () => {
-        const creds = localStorage.getItem("jellyfin_credentials");
-        if (!creds) return null;
-        try {
-            const parsed = JSON.parse(creds);
-            const server = parsed.Servers[0];
-            return { token: server.AccessToken, userId: server.UserId };
-        } catch {
-            return null;
-        }
-    };
-
-    const clearDisplayData = () => {
-        overlayPlot.textContent = "";
-        overlayDetails.innerHTML = "";
-        overlayLogo.src = "";
-        overlayLogo.style.display = "none";
-        overlayDisc.src = "";
-        overlayDisc.style.display = "none";
-    };
-
-    const fetchItemInfo = async (itemId) => {
-        clearDisplayData(); // Clear old data before fetching new
-
-        try {
-            const domain = window.location.origin;
-
-            // First fetch basic item info
-            const itemResp = await fetch(`${domain}/Items/${itemId}`, {
-                headers: { "X-Emby-Token": token }
-            });
-            const item = await itemResp.json();
-
-            // Get Year, Rating, and Runtime
-            const year = item.ProductionYear || "";
-            const rating = item.OfficialRating || "";
-            let runtime = "";
-
-            if (item.RunTimeTicks) {
-                const totalMinutes = Math.floor(item.RunTimeTicks / 600000000);
-                const hours = Math.floor(totalMinutes / 60);
-                const minutes = totalMinutes % 60;
-                if (hours > 0) {
-                    runtime = `${hours}h ${minutes}m`;
-                } else {
-                    runtime = `${minutes}m`;
+        createOverlay() {
+            // Add CSS styles
+            const style = document.createElement("style");
+            style.textContent = `
+                #video-overlay {
+                    position: fixed;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    background: rgba(0, 0, 0, 0.8);
+                    z-index: 0;
+                    display: none;
+                    align-items: center;
+                    justify-content: center;
+                    color: white;
                 }
-            }
 
-            // Display the details, using spans for separation
-            overlayDetails.innerHTML = `
-                ${year ? `<span>${year}</span>` : ''}
-                ${rating ? `<span class="mediaInfoOfficialRating" rating="${rating}">${rating}</span>` : ''}
-                ${runtime ? `<span>${runtime}</span>` : ''}
+                #overlay-content {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    text-align: center;
+                }
+
+                #overlay-logo {
+                    width: 50vw;
+                    height: auto;
+                    margin-right: 50vw;
+                    display: none;
+                }
+
+                #overlay-plot {
+                    top: 38vh;
+                    max-width: 40%;
+                    height: 50vh;
+                    display: block;
+                    right: 5vw;
+                    position: absolute;
+                }
+
+                #overlay-details {
+                    position: absolute;
+                    top: 55%;
+                    left: 19vw;
+                    margin-left: 12vw;
+                    transform: translateX(-50%);
+                    width: 50vw;
+                    font-size: 20px;
+                    display: flex;
+                    justify-content: center;
+                    gap: 30px;
+                    font-family: inherit;
+                }
+
+                #overlay-disc {
+                    position: absolute;
+                    top: 5vh;
+                    right: 4vw;
+                    width: 10vw;
+                    height: auto;
+                    display: none;
+                    animation: spin 10s linear infinite;
+                }
+
+                @keyframes spin {
+                    from { transform: rotate(0deg); }
+                    to { transform: rotate(360deg); }
+                }
+
+                .videoOsdBottom {
+                    z-index: 1 !important;
+                }
+
+                video {
+                    z-index: -1 !important;
+                }
             `;
+            document.head.appendChild(style);
 
-            overlayPlot.textContent = item.Overview || "No description available";
+            // Create overlay structure
+            this.overlay = document.createElement("div");
+            this.overlay.id = "video-overlay";
 
-            // Try to get logo image
-            if (item.ImageTags && item.ImageTags.Logo) {
-                overlayLogo.src = `${domain}/Items/${itemId}/Images/Logo?tag=${item.ImageTags.Logo}`;
-                overlayLogo.style.display = "block";
-            } else {
-                // Also try parent items for logo if current item doesn't have one
-                const logoUrls = [
-                    item.ParentId ? `${domain}/Items/${item.ParentId}/Images/Logo` : null,
-                    item.SeriesId ? `${domain}/Items/${item.SeriesId}/Images/Logo` : null
-                ].filter(Boolean);
+            this.overlayContent = document.createElement("div");
+            this.overlayContent.id = "overlay-content";
 
-                for (const url of logoUrls) {
-                    try {
-                        const img = new Image();
-                        img.src = url;
-                        await new Promise((resolve, reject) => {
-                            img.onload = resolve;
-                            img.onerror = reject;
-                            setTimeout(() => reject(), 1000);
-                        });
-                        overlayLogo.src = url;
-                        overlayLogo.style.display = "block";
-                        break;
-                    } catch {
-                        continue;
+            this.overlayLogo = document.createElement("img");
+            this.overlayLogo.id = "overlay-logo";
+
+            this.overlayPlot = document.createElement("div");
+            this.overlayPlot.id = "overlay-plot";
+
+            this.overlayDetails = document.createElement("div");
+            this.overlayDetails.id = "overlay-details";
+
+            this.overlayDisc = document.createElement("img");
+            this.overlayDisc.id = "overlay-disc";
+
+            // Assemble overlay
+            this.overlayContent.appendChild(this.overlayLogo);
+            this.overlayContent.appendChild(this.overlayPlot);
+            this.overlay.appendChild(this.overlayContent);
+            this.overlay.appendChild(this.overlayDetails);
+            this.overlay.appendChild(this.overlayDisc);
+
+            document.body.appendChild(this.overlay);
+
+            // Add click handler
+            this.overlay.addEventListener('click', (event) => {
+                if (event.target === this.overlay) {
+                    this.hideOverlay();
+                    if (this.currentVideo?.paused) {
+                        this.currentVideo.play();
                     }
                 }
+            });
+        }
+
+        setupVideoObserver() {
+            // Use MutationObserver for better performance than continuous polling
+            this.observer = new MutationObserver(() => {
+                this.checkForVideoChanges();
+            });
+
+            this.observer.observe(document.body, {
+                childList: true,
+                subtree: true
+            });
+
+            // Initial check
+            this.checkForVideoChanges();
+        }
+
+        checkForVideoChanges() {
+            const video = document.querySelector(".videoPlayerContainer video");
+
+            if (video && video !== this.currentVideo) {
+                this.handleVideoChange(video);
+            } else if (!video && this.currentVideo) {
+                this.clearState();
+            }
+        }
+
+        async handleVideoChange(video) {
+            this.clearState();
+            this.currentVideo = video;
+            this.cleanupListeners = this.attachVideoListeners(video);
+
+            const itemId = this.checkForItemId(true);
+            if (itemId) {
+                this.currentItemId = itemId;
+                await this.fetchItemInfo(itemId);
+            }
+        }
+
+        checkForItemId(force = false) {
+            const now = Date.now();
+            if (!force && now - this.lastItemIdCheck < 500) {
+                return this.currentItemId;
+            }
+            this.lastItemIdCheck = now;
+
+            const selectors = [
+                '.videoOsdBottom-hidden > div:nth-child(1) > div:nth-child(4) > button:nth-child(3)',
+                'div.page:nth-child(3) > div:nth-child(3) > div:nth-child(1) > div:nth-child(4) > button:nth-child(3)',
+                '.btnUserRating'
+            ];
+
+            for (const selector of selectors) {
+                const ratingButton = document.querySelector(selector);
+                const dataId = ratingButton?.getAttribute('data-id');
+                if (dataId) {
+                    return dataId;
+                }
             }
 
-            // Try disc image sources in order
-            const tryDiscImage = async (url) => {
-                try {
-                    const img = new Image();
-                    img.src = url;
-                    await new Promise((resolve, reject) => {
-                        img.onload = resolve;
-                        img.onerror = reject;
-                        setTimeout(() => reject(), 1000);
-                    });
-                    return url;
-                } catch {
-                    return null;
+            return null;
+        }
+
+        attachVideoListeners(video) {
+            const handlePause = () => {
+                if (video === this.currentVideo && !video.ended) {
+                    const newItemId = this.checkForItemId(true);
+                    if (newItemId && newItemId !== this.currentItemId) {
+                        this.currentItemId = newItemId;
+                        this.fetchItemInfo(newItemId);
+                    }
+                    this.showOverlay();
                 }
             };
 
-            const discUrls = [
-                `${domain}/Items/${itemId}/Images/Disc`,
-                item.ParentId ? `${domain}/Items/${item.ParentId}/Images/Disc` : null,
-                item.SeriesId ? `${domain}/Items/${item.SeriesId}/Images/Disc` : null
-            ].filter(Boolean);
+            const handlePlay = () => {
+                if (video === this.currentVideo) {
+                    this.hideOverlay();
+                }
+            };
+
+            video.addEventListener("pause", handlePause);
+            video.addEventListener("play", handlePlay);
+
+            return () => {
+                video.removeEventListener("pause", handlePause);
+                video.removeEventListener("play", handlePlay);
+            };
+        }
+
+        showOverlay() {
+            this.overlay.style.display = "flex";
+        }
+
+        hideOverlay() {
+            this.overlay.style.display = "none";
+        }
+
+        clearDisplayData() {
+            this.overlayPlot.textContent = "";
+            this.overlayDetails.innerHTML = "";
+            this.overlayLogo.src = "";
+            this.overlayLogo.style.display = "none";
+            this.overlayDisc.src = "";
+            this.overlayDisc.style.display = "none"; // Fixed: Always hide disc when clearing
+        }
+
+        async fetchItemInfo(itemId) {
+            this.clearDisplayData();
+
+            try {
+                const domain = window.location.origin;
+                const item = await this.fetchWithRetry(`${domain}/Items/${itemId}`, {
+                    headers: { "X-Emby-Token": this.token }
+                });
+
+                await this.displayItemInfo(item, domain, itemId);
+            } catch (error) {
+                console.error("Error fetching item info:", error);
+                this.overlayPlot.textContent = "Unable to fetch item info.";
+            }
+        }
+
+        async fetchWithRetry(url, options, maxRetries = 2) {
+            for (let i = 0; i <= maxRetries; i++) {
+                try {
+                    const response = await fetch(url, options);
+                    if (!response.ok) {
+                        throw new Error(`HTTP ${response.status}`);
+                    }
+                    return await response.json();
+                } catch (error) {
+                    if (i === maxRetries) throw error;
+                    await new Promise(resolve => setTimeout(resolve, 1000 * (i + 1)));
+                }
+            }
+        }
+
+        async displayItemInfo(item, domain, itemId) {
+            // Display basic info
+            const year = item.ProductionYear || "";
+            const rating = item.OfficialRating || "";
+            const runtime = this.formatRuntime(item.RunTimeTicks);
+
+            this.overlayDetails.innerHTML = [
+                year && `<span>${year}</span>`,
+                rating && `<span class="mediaInfoOfficialRating" rating="${rating}">${rating}</span>`,
+                runtime && `<span>${runtime}</span>`
+            ].filter(Boolean).join('');
+
+            this.overlayPlot.textContent = item.Overview || "No description available";
+
+            // Load images concurrently
+            await Promise.allSettled([
+                this.loadLogo(item, domain, itemId),
+                this.loadDisc(item, domain, itemId)
+            ]);
+        }
+
+        formatRuntime(runTimeTicks) {
+            if (!runTimeTicks) return "";
+
+            const totalMinutes = Math.floor(runTimeTicks / 600000000);
+            const hours = Math.floor(totalMinutes / 60);
+            const minutes = totalMinutes % 60;
+
+            return hours > 0 ? `${hours}h ${minutes}m` : `${minutes}m`;
+        }
+
+        async loadLogo(item, domain, itemId) {
+            const logoUrls = this.getLogoUrls(item, domain, itemId);
+
+            for (const url of logoUrls) {
+                if (await this.tryLoadImage(url)) {
+                    this.overlayLogo.src = url;
+                    this.overlayLogo.style.display = "block";
+                    return;
+                }
+            }
+        }
+
+        async loadDisc(item, domain, itemId) {
+            const discUrls = this.getDiscUrls(item, domain, itemId);
 
             for (const url of discUrls) {
-                const validUrl = await tryDiscImage(url);
-                if (validUrl) {
-                    overlayDisc.src = validUrl;
-                    overlayDisc.style.display = "block";
-                    break;
+                if (await this.tryLoadImage(url)) {
+                    this.overlayDisc.src = url;
+                    this.overlayDisc.style.display = "block";
+                    return;
                 }
             }
-
-        } catch (e) {
-            console.error("Error fetching item info:", e);
-            overlayPlot.textContent = "Unable to fetch item info.";
-            overlayLogo.style.display = "none";
-            overlayDisc.style.display = "none";
+            // Fixed: Disc remains hidden if no valid image is found
         }
-    };
 
-    // Optimized item ID check
-    const checkForItemId = (force = false) => {
-        const now = Date.now();
-        if (!force && now - lastItemIdCheck < 500) {
-            return currentItemId;
+        getLogoUrls(item, domain, itemId) {
+            const urls = [];
+
+            if (item.ImageTags?.Logo) {
+                urls.push(`${domain}/Items/${itemId}/Images/Logo?tag=${item.ImageTags.Logo}`);
+            }
+
+            if (item.ParentId) {
+                urls.push(`${domain}/Items/${item.ParentId}/Images/Logo`);
+            }
+
+            if (item.SeriesId) {
+                urls.push(`${domain}/Items/${item.SeriesId}/Images/Logo`);
+            }
+
+            return urls;
         }
-        lastItemIdCheck = now;
 
-        const selectors = [
-            '.videoOsdBottom-hidden > div:nth-child(1) > div:nth-child(4) > button:nth-child(3)',
-            'div.page:nth-child(3) > div:nth-child(3) > div:nth-child(1) > div:nth-child(4) > button:nth-child(3)',
-            '.btnUserRating'
-        ];
+        getDiscUrls(item, domain, itemId) {
+            const urls = [`${domain}/Items/${itemId}/Images/Disc`];
 
-        for (const selector of selectors) {
-            const ratingButton = document.querySelector(selector);
-            if (ratingButton && ratingButton.getAttribute('data-id')) {
-                return ratingButton.getAttribute('data-id');
+            if (item.ParentId) {
+                urls.push(`${domain}/Items/${item.ParentId}/Images/Disc`);
+            }
+
+            if (item.SeriesId) {
+                urls.push(`${domain}/Items/${item.SeriesId}/Images/Disc`);
+            }
+
+            return urls;
+        }
+
+        async tryLoadImage(url) {
+            if (this.imageCache.has(url)) {
+                return this.imageCache.get(url);
+            }
+
+            try {
+                const img = new Image();
+                const loaded = new Promise((resolve, reject) => {
+                    img.onload = () => resolve(true);
+                    img.onerror = () => reject(false);
+                    setTimeout(() => reject(false), 3000);
+                });
+
+                img.src = url;
+                const result = await loaded;
+                this.imageCache.set(url, result);
+                return result;
+            } catch {
+                this.imageCache.set(url, false);
+                return false;
             }
         }
 
-        return null;
-    };
+        clearState() {
+            this.hideOverlay();
+            this.clearDisplayData();
 
-    const attachVideoListeners = (video) => {
-        const handlePause = () => {
-            if (video === currentVideo && !video.ended) {
-                const newItemId = checkForItemId(true);
-                if (newItemId && newItemId !== currentItemId) {
-                    currentItemId = newItemId;
-                    fetchItemInfo(newItemId);
-                }
-                overlay.style.display = "flex";
+            if (this.cleanupListeners) {
+                this.cleanupListeners();
+                this.cleanupListeners = null;
             }
-        };
 
-        const handlePlay = () => {
-            if (video === currentVideo) {
-                overlay.style.display = "none";
-            }
-        };
-
-        video.addEventListener("pause", handlePause);
-        video.addEventListener("play", handlePlay);
-
-        return () => {
-            video.removeEventListener("pause", handlePause);
-            video.removeEventListener("play", handlePlay);
-        };
-    };
-
-    const clearState = () => {
-        overlay.style.display = "none";
-        clearDisplayData();
-        if (cleanupListeners) {
-            cleanupListeners();
-            cleanupListeners = null;
+            this.currentItemId = null;
+            this.currentVideo = null;
         }
-        currentItemId = null;
-        currentVideo = null;
-    };
 
-    const scanLoop = async () => {
-        const video = document.querySelector(".videoPlayerContainer video");
-        const itemId = checkForItemId();
+        destroy() {
+            this.clearState();
 
-        if (video && video !== currentVideo) {
-            clearState();
-            currentVideo = video;
-            cleanupListeners = attachVideoListeners(video);
+            if (this.observer) {
+                this.observer.disconnect();
+                this.observer = null;
+            }
 
-            const newItemId = checkForItemId(true);
-            if (newItemId) {
-                currentItemId = newItemId;
-                await fetchItemInfo(newItemId);
+            this.imageCache.clear();
+
+            if (this.overlay?.parentNode) {
+                this.overlay.parentNode.removeChild(this.overlay);
             }
         }
-
-        if (video && itemId && itemId !== currentItemId) {
-            currentItemId = itemId;
-            await fetchItemInfo(itemId);
-        }
-
-        if (!video && currentVideo) {
-            clearState();
-        }
-
-        requestAnimationFrame(scanLoop);
-    };
-
-    // Initialize
-    const creds = getCredentials();
-    if (!creds) {
-        console.error("Jellyfin credentials not found");
-        return;
     }
-    userId = creds.userId;
-    token = creds.token;
 
-    requestAnimationFrame(scanLoop);
+    // Initialize the pause screen
+    new JellyfinPauseScreen();
 })();

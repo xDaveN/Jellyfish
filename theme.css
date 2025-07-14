@@ -1450,15 +1450,12 @@ h3.tagline {
 
 .skip-button:hover {
     transform: scale(1.05);
-    box-shadow: 0 0 30px rgba(var(--primary-r), var(--primary-g), var(--primary-b), 0.8) !important; /* Accent-colored shadow */
+    box-shadow: 0 0 30px rgba(var(--primary-r), var(--primary-g), var(--primary-b), 0.8)!important; /* Accent-colored shadow */
 }
 
 /* Mobile-specific styling for the skip button. */
  .layout-mobile .skip-button {
-    color: var(--primary-alt1) !important;
-    margin-right: 5% !important;
-    margin-bottom: 5% !important;
-    font-size: .8em !important;
+    box-shadow: 0 0 30px rgba(var(--primary-r), var(--primary-g), var(--primary-b), 0.7)!important;
     padding: 10px 10px !important;
 }
 
@@ -1754,7 +1751,7 @@ h3.tagline {
 .layout-desktop .appfooter .nowPlayingBarInfoContainer { margin-left: 10px !important; }
 
 /* Styling for the volume OSD (On-Screen Display) in the desktop layout. */
-.layout-desktop .volumeOsd {
+.volumeOsd {
     border-radius: var(--rounded-cards) !important;
     background: var(--secondary-background-transparent) !important; /* Use theme's transparent background */
 }

@@ -1,37 +1,137 @@
-document.addEventListener("DOMContentLoaded", function() {
-    // Check if the title is "Jellyfin" before changing it
-    if (document.title === "Jellyfin")
-    {
-        document.title = "Jellyfish";
+/**
+ * Jellyfin Title Changer
+ * Handles multiple scenarios and edge cases
+ */
+(function() {
+    'use strict';
+
+    // Configuration
+    const CONFIG = {
+        FROM_TITLE: 'Jellyfin',
+        TO_TITLE: 'Jellyfish',
+        CASE_SENSITIVE: false,
+        TRIM_WHITESPACE: true,
+        DEBUG: false
+    };
+
+    // Utility functions
+    const log = CONFIG.DEBUG ? console.log.bind(console, '[TitleChanger]') : () => {};
+    const titleElement = document.querySelector('title');
+    let observer = null;
+    let isProcessing = false;
+
+    // Normalize title for comparison
+    function normalizeTitle(title) {
+        if (!title) return '';
+        let normalized = CONFIG.TRIM_WHITESPACE ? title.trim() : title;
+        return CONFIG.CASE_SENSITIVE ? normalized : normalized.toLowerCase();
     }
 
-    // Create a MutationObserver to prevent any changes to the title
-    const observer = new MutationObserver(function(mutations) {
-        mutations.forEach(function(mutation) {
-            if (mutation.type === 'childList') {
-                // Only change the title if it's set to "Jellyfin"
-                if (document.title === "Jellyfin") {
-                    document.title = "Jellyfish";
+    // Check if title should be changed
+    function shouldChangeTitle(title) {
+        const normalizedTitle = normalizeTitle(title);
+        const normalizedFrom = normalizeTitle(CONFIG.FROM_TITLE);
+        return normalizedTitle === normalizedFrom;
+    }
+
+    // Safely change the title
+    function changeTitle(newTitle = CONFIG.TO_TITLE) {
+        if (isProcessing) return;
+        isProcessing = true;
+
+        try {
+            if (titleElement) {
+                titleElement.textContent = newTitle;
+                log(`Title changed to: ${newTitle}`);
+            }
+        } catch (error) {
+            log('Error changing title:', error);
+        } finally {
+            isProcessing = false;
+        }
+    }
+
+    // Process title change
+    function processTitle() {
+        const currentTitle = titleElement?.textContent || document.title;
+        if (shouldChangeTitle(currentTitle)) {
+            changeTitle();
+        }
+    }
+
+    // Initialize title processing
+    function init() {
+        if (!titleElement) {
+            log('Title element not found');
+            return;
+        }
+
+        // Initial title check
+        processTitle();
+
+        // Enhanced MutationObserver
+        observer = new MutationObserver((mutations) => {
+            let shouldProcess = false;
+
+            mutations.forEach((mutation) => {
+                if (mutation.type === 'childList' || mutation.type === 'characterData') {
+                    shouldProcess = true;
                 }
+            });
+
+            if (shouldProcess) {
+                requestAnimationFrame(processTitle);
             }
         });
-    });
 
-    // Observe the document title for changes
-    observer.observe(document.querySelector('title'), { childList: true });
+        // Observe with comprehensive options
+        observer.observe(titleElement, {
+            childList: true,
+            characterData: true,
+            subtree: true
+        });
 
-    // Set up a fallback in case of attempts to change the title through direct assignment
-    Object.defineProperty(document, 'title', {
-        set: function(value) {
-            // Only allow the title to change if the new value is "Jellyfin"
-            if (value === "Jellyfin") {
-                document.querySelector('title').textContent = "Jellyfish";
-            } else {
-                document.querySelector('title').textContent = value;
-            }
-        },
-        get: function() {
-            return document.querySelector('title').textContent;
+        // Enhanced property descriptor
+        const originalDescriptor = Object.getOwnPropertyDescriptor(Document.prototype, 'title') ||
+                                 Object.getOwnPropertyDescriptor(HTMLDocument.prototype, 'title');
+
+        if (originalDescriptor) {
+            Object.defineProperty(document, 'title', {
+                get: function() {
+                    return titleElement?.textContent || '';
+                },
+                set: function(value) {
+                    if (titleElement) {
+                        titleElement.textContent = shouldChangeTitle(value) ? CONFIG.TO_TITLE : value;
+                    }
+                },
+                configurable: true,
+                enumerable: true
+            });
         }
-    });
-});
+
+        // Periodic check as fallback
+        const intervalId = setInterval(() => {
+            processTitle();
+        }, 1000);
+
+        // Cleanup on page unload
+        window.addEventListener('beforeunload', () => {
+            if (observer) {
+                observer.disconnect();
+                observer = null;
+            }
+            clearInterval(intervalId);
+            log('Cleanup completed');
+        });
+
+        log('Title changer initialized');
+    }
+
+    // Start when DOM is ready
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init);
+    } else {
+        init();
+    }
+})();
