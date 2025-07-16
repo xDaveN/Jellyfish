@@ -31,7 +31,8 @@ body, h1, h2, h3, h4, h5, h6, p {
 
 /* hide scrollbars */
 * {
-  scrollbar-color : transparent transparent !important
+  scrollbar-color : transparent transparent !important;
+  scrollbar-width: none !important;
 }
 
 .emby-button.block, .dashboardDocument .material-icons.check:before, .displayPreferencesPage .material-icons.check:before {
@@ -994,12 +995,7 @@ h3.tagline {
 }
 
 .itemTags.focuscontainer-x {
-    margin-bottom: 25px !important; /* Spacing below the tags section */
-}
-
-.itemTags.focuscontainer-x > a.button-link.emby-button:hover {
-    transform: none; /* Prevents scaling on hover for tag buttons */
-    transition: none;
+    display: none; /* Hide tags section*/
 }
 
 /* == Card Styling for Top-Right Buttons (Details Page) == */
@@ -1074,7 +1070,6 @@ h3.tagline {
 .trackSelections .selectContainer .detailTrackSelect {
     padding: 0 10px;
     margin-left: 10px !important;
-    /* background: none !important; */
     border: none !important;
     max-width: 70em !important; /* Ensures dropdowns fit within the track selection area */
     width: 70em !important; /* Matches the width of the track selection area */
@@ -1926,6 +1921,13 @@ h3.tagline {
     margin-top: 5%; /* Add top margin to push it down from the media bar */
     height: auto;   /* Allow natural height */
 }
+/* if section0 is Next Up section and there is nothing in next up, hide add margin to next section
+ */
+.section0.hide + .section1 {
+    margin-top: 5%;
+    height: auto;   /* Allow natural height */
+}
+
 /* Standardizes font family for various text elements often found near or related to the media bar. */
 .genre, .plot, .rating-value, .rating-value span, .date, .age-rating span, .runTime, .featured-content, .button-container button, .play-text {
     font-family: Noto Sans, Noto Sans HK, Noto Sans JP, Noto Sans KR, Noto Sans SC, Noto Sans TC, sans-serif !important;
@@ -2017,16 +2019,4 @@ h3.tagline {
 .layout-desktop #itemDetailPage:has(button.btnPlaystate[data-type="Book"]) .itemMiscInfo {
     margin-left: 11px !important;
     margin-top: 11px !important;
-}
-
-/* ~~~~~~~~~~~~~~~~~~~~ Hide aphrodite-overlay tag ~~~~~~~~~~~~~~~~~~~~ */
-
-/* Hide tags section if the only tag is aphrodite-overlay */
-.itemTags:has(a[href*="aphrodite-overlay"]:only-child) {
-    display: none;
-}
-
-/* If the tag is present but not the only one, hide it specifically */
-.itemTags a[href*="aphrodite-overlay"] {
-    display: none;
 }
