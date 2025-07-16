@@ -1,3 +1,5 @@
+// This is a modified version of the Jellyfin Pause Screen script by BobHasNoSoul. - https://github.com/BobHasNoSoul/Jellyfin-PauseScreen
+
 (function() {
     'use strict';
 
@@ -63,61 +65,188 @@
                     background: rgba(0, 0, 0, 0.8);
                     z-index: 0;
                     display: none;
-                    align-items: center;
-                    justify-content: center;
                     color: white;
+                    font-family: inherit;
                 }
 
                 #overlay-content {
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    text-align: center;
+                    position: relative;
+                    width: 100%;
+                    height: 100%;
                 }
 
                 #overlay-logo {
-                    width: 50vw;
+                    position: absolute;
+                    max-width: 45vw;
+                    max-height: 20vh;
+                    width: auto;
                     height: auto;
-                    margin-right: 50vw;
-                    display: none;
+                    top: 20vh;
+                    left: 8vw;
+                    display: block;
+                    object-fit: contain;
                 }
 
                 #overlay-plot {
-                    top: 38vh;
-                    max-width: 40%;
+                    position: absolute;
+                    top: 55vh;
+                    left: 8vw;
+                    max-width: 50vw;
                     height: 50vh;
                     display: block;
-                    right: 5vw;
-                    position: absolute;
+                    font-size: 18px;
+                    line-height: 1.6;
+                    overflow-y: auto;
+                    text-align: left;
                 }
 
                 #overlay-details {
                     position: absolute;
-                    top: 55%;
-                    left: 19vw;
-                    margin-left: 12vw;
-                    transform: translateX(-50%);
-                    width: 50vw;
-                    font-size: 20px;
+                    top: 45vh;
+                    left: 8vw;
+                    font-size: 16px;
                     display: flex;
-                    justify-content: center;
-                    gap: 30px;
-                    font-family: inherit;
+                    gap: 2rem;
+                    align-items: center;
                 }
 
                 #overlay-disc {
                     position: absolute;
-                    top: 5vh;
-                    right: 4vw;
-                    width: 10vw;
+                    top: calc(50vh - (26vw / 2));
+                    right: 5vw;
+                    width: 26vw;
                     height: auto;
-                    display: none;
-                    animation: spin 10s linear infinite;
+                    display: block;
+                    animation: 30s linear infinite spin;
+                    z-index: 1;
+                    filter: brightness(80%);
                 }
 
                 @keyframes spin {
                     from { transform: rotate(0deg); }
                     to { transform: rotate(360deg); }
+                }
+
+                /* Tablet and smaller desktop screens */
+                @media (max-width: 1400px) {
+                    #overlay-logo {
+                        max-width: 40vw;
+                        left: 6vw;
+                        top: 18vh;
+                    }
+
+                    #overlay-details {
+                        left: 6vw;
+                        top: 42vh;
+                        font-size: 16px;
+                    }
+
+                    #overlay-plot {
+                        top: 50vh;
+                        left: 6vw;
+                        max-width: 48vw;
+                        font-size: 16px;
+                    }
+
+                    #overlay-disc {
+                        width: 24vw;
+                        top: calc(50vh - (24vw / 2));
+                        right: 4vw;
+                    }
+                }
+
+                /* Tablet screens */
+                @media (max-width: 768px) {
+                    #overlay-logo {
+                        max-width: 70vw;
+                        left: 50%;
+                        transform: translateX(-50%);
+                        top: 12vh;
+                    }
+
+                    #overlay-details {
+                        left: 50%;
+                        transform: translateX(-50%);
+                        top: 32vh;
+                        font-size: 14px;
+                        justify-content: center;
+                    }
+
+                    #overlay-plot {
+                        top: 40vh;
+                        left: 50%;
+                        transform: translateX(-50%);
+                        max-width: 85vw;
+                        text-align: center;
+                        font-size: 15px;
+                        height: 45vh;
+                    }
+
+                    #overlay-disc {
+                        width: 18vw;
+                        top: calc(50vh - (18vw / 2));
+                        right: 3vw;
+                    }
+                }
+
+                /* Mobile screens */
+                @media (max-width: 480px) {
+                    #overlay-logo {
+                        max-width: 80vw;
+                        top: 10vh;
+                    }
+
+                    #overlay-details {
+                        top: 26vh;
+                        font-size: 12px;
+                        gap: 0.8rem;
+                        flex-wrap: wrap;
+                    }
+
+                    #overlay-plot {
+                        top: 34vh;
+                        max-width: 90vw;
+                        font-size: 14px;
+                        height: 50vh;
+                    }
+
+                    #overlay-disc {
+                        width: 16vw;
+                        top: calc(50vh - (16vw / 2));
+                        right: 2vw;
+                    }
+                }
+
+                /* Very small mobile screens */
+                @media (max-width: 360px) {
+                    #overlay-logo {
+                        max-width: 85vw;
+                        top: 8vh;
+                    }
+
+                    #overlay-details {
+                        top: 22vh;
+                        font-size: 11px;
+                        gap: 0.6rem;
+                    }
+
+                    #overlay-plot {
+                        top: 30vh;
+                        max-width: 95vw;
+                        font-size: 13px;
+                        height: 55vh;
+                    }
+
+                    #overlay-disc {
+                        width: 14vw;
+                        top: calc(50vh - (14vw / 2));
+                        right: 1vw;
+                    }
+                }
+
+                #overlay-logo:not([src]),
+                #overlay-disc:not([src]) {
+                    display: none;
                 }
 
                 .videoOsdBottom {
@@ -151,16 +280,16 @@
 
             // Assemble overlay
             this.overlayContent.appendChild(this.overlayLogo);
+            this.overlayContent.appendChild(this.overlayDetails);
             this.overlayContent.appendChild(this.overlayPlot);
             this.overlay.appendChild(this.overlayContent);
-            this.overlay.appendChild(this.overlayDetails);
             this.overlay.appendChild(this.overlayDisc);
 
             document.body.appendChild(this.overlay);
 
-            // Add click handler
+            // Add click handler to unpause when clicking on overlay
             this.overlay.addEventListener('click', (event) => {
-                if (event.target === this.overlay) {
+                if (event.target === this.overlay || event.target === this.overlayContent) {
                     this.hideOverlay();
                     if (this.currentVideo?.paused) {
                         this.currentVideo.play();
@@ -268,10 +397,8 @@
         clearDisplayData() {
             this.overlayPlot.textContent = "";
             this.overlayDetails.innerHTML = "";
-            this.overlayLogo.src = "";
-            this.overlayLogo.style.display = "none";
-            this.overlayDisc.src = "";
-            this.overlayDisc.style.display = "none"; // Fixed: Always hide disc when clearing
+            this.overlayLogo.removeAttribute('src');
+            this.overlayDisc.removeAttribute('src');
         }
 
         async fetchItemInfo(itemId) {
@@ -342,7 +469,6 @@
             for (const url of logoUrls) {
                 if (await this.tryLoadImage(url)) {
                     this.overlayLogo.src = url;
-                    this.overlayLogo.style.display = "block";
                     return;
                 }
             }
@@ -354,11 +480,9 @@
             for (const url of discUrls) {
                 if (await this.tryLoadImage(url)) {
                     this.overlayDisc.src = url;
-                    this.overlayDisc.style.display = "block";
                     return;
                 }
             }
-            // Fixed: Disc remains hidden if no valid image is found
         }
 
         getLogoUrls(item, domain, itemId) {

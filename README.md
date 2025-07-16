@@ -69,15 +69,6 @@ In item details page, showo text for Play, Trailer, Mark as watched etc.
 ----
 </p>
 
-**Pause Screen**
-
-> [!NOTE]
-> Only works with a custom [pausescreen javascript](https://github.com/BobHasNoSoul/Jellyfin-PauseScreen/blob/main/pausescreen.js)
-
-``` css
-@import url("https://cdn.jsdelivr.net/gh/n00bcodr/Jellyfish/pausescreen.css");
-```
-
 <p align="center">
 ----
 </p>
