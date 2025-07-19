@@ -180,3 +180,8 @@ Streamberry Logo (inspired by Black Mirror) instead of Jellyfish Logo. Included 
 ``` css
 @import url("https://cdn.jsdelivr.net/gh/n00bcodr/Jellyfish/colors/watermelon.css");
 ```
+
+## 🧪 Compatibility
+
+- Works for Movies and TV Shows, should work fine mostly for Music and Books, although I don't use Jellyfin for either of them
+- Works on both mobile app and web browser, known to have issues / not work on Jellyfin Media Player
