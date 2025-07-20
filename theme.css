@@ -1918,13 +1918,13 @@ h3.tagline {
 /* == Font and Overlap Fixes for Media Bar Area == */
 /* Addresses issues with the first content section overlapping the media bar (Now Playing bar) and standardizes fonts in that area. */
 .section0 { /* Assuming .section0 is the first section of content on a page */
-    margin-top: 5%; /* Add top margin to push it down from the media bar */
+    margin-top: 5vh; /* Add top margin to push it down from the media bar */
     height: auto;   /* Allow natural height */
 }
 /* if section0 is Next Up section and there is nothing in next up, hide add margin to next section
  */
 .section0.hide + .section1 {
-    margin-top: 5%;
+    margin-top: 5vh;
     height: auto;   /* Allow natural height */
 }
 
