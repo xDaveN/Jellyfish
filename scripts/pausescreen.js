@@ -296,6 +296,15 @@
                     }
                 }
             });
+            // Add touch event listener
+            this.overlay.addEventListener('touchstart', (event) => {
+                if (event.target === this.overlay || event.target === this.overlayContent) {
+                    this.hideOverlay();
+                    if (this.currentVideo?.paused) {
+                        this.currentVideo.play();
+                    }
+                }
+            });
         }
 
         setupVideoObserver() {
