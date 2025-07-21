@@ -21,6 +21,27 @@ Login page backgrounds from [@ksushlapush](https://unsplash.com/@ksushlapush)
 ``` css
 @import url("https://cdn.jsdelivr.net/gh/n00bcodr/Jellyfish/theme.css");
 ```
+
+<table align="center">
+  <tr>
+    <th style="text-align:center">Home</th>
+    <th style="text-align:center">Item Details</th>
+  </tr>
+  <tr>
+    <td><img src="screenshots/home.png" width="1000"/></td>
+    <td><img src="screenshots/item-details.png" width="1000"/></td>
+  </tr>
+  <tr>
+    <th style="text-align:center">Login I</th>
+    <th style="text-align:center">Login II</th>
+  </tr>
+  <tr>
+    <td><img src="screenshots/login1.png" width="1000"/></td>
+    <td><img src="screenshots/login2.png" width="1000"/></td>
+  </tr>
+</table>
+
+
 <p align="center">
 ----
 </p>
@@ -30,6 +51,18 @@ Login page backgrounds from [@ksushlapush](https://unsplash.com/@ksushlapush)
 ``` css
 @import url("https://cdn.jsdelivr.net/gh/n00bcodr/Jellyfish/progress_bar.css");
 ```
+<table align="center">
+  <tr>
+    <th style="text-align:center">Without</th>
+    <th style="text-align:center">With</th>
+  </tr>
+  <tr>
+    <td><img src="screenshots\progressbar_without.png" width="300"/></td>
+    <td><img src="screenshots\progressbar_with.png" width="300"/></td>
+  </tr>
+</table>
+
+
 <p align="center">
 ----
 </p>
@@ -38,6 +71,18 @@ Login page backgrounds from [@ksushlapush](https://unsplash.com/@ksushlapush)
 ``` css
 @import url("https://cdn.jsdelivr.net/gh/n00bcodr/Jellyfish/indicators.css");
 ```
+<table align="center">
+  <tr>
+    <th style="text-align:center">Without</th>
+    <th style="text-align:center">With</th>
+  </tr>
+  <tr>
+    <td><img src="screenshots\checkbox_without.png" width="250"/></td>
+    <td><img src="screenshots\checkbox_with.png" width="250"/></td>
+  </tr>
+</table>
+
+
 <p align="center">
 ----
 </p>
@@ -45,11 +90,23 @@ Login page backgrounds from [@ksushlapush](https://unsplash.com/@ksushlapush)
 **Text Instead of Icons**
 \
 \
-In item details page, showo text for Play, Trailer, Mark as watched etc.
+In item details page, show text for Play, Trailer, Mark as watched etc.
 
 ``` css
 @import url("https://cdn.jsdelivr.net/gh/n00bcodr/Jellyfish/icontext.css");
 ```
+<table align="center">
+  <tr>
+    <th style="text-align:center">Without</th>
+    <th style="text-align:center">With</th>
+  </tr>
+  <tr>
+    <td><img src="screenshots\icontext_without.png" width="250"/></td>
+    <td><img src="screenshots\icontext_with.png" width="400"/></td>
+  </tr>
+</table>
+
+
 
 <p align="center">
 ----
@@ -57,6 +114,7 @@ In item details page, showo text for Play, Trailer, Mark as watched etc.
 
 **Coloured Parental Ratings**
 
+<img src="screenshots\ratings.png" width="500"/>
 
 > [!NOTE]
 > Only works with a custom [javascript](scripts/rating.js)
@@ -185,3 +243,5 @@ Streamberry Logo (inspired by Black Mirror) instead of Jellyfish Logo. Included 
 
 - Works for Movies and TV Shows, should work fine mostly for Music and Books, although I don't use Jellyfin for either of them
 - Works on both mobile app and web browser, known to have issues / not work on Jellyfin Media Player
+
+
