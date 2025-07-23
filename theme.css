@@ -9,7 +9,6 @@
 
 /* ~~~~~~~~~~~~~~~~~~~~ EXTERNAL IMPORTS ~~~~~~~~~~~~~~~~~~~~ */
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap'); /* Quicksand Font from Google Fonts */
-/* Fetches external icon packs for use within the theme. */
 @import url("https://cdn.jsdelivr.net/gh/Druidblack/jellyfin-icon-metadata@main/public-icon.css"); /* Metadata icons by Druidblack */
 @import url("https://cdn.jsdelivr.net/gh/n00bcodr/Jellyfish@main/fonts/materialSymbolsRounded.css");
 @import url("https://cdn.jsdelivr.net/gh/n00bcodr/Jellyfish@main/loginpage.css");
@@ -19,12 +18,12 @@
 /* Defines core variables used throughout the theme for consistency. */
 :root {
     --theme-updated-on: "21 July 2025 - 06:48 P.M."; /* Date of last theme update */
-    --rounded-cards: 15px; /* Standard border-radius for card-like elements. */
-    --blur: 15px;           /* Default blur intensity for backdrop and other effects. */
+    --rounded-cards: 15px; /* Standard border-radius */
+    --blur: 15px;           /* Default blur intensity */
 }
 
 /* ~~~~~~~~~~~~~~~~~~~~ GLOBAL FONT ~~~~~~~~~~~~~~~~~~~~ */
-/* Sets the primary font for the theme. */
+/* Sets the font for the theme. */
 body, h1, h2, h3, h4, h5, h6, p {
     font-family: 'Quicksand', sans-serif !important;
 }
@@ -85,6 +84,11 @@ progress[aria-valuenow]:before,               /* Progress bar fill (pseudo-eleme
     background: var(--secondary-accent-color) !important;
 }
 
+.MuiMenu-paper {
+    background: var(--secondary-background-transparent) !important;
+    backdrop-filter: blur(var(--blur)) !important;
+}
+
 .dialog-fixedSize.dialog-small .formDialogHeader,
 .dialog-fixedSize.dialog-small .formDialogFooter {
     background: var(--secondary-accent-color) !important;
@@ -96,7 +100,7 @@ progress[aria-valuenow]:before,               /* Progress bar fill (pseudo-eleme
     background: var(--secondary-background-transparent);
 }
 
-.iconOsdProgressOuter                           /* Outer ring of OSD circular progress indicators */
+.iconOsdProgressOuter   /* Outer ring of OSD circular progress indicators */
 {
     background: #ffffffc0 !important;
 }
@@ -542,7 +546,7 @@ progress::-webkit-progress-value  /* Filled part of the progress bar (WebKit) */
 /* == Sidebar Styling (Mobile) == */
 /* Basic styling for the mobile sidebar. */
 .layout-mobile .mainDrawer {
-    width: 275px !important;
+    width: 250px !important;
 }
 .layout-mobile .mainDrawer-scrollContainer {
     margin-top: 15px !important; /* Top margin for scrollable content */
@@ -637,7 +641,7 @@ progress::-webkit-progress-value  /* Filled part of the progress bar (WebKit) */
 /* Styles specific to the mobile header behavior and appearance. */
 
 .layout-mobile .skinHeader {
-    transition: .1s !important; /* Short transition for header movements */
+    transition: .5s !important; /* Short transition for header movements */
 }
 /* Default state for unpinned (scrolled down) header. */
 .layout-mobile .headroom--unpinned {
@@ -649,13 +653,14 @@ progress::-webkit-progress-value  /* Filled part of the progress bar (WebKit) */
 }
 /* When scrolled (not at the top), apply a blurred background to the mobile header. */
 .layout-mobile .headroom--not-top {
-    background: var(--secondary-background-trans) !important; /* Blurred background using secondary accent */
+    background: var(--secondary-background-transparent) !important; /* Blurred background using secondary accent */
     backdrop-filter: blur(var(--blur)) !important;
 }
-/* Remove background from the right header section when scrolled (it inherits from headroom--not-top). */
+/* Remove background from the right header section when scrolled (it inherits from headroom--not-top).
 .layout-mobile .headroom--not-top .headerRight {
     background: none !important;
-}
+} */
+
 /* Transparent header when at the very top of the page or when tabs are visible (overriding the scrolled style). */
 .layout-mobile .headroom--top,
 .layout-mobile .headroom--not-top:has(.headerTabs.sectionTabs:not(.hide)) {
@@ -1033,7 +1038,7 @@ h3.tagline {
     background: var(--secondary-background-transparent) !important;
     padding: 10px 0px 0px 0px !important;
     border-radius: var(--rounded-cards) !important;
-    max-width: 70em !important;
+    max-width: 100% !important;
     backdrop-filter: blur(var(--blur)) !important;
 }
 
@@ -1062,7 +1067,7 @@ h3.tagline {
     border-radius: var(--rounded-cards) !important;
     padding: 10px 20px !important;
     margin-top: 20px !important;
-    max-width: 70em !important; /* Limits width of the selection box */
+    max-width: 100% !important;
 }
 
 /* == Fix for Track Select Dropdowns == */
@@ -1544,6 +1549,14 @@ h3.tagline {
 /* Background for dashboard menu on mobile */
 .MuiPaper-root.MuiPaper-elevation.MuiPaper-elevation16.MuiDrawer-paper.MuiDrawer-paperAnchorLeft {
     background: var(--secondary-background-color) !important;
+    border-top-right-radius: 30px !important;
+    border-bottom-right-radius: 30px !important;
+}
+
+/* The panel when clicked on the profile in dashboard page */
+.css-1ilo2kq {
+    backdrop-filter: blur(var(--blur));
+    border-radius: var(--rounded-cards);
 }
 
 /* Applies a smaller, consistent rounding to buttons and select elements. */
@@ -1669,6 +1682,8 @@ h3.tagline {
 .MuiPaper-root.MuiDrawer-paperAnchorDockedLeft { /* The drawer paper itself */
     border-right: none !important; /* Remove default right border */
     width: 260px !important;
+    border-top-right-radius: var(--rounded-cards) !important;
+    border-bottom-right-radius: var(--rounded-cards)  !important;
 }
 /* Smaller sidebar width for mobile dashboard. */
 .layout-mobile .MuiPaper-root.MuiDrawer-paperAnchorDockedLeft {
@@ -1917,20 +1932,14 @@ h3.tagline {
 
 /* == Font and Overlap Fixes for Media Bar Area == */
 /* Addresses issues with the first content section overlapping the media bar (Now Playing bar) and standardizes fonts in that area. */
-.section0 { /* Assuming .section0 is the first section of content on a page */
-    margin-top: 5vh; /* Add top margin to push it down from the media bar */
-    height: auto;   /* Allow natural height */
-}
-/* if section0 is Next Up section and there is nothing in next up, hide add margin to next section
- */
-.section0.hide + .section1 {
-    margin-top: 5vh;
-    height: auto;   /* Allow natural height */
+
+.homeSectionsContainer {
+    top: 69vh !important;
 }
 
 /* Standardizes font family for various text elements often found near or related to the media bar. */
 .genre, .plot, .rating-value, .rating-value span, .date, .age-rating span, .runTime, .featured-content, .button-container button, .play-text {
-    font-family: Noto Sans, Noto Sans HK, Noto Sans JP, Noto Sans KR, Noto Sans SC, Noto Sans TC, sans-serif !important;
+    font-family: inherit !important;
 }
 
 

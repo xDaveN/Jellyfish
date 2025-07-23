@@ -7,3 +7,27 @@
 .noHomeButtonHeader .emby-tab-button[data-index="1"] {
     display: none !important;
 }
+
+/* Remove images from Installed plugins page for compact layout */
+#pluginsPage .cardScalable {
+    display: none !important;
+}
+
+/* Make device cards and media library cards smaller for compact layout */
+#devicesPage .cardScalable, #mediaLibraryPage .cardScalable {
+    height: 10vh;
+}
+
+
+/* Testing */
+/* Change colors for options dropdown */
+.emby-select option {
+  background-color: rgba(var(--primary-r), var(--primary-g), var(--primary-b), 0.2);
+  color: var(--text-color);
+}
+
+/* Selected option */
+.emby-select option:checked {
+  background-color: rgb(var(--primary-r), var(--primary-g), var(--primary-b));
+}
+

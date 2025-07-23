@@ -73,6 +73,7 @@
                     position: relative;
                     width: 100%;
                     height: 100%;
+                    backdrop-filter: blur(5px);
                 }
 
                 #overlay-logo {
@@ -98,7 +99,7 @@
                     line-height: 1.6;
                     overflow-y: auto;
                     text-align: left;
-                }
+                } 
 
                 #overlay-details {
                     position: absolute;
