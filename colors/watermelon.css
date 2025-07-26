@@ -1,4 +1,4 @@
-/* Jellyfin Watermelon Red Pastel Theme */
+/* Jellyfish Watermelon Red Pastel Theme */
 :root {
     --primary-r: 255;
     --primary-g: 105;
@@ -16,12 +16,6 @@
     --logo: url("https://i.ibb.co/TqBxLXTx/jfish.png");
     --background-image: url(https://cdn.jsdelivr.net/gh/n00bcodr/Jellyfish/colors/images/watermelon.jpg);
     --footer-message: "🍉 Streaming with a touch of rose!";
-
-    /* HEX values for compatibility */
-    --hex-primary-accent-color: #FF6961FF;
-    --hex-secondary-accent-color: #FF696133;
-    --hex-primary-background-transparent: #FF696119;
-    --hex-secondary-background-transparent: #FF696133;
 
     /* Alternate accents */
     --primary-alt1: rgba(calc(var(--primary-r) - 30), calc(var(--primary-g) - 30), calc(var(--primary-b) - 30), 1);

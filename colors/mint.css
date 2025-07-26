@@ -1,4 +1,4 @@
-/* Jellyfin Mint Pastel Theme */
+/* Jellyfish Mint Pastel Theme */
 :root {
     --primary-r: 152;
     --primary-g: 251;
@@ -16,12 +16,6 @@
     --logo: url("https://i.ibb.co/TqBxLXTx/jfish.png");
     --background-image: url(https://cdn.jsdelivr.net/gh/n00bcodr/Jellyfish/colors/images/mint.jpg);
     --footer-message: "🌿 Streaming in mint condition!";
-
-    /* HEX values for compatibility */
-    --hex-primary-accent-color: #98FB98FF;
-    --hex-secondary-accent-color: #98FB9833;
-    --hex-primary-background-transparent: #98FB9819;
-    --hex-secondary-background-transparent: #98FB9833;
 
     /* Alternate accents */
     --primary-alt1: rgba(calc(var(--primary-r) - 30), calc(var(--primary-g) - 30), calc(var(--primary-b) - 30), 1);

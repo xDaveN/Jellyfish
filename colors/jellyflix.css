@@ -1,11 +1,10 @@
-/* Jellyfin Netflix Theme - Using Original Variables */
+/* Jellyfish Netflix Theme */
 :root {
     --primary-r: 178; /* E5 */
     --primary-g: 7;   /* 09 */
     --primary-b: 18;  /* 14 */
     --primary-accent-color: rgba(var(--primary-r), var(--primary-g), var(--primary-b), 1.0);
     --secondary-accent-color: rgba(var(--primary-r), var(--primary-g), var(--primary-b), 0.6);
-    /* Background Colors */
     --primary-background-transparent: rgba(var(--primary-r), var(--primary-g), var(--primary-b), 0.1);
     --secondary-background-transparent: rgba(var(--primary-r), var(--primary-g), var(--primary-b), 0.2);
     --primary-background-color: #000000; /* Main background */
@@ -15,12 +14,8 @@
     --text-color: #000000;
     --header-background-color: #ffffff6e; /* This is header and tabs background */
     --logo: url("https://i.ibb.co/h1gxW5jg/streamberry.png");
-
-    /* New variables for storing the calculated HEX values */
-    --hex-primary-accent-color: #B20712FF;
-    --hex-secondary-accent-color: #B2071233;
-    --hex-primary-background-transparent: #B2071219;
-    --hex-secondary-background-transparent: #B2071233;
+    --background-image: url(https://cdn.jsdelivr.net/gh/n00bcodr/Jellyfish/colors/images/jellyflix.jpg);
+    --footer-message: "🍿 Jellyflix and Chill?";
 
     /* Alternate accents*/
     --primary-alt1: rgba(calc(var(--primary-r) - 30), calc(var(--primary-g) - 30), calc(var(--primary-b) - 30), 1);

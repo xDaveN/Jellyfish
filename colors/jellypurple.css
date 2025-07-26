@@ -1,11 +1,10 @@
-/* Jellyfin Purple Theme*/
+/* Jellyfish Purple Theme*/
 :root {
     --primary-r: 170;
     --primary-g: 92;
     --primary-b: 195;
     --primary-accent-color: rgba(var(--primary-r), var(--primary-g), var(--primary-b), 1.0);
     --secondary-accent-color: rgba(var(--primary-r), var(--primary-g), var(--primary-b), 0.6);
-    /* Background Colors */
     --primary-background-transparent: rgba(var(--primary-r), var(--primary-g), var(--primary-b), 0.1);
     --secondary-background-transparent: rgba(var(--primary-r), var(--primary-g), var(--primary-b), 0.2);
     --primary-background-color: #000000; /* Main background */
@@ -16,13 +15,7 @@
     --header-background-color: #ffffff6e; /* This is header and tabs background */
     --logo: url("https://i.ibb.co/TqBxLXTx/jfish.png");
     --background-image: url(https://cdn.jsdelivr.net/gh/n00bcodr/Jellyfish/colors/images/jellypurple.jpg);
-
-    /* New variables for storing the calculated HEX values */
-    --hex-primary-accent-color: #AA5CC3FF;
-    --hex-secondary-accent-color: #AA5CC333;
-    --hex-primary-background-transparent: #AA5CC319;
-    --hex-secondary-background-transparent: #AA5CC333;
-
+    --footer-message: "🐼 This server runs on snacks and sleepless nights!";
 
     /* Alternate accents*/
     --primary-alt1: rgba(calc(var(--primary-r) - 30), calc(var(--primary-g) - 30), calc(var(--primary-b) - 30), 1);

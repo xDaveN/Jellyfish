@@ -1,4 +1,4 @@
-/* Jellyfin Ocean Blue Pastel Theme */
+/* Jellyfish Ocean Blue Pastel Theme */
 :root {
     --primary-r: 135;
     --primary-g: 206;
@@ -16,12 +16,6 @@
     --logo: url("https://i.ibb.co/TqBxLXTx/jfish.png");
     --background-image: url(https://cdn.jsdelivr.net/gh/n00bcodr/Jellyfish/colors/images/ocean.jpg);
     --footer-message: "🌊 Wave after wave, stream what you crave!";
-
-    /* HEX values for compatibility */
-    --hex-primary-accent-color: #87CEEBFF;
-    --hex-secondary-accent-color: #87CEEB33;
-    --hex-primary-background-transparent: #87CEEB19;
-    --hex-secondary-background-transparent: #87CEEB33;
 
     /* Alternate accents */
     --primary-alt1: rgba(calc(var(--primary-r) - 30), calc(var(--primary-g) - 30), calc(var(--primary-b) - 30), 1);

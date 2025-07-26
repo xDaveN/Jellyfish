@@ -1,4 +1,4 @@
-/* Jellyfin Green Pastel Theme */
+/* Jellyfish Green Pastel Theme */
 :root {
     --primary-r: 173;
     --primary-g: 255;
@@ -16,12 +16,6 @@
     --logo: url("https://i.ibb.co/TqBxLXTx/jfish.png");
     --background-image: url(https://cdn.jsdelivr.net/gh/n00bcodr/Jellyfish/colors/images/grass.jpg);
     --footer-message: "🍃 Greener the screen, sharper the scene!";
-
-    /* HEX values for compatibility */
-    --hex-primary-accent-color: #ADFFC1FF;
-    --hex-secondary-accent-color: #ADFFC133;
-    --hex-primary-background-transparent: #ADFFC119;
-    --hex-secondary-background-transparent: #ADFFC133;
 
     /* Alternate accents */
     --primary-alt1: rgba(calc(var(--primary-r) - 30), calc(var(--primary-g) - 30), calc(var(--primary-b) - 30), 1);

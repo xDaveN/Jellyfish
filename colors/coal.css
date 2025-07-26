@@ -1,4 +1,4 @@
-/* Jellyfin Grey Theme */
+/* Jellyfish Grey Theme */
 :root {
     --primary-r: 169;
     --primary-g: 169;
@@ -16,12 +16,6 @@
     --logo: url("https://i.ibb.co/TqBxLXTx/jfish.png");
     --background-image: url(https://cdn.jsdelivr.net/gh/n00bcodr/Jellyfish/colors/images/coal.jpg);
     --footer-message: "🪨 Hot like coal, streamin’ rock and roll!";
-
-    /* HEX values for compatibility */
-    --hex-primary-accent-color: #A9A9A9FF;
-    --hex-secondary-accent-color: #A9A9A933;
-    --hex-primary-background-transparent: #A9A9A919;
-    --hex-secondary-background-transparent: #A9A9A933;
 
     /* Alternate accents */
     --primary-alt1: rgba(calc(var(--primary-r) - 30), calc(var(--primary-g) - 30), calc(var(--primary-b) - 30), 1);

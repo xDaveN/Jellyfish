@@ -1,4 +1,4 @@
-/* Jellyfin Peach Pastel Theme */
+/* Jellyfish Peach Pastel Theme */
 :root {
     --primary-r: 255;
     --primary-g: 218;
@@ -16,12 +16,6 @@
     --logo: url("https://i.ibb.co/TqBxLXTx/jfish.png");
     --background-image: url(https://cdn.jsdelivr.net/gh/n00bcodr/Jellyfish/colors/images/peach.jpg);
     --footer-message: "🍑 Peachy keen streaming machine!";
-
-    /* HEX values for compatibility */
-    --hex-primary-accent-color: #FFDAB9FF;
-    --hex-secondary-accent-color: #FFDAB933;
-    --hex-primary-background-transparent: #FFDAB919;
-    --hex-secondary-background-transparent: #FFDAB933;
 
     /* Alternate accents */
     --primary-alt1: rgba(calc(var(--primary-r) - 30), calc(var(--primary-g) - 30), calc(var(--primary-b) - 30), 1);

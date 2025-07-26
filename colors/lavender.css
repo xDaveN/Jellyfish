@@ -1,5 +1,4 @@
-/* Jellyfin Lavender Pastel Theme */
-
+/* Jellyfish Lavender Pastel Theme */
 :root {
     --primary-r: 221;
     --primary-g: 160;
@@ -17,12 +16,6 @@
     --logo: url("https://i.ibb.co/TqBxLXTx/jfish.png");
     --background-image: url(https://cdn.jsdelivr.net/gh/n00bcodr/Jellyfish/colors/images/lavender.jpg);
     --footer-message: "🪻 Lavender haze, lost in streaming daze!";
-
-    /* HEX values for compatibility */
-    --hex-primary-accent-color: #DDA0DDFF;
-    --hex-secondary-accent-color: #DDA0DD33;
-    --hex-primary-background-transparent: #DDA0DD19;
-    --hex-secondary-background-transparent: #DDA0DD33;
 
     /* Alternate accents */
     --primary-alt1: rgba(calc(var(--primary-r) - 30), calc(var(--primary-g) - 30), calc(var(--primary-b) - 30), 1);

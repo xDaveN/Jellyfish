@@ -1,4 +1,4 @@
-/* Jellyfin Yellow Pastel Theme */
+/* Jellyfish Yellow Pastel Theme */
 :root {
     --primary-r: 255;
     --primary-g: 255;
@@ -16,12 +16,6 @@
     --logo: url("https://i.ibb.co/TqBxLXTx/jfish.png");
     --background-image: url(https://cdn.jsdelivr.net/gh/n00bcodr/Jellyfish/colors/images/banana.jpg);
     --footer-message: "🍌 Go bananas for your shows!";
-
-    /* HEX values for compatibility */
-    --hex-primary-accent-color: #FFFF99FF;
-    --hex-secondary-accent-color: #FFFF9933;
-    --hex-primary-background-transparent: #FFFF9919;
-    --hex-secondary-background-transparent: #FFFF9933;
 
     /* Alternate accents */
     --primary-alt1: rgba(calc(var(--primary-r) - 30), calc(var(--primary-g) - 30), calc(var(--primary-b) - 30), 1);

@@ -1,4 +1,4 @@
-/* Jellyfin Forest Theme */
+/* Jellyfish Forest Theme */
 :root {
     --primary-r: 34;
     --primary-g: 139;
@@ -14,14 +14,8 @@
     --text-color: #000000;
     --header-background-color: #ffffff6e; /* This is header and tabs background */
     --logo: url("https://i.ibb.co/TqBxLXTx/jfish.png");
-    --background-image: url(https://images.unsplash.com/photo-1441974231531-c6227db76b6e);
+    --background-image: url(https://cdn.jsdelivr.net/gh/n00bcodr/Jellyfish/colors/images/forest.jpg);
     --footer-message: "🌲 Lost in the forest of entertainment!";
-
-    /* HEX values for compatibility */
-    --hex-primary-accent-color: #228B22FF;
-    --hex-secondary-accent-color: #228B2233;
-    --hex-primary-background-transparent: #228B2219;
-    --hex-secondary-background-transparent: #228B2233;
 
     /* Alternate accents */
     --primary-alt1: rgba(50, 205, 50, 1); /* Lime green accent */

@@ -18,6 +18,7 @@
 /* Defines core variables used throughout the theme for consistency. */
 :root {
     --theme-updated-on: "23 July 2025 - 05:03 P.M."; /* Date of last theme update */
+    --theme-name: 'Jellyfish';
     --rounded-cards: 15px; /* Standard border-radius */
     --blur: 15px;           /* Default blur intensity */
 }
@@ -245,6 +246,10 @@ html
 .noBackdropTransparency .detailPageSecondaryContainer /* Secondary container on detail pages when backdrop transparency is off */
 {
     background-color: var(--secondary-background-transparent) !important;
+}
+
+.libraryDocument.withSectionTabs .backgroundContainer {
+    backdrop-filter: blur(var(--blur)) !important;
 }
 
 /* Secondary, often slightly transparent, backgrounds for elements like drawers, dialogs, and content sections. */
@@ -1233,6 +1238,7 @@ h3.tagline {
 .layout-mobile .mainDetailButtons .detailButton {
     -webkit-flex-direction: row !important;
     flex-direction: row !important;
+    color: var(--text-color) !important;
 }
 
 /* == Live TV Recording Fields Styling == */
@@ -1894,18 +1900,21 @@ h3.tagline {
 
 @media (orientation: portrait) {
 .layout-mobile #itemDetailPage:has(div.detailImageContainer .cardImageIcon.person) > .itemBackdrop {
-    height: 18%;
-}
+    height: 20% !important;
 }
 
+.layout-mobile #itemDetailPage:has(.cardImageIcon.person) .mainDetailButtons {
+    justify-content: flex-end !important;
+}
 .layout-desktop #itemDetailPage:has(div.detailImageContainer .cardImageIcon.person) > .itemBackdrop {
-    height: 15%;
+    height: 15% !important;
 }
 
 .layout-desktop #itemDetailPage:has(div.detailImageContainer .cardImageIcon.person) .mainDetailButtons {
-    position: absolute;
-    right: 6em;
-    top: 6em;
+    position: absolute !important;
+    right: 6em !important;
+    top: 6em !important;
+}
 }
 
 /* ~~~~~~~~~~~~~~~~~~~~ RESPONSIVENESS & FIXES ~~~~~~~~~~~~~~~~~~~~ */

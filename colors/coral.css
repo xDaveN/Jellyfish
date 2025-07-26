@@ -1,4 +1,4 @@
-/* Jellyfin Coral Pastel Theme */
+/* Jellyfish Coral Pastel Theme */
 :root {
     --primary-r: 255;
     --primary-g: 127;
@@ -16,12 +16,6 @@
     --logo: url("https://i.ibb.co/TqBxLXTx/jfish.png");
     --background-image: url(https://cdn.jsdelivr.net/gh/n00bcodr/Jellyfish/colors/images/coral.jpg);
     --footer-message: "🪸 Diving deep into coral streams!";
-
-    /* HEX values for compatibility */
-    --hex-primary-accent-color: #FF7F50FF;
-    --hex-secondary-accent-color: #FF7F5033;
-    --hex-primary-background-transparent: #FF7F5019;
-    --hex-secondary-background-transparent: #FF7F5033;
 
     /* Alternate accents */
     --primary-alt1: rgba(calc(var(--primary-r) - 30), calc(var(--primary-g) - 30), calc(var(--primary-b) - 30), 1);
