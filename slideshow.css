@@ -1,0 +1,282 @@
+/*
+ * ===================================================================
+ * |                    Jellyfish Slideshow Theme                    |
+ * ===================================================================
+ *
+ */
+
+/* Animation  */
+
+/* --- Base Slide Transition (Crossfade) --- */
+.slide {
+    background-color: #000 !important;
+    transition: opacity 1.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+/* --- Backdrop Animation (Ken Burns) --- */
+.slide.active .backdrop {
+    animation: kenBurns 12s ease-out forwards !important;
+}
+
+@keyframes kenBurns {
+  from {
+    transform: scale(1);
+    filter: brightness(0.6);
+  }
+  to {
+    transform: scale(1.05);
+    filter: brightness(0.7);
+  }
+}
+
+/* For mobile portrait, for some reason the slideshow flickers */
+@keyframes panHorizontally {
+  from {
+    transform: translateX(0) scale(1.1);
+  }
+  to {
+    transform: translateX(-10%) scale(1.1);
+  }
+}
+
+/* --- Content Animation --- */
+/* Default state for all content (when slide is NOT active) */
+.slide .logo-container,
+.slide .info-container,
+.slide .genre,
+.slide .plot-container,
+.slide .button-container {
+    opacity: 0 !important;
+    transform: translateY(30px) !important;
+    transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+/* Active state for all content (when slide IS active) - with staggered delay */
+.slide.active .logo-container,
+.slide.active .info-container,
+.slide.active .genre,
+.slide.active .plot-container,
+.slide.active .button-container {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+}
+
+/* Staggered transition delays for a cascade effect */
+.slide.active .logo-container   { transition-delay: 0.2s !important; }
+.slide.active .info-container   { transition-delay: 0.3s !important; }
+.slide.active .genre            { transition-delay: 0.4s !important; }
+.slide.active .plot-container   { transition-delay: 0.5s !important; }
+.slide.active .button-container { transition-delay: 0.6s !important; }
+
+
+
+/* --- Backdrop & Gradient Styling --- */
+.backdrop {
+  filter: brightness(0.9) !important;
+}
+
+.backdrop-overlay {
+  background: linear-gradient(to top, rgba(16, 16, 16, 0.95) 5%, rgba(16, 16, 16, 0.5) 25%, transparent 50%) !important;
+}
+
+.gradient-overlay {
+  background: linear-gradient(to right, rgba(16, 16, 16, 0.75) 20%, transparent 50%) !important;
+}
+
+/* --- Logo Styling --- */
+.logo-container {
+  left: 5vw !important;
+  top: 15vh !important;
+  width: 50% !important;
+  height: 30vh !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  position: relative !important;
+}
+
+.logo-container::before {
+    content: '' !important;
+    position: absolute !important;
+    width: 100% !important;
+    height: 100% !important;
+    background: radial-gradient(circle, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0) 70%) !important;
+    z-index: -1 !important;
+    opacity: 0 !important;
+    transition: opacity 0.3s !important;
+}
+
+.logo-container:has(img[src*="Logo"]) {
+    opacity: 1 !important;
+}
+
+.logo {
+  max-width: 100% !important;
+  max-height: 100% !important;
+  object-fit: contain !important;
+  filter: drop-shadow(1px 1px 10px rgba(255, 255, 255, 0.15)) brightness(1.1) blur(0) !important;
+}
+
+
+/* --- Text & Info Styling --- */
+.info-container {
+  left: 5vw !important;
+  top: 50vh !important;
+  color: #ffffff !important;
+  font-size: 1.1em !important;
+}
+
+.genre {
+  left: 5vw !important;
+  top: 56vh !important;
+  color: #cfcfcf !important;
+  font-size: 1.1em !important;
+}
+
+.plot-container {
+  left: 5vw !important;
+  top: 60vh !important;
+  width: 50% !important;
+  color: #cfcfcf !important;
+}
+
+.separator-icon {
+  color: var(--primary-accent-color) !important;
+  font-size: 10px !important;
+  margin: 0 8px !important;
+}
+
+/* --- Buttons (Restored Style) --- */
+.button-container {
+  left: 5vw !important;
+  top: 72vh !important;
+  gap: 18px !important;
+}
+
+
+/* ----------- Icon buttons styling ----------- */
+
+.play-button, .detail-button, .favorite-button {
+  color: #ffffff !important;
+  transition: all 0.3s ease !important;
+  backdrop-filter: blur(var(--blur)) !important;
+}
+
+/* Different styling for playbutton */
+.play-button {
+    background-color: var(--secondary-accent-color) !important;
+    border-radius: var(--rounded-cards) !important;
+    font-size: 1.1em !important;
+}
+
+.detail-button, .favorite-button {
+  background-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Hover Effects */
+.play-button:hover {
+  background-color: var(--primary-accent-color) !important;
+  transform: scale(1.05) !important;
+  color: var(--text-color) !important;
+}
+.detail-button:hover {
+  background-color: #fff!important;
+  transform: scale(1.05) !important;
+  color: #000 !important;
+
+}
+.favorite-button:hover {
+  background-color: #fff!important;
+  transform: scale(1.05) !important;
+  color: #ff0000 !important;
+}
+
+/* --- Navigation --- */
+.arrow {
+  background-color: rgba(0, 0, 0, 0.5) !important;
+  border-radius: 50% !important;
+  width: 5em !important;
+  height: 5em !important;
+  transition: all 0.3s ease !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.arrow:hover {
+  background-color: var(--primary-accent-color) !important;
+}
+
+.dots-container {
+  display: none !important;
+}
+
+/* --- Tablet & iPad Layout Fixes --- */
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+    /* Landscape */
+    .logo-container {
+        width: 45% !important;
+        height: 25vh !important;
+        top: 20vh !important;
+    }
+    .info-container { top: 50vh !important; }
+    .genre { top: 56vh !important; }
+    .plot-container { top: 63vh !important; width: 50% !important; }
+    .button-container { top: 74vh !important; }
+
+    /* Portrait */
+    @media (orientation: portrait) {
+        .gradient-overlay {
+          background: linear-gradient(to top, rgba(16, 16, 16, .75) 20%, transparent 50%) !important;
+        }
+        .logo-container {
+            width: 60% !important;
+            height: 20vh !important;
+            top: 25vh !important;
+            left: 20% !important;
+            transform: translateX(-50%) !important;
+        }
+        .info-container, .genre, .plot-container, .button-container {
+            width: 80% !important;
+            left: 10% !important;
+            transform: translateX(-50%) !important;
+            text-align: center !important;
+            justify-content: center !important;
+        }
+        .info-container { top: 50vh !important; }
+        .genre { top: 58vh !important; }
+        .plot-container { top: 64vh !important; }
+        .button-container {top: 72vh !important;}
+    }
+}
+
+
+/* --- Mobile Layout Fixes --- */
+@media only screen and (max-width: 767px) and (orientation: portrait) {
+  .slide.active .backdrop {
+    animation: panHorizontally 12s linear infinite alternate !important;
+  }
+  .gradient-overlay {
+    background: linear-gradient(to top, rgba(16, 16, 16, .75) 20%, transparent 50%) !important;
+  }
+  .logo-container {
+    width: 80% !important;
+    height: 20vh !important;
+    top: 25vh !important;
+    left: 10% !important;
+    transform: translateX(-50%) !important;
+    justify-content: center !important;
+  }
+
+  .info-container, .genre, .button-container, .plot-container {
+    transform: translateX(-50%) !important;
+    width: 90% !important;
+    text-align: center !important;
+    justify-content: center !important;
+    font-size: 1em !important;
+  }
+
+  .info-container {top: 55vh !important;}
+  .genre { top: 60vh !important; }
+  .plot-container { display: none !important; }
+}
