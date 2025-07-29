@@ -4,6 +4,13 @@ on:
   push:
     branches:
       - main
+    paths-ignore:
+      - '**/README.md'
+      - 'logos/**'
+      - 'fonts/**'
+      - 'scripts/**'
+      - 'screenshots/**'
+      - 'misc.css'
   workflow_dispatch:
 
 permissions:

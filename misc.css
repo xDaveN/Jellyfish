@@ -1,15 +1,10 @@
 /* For some reason, Tomato ratings keep getting removed for me, added this to hide them so that N/A doesnt keep showing up in Media Bar */
-.tomato-rating {
+/* .tomato-rating {
     display: none !important;
-}
+} */
 
 /* I don't like or use favourites bar, this hides it */
 .noHomeButtonHeader .emby-tab-button[data-index="1"] {
-    display: none !important;
-}
-
-/* Remove images from Installed plugins page for compact layout */
-#pluginsPage .cardScalable {
     display: none !important;
 }
 
