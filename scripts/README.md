@@ -14,6 +14,9 @@ Here's a breakdown of what each script does:
 -  Displays the user's profile picture on the manual login screen instead of the name. When a user is selected, their avatar appears above the password field. This script can be used without this theme and is tested on a few different themes. \
   Check [login2.png](../screenshots/login2.png)
 
+> [!Warning]
+> Only use this script if all your users are on visible on the login screen, this completely hides the username text input field, making it difficult to manual login.
+
 ### [pausescreen.js](pausescreen.js)
 
 - Displays a dynamic pause screen overlay when media is paused. It shows the item's logo, details (year, rating, runtime), and a spinning disc art. This is a modified version of the script by [BobHasNoSoul](https://github.com/BobHasNoSoul/Jellyfin-PauseScreen). This also has all the CSS needed in the script itself, so it doesn't need a separate CSS file.
