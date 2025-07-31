@@ -1905,6 +1905,8 @@ h3.tagline {
 .layout-mobile #itemDetailPage:has(.cardImageIcon.person) .mainDetailButtons {
     justify-content: flex-end !important;
 }
+}
+
 .layout-desktop #itemDetailPage:has(div.detailImageContainer .cardImageIcon.person) > .itemBackdrop {
     height: 15% !important;
 }
@@ -1913,7 +1915,6 @@ h3.tagline {
     position: absolute !important;
     right: 6em !important;
     top: 6em !important;
-}
 }
 
 /* ~~~~~~~~~~~~~~~~~~~~ RESPONSIVENESS & FIXES ~~~~~~~~~~~~~~~~~~~~ */
