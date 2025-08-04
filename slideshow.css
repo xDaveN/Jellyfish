@@ -72,7 +72,9 @@
 
 /* --- Backdrop & Gradient Styling --- */
 .backdrop {
-  filter: brightness(0.9) !important;
+  transform: scale(1.05) !important;
+  filter: brightness(0.7) !important;
+  transition: transform 0.5s ease-out, filter 0.5s ease-out !important;
 }
 
 .backdrop-overlay {
