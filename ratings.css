@@ -79,7 +79,7 @@
 .mediaInfoOfficialRating[rating='P'],                      /* Australia */
 .mediaInfoOfficialRating[rating='AU-P'],                   /* Australia */
 .mediaInfoOfficialRating[rating='AU-G'],                   /* Australia */
-.mediaInfoOfficialRating[rating='FSK0'],                   /* Germany */
+.mediaInfoOfficialRating[rating='FSK-0'],                   /* Germany */
 .mediaInfoOfficialRating[rating='DE-0'],                   /* Germany */
 .mediaInfoOfficialRating[rating='FR-U'],                   /* France */
 .mediaInfoOfficialRating[rating='JP-G'],                   /* Japan */
@@ -139,7 +139,7 @@
 .mediaInfoOfficialRating[rating='IE-12A'],                 /* Ireland */
 .mediaInfoOfficialRating[rating='CA-PG'],                  /* Canada */
 .mediaInfoOfficialRating[rating='AU-PG'],                  /* Australia */
-.mediaInfoOfficialRating[rating='FSK6'],                   /* Germany */
+.mediaInfoOfficialRating[rating='FSK-6'],                   /* Germany */
 .mediaInfoOfficialRating[rating='DE-6'],                   /* Germany */
 .mediaInfoOfficialRating[rating='FR-10'],                  /* France */
 .mediaInfoOfficialRating[rating='FR--10'],                 /* France */
@@ -199,7 +199,7 @@
 .mediaInfoOfficialRating[rating='CA-13+'],                 /* Canada (Quebec) */
 .mediaInfoOfficialRating[rating='M'],                      /* Australia / US (Legacy) */
 .mediaInfoOfficialRating[rating='AU-M'],                   /* Australia */
-.mediaInfoOfficialRating[rating='FSK12'],                  /* Germany */
+.mediaInfoOfficialRating[rating='FSK-12'],                  /* Germany */
 .mediaInfoOfficialRating[rating='DE-12'],                  /* Germany */
 .mediaInfoOfficialRating[rating='FR-12'],                  /* France */
 .mediaInfoOfficialRating[rating='FR--12'],                 /* France */
@@ -242,7 +242,7 @@
 /* === RED-ORANGE: Mature / Restricted === */
 .mediaInfoOfficialRating[rating='MA15+'],                  /* Australia */
 .mediaInfoOfficialRating[rating='AU-MA15+'],               /* Australia */
-.mediaInfoOfficialRating[rating='FSK16'],                  /* Germany */
+.mediaInfoOfficialRating[rating='FSK-16'],                  /* Germany */
 .mediaInfoOfficialRating[rating='DE-16'],                  /* Germany */
 .mediaInfoOfficialRating[rating='FR-16'],                  /* France */
 .mediaInfoOfficialRating[rating='FR--16'],                 /* France */
@@ -285,7 +285,7 @@
 .mediaInfoOfficialRating[rating='CA-18+'],                 /* Canada (and Quebec) */
 .mediaInfoOfficialRating[rating='R18+'],                   /* Australia */
 .mediaInfoOfficialRating[rating='AU-R18+'],                /* Australia */
-.mediaInfoOfficialRating[rating='FSK18'],                  /* Germany */
+.mediaInfoOfficialRating[rating='FSK-18'],                  /* Germany */
 .mediaInfoOfficialRating[rating='DE-18'],                  /* Germany */
 .mediaInfoOfficialRating[rating='FR-18'],                  /* France */
 .mediaInfoOfficialRating[rating='FR--18'],                 /* France */
