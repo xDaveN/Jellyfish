@@ -16,22 +16,19 @@
 /* --- Backdrop Animation (Ken Burns) --- */
 .slide.active .backdrop {
     animation: kenBurns 12s ease-out forwards !important;
-}
-
-/* Initial state for inactive slides */
-.slide:not(.active) .backdrop {
-    transform: scale(1) !important;
-    filter: brightness(0.6) !important;
+    /* Ensure final state persists */
+    transform: scale(1.05) !important;
+    filter: brightness(0.7) !important;
 }
 
 @keyframes kenBurns {
-  from {
-    transform: scale(1);
-    filter: brightness(0.6);
+  0% {
+    transform: scale(1) !important;
+    filter: brightness(0.6) !important;
   }
-  to {
-    transform: scale(1.05);
-    filter: brightness(0.7);
+  100% {
+    transform: scale(1.05) !important;
+    filter: brightness(0.7) !important;
   }
 }
 
@@ -78,9 +75,9 @@
 
 /* --- Backdrop & Gradient Styling --- */
 .backdrop {
-  transform: scale(1.05) !important;
-  filter: brightness(0.7) !important;
-  transition: transform 0.5s ease-out, filter 0.5s ease-out !important;
+  transform: scale(1) !important;
+  filter: brightness(0.6) !important;
+  transition: transform 0.8s ease-out, filter 0.8s ease-out !important;
 }
 
 .backdrop-overlay {
