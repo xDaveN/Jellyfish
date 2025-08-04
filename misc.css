@@ -3,8 +3,8 @@
     display: none !important;
 } */
 
-/* I don't like or use favourites bar, this hides it */
-.noHomeButtonHeader .emby-tab-button[data-index="1"] {
+/* I don't like or use favourites bar, this hides the entire bar */
+.headerTabs.sectionTabs {
     display: none !important;
 }
 
