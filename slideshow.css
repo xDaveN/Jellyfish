@@ -18,6 +18,12 @@
     animation: kenBurns 12s ease-out forwards !important;
 }
 
+/* Initial state for inactive slides */
+.slide:not(.active) .backdrop {
+    transform: scale(1) !important;
+    filter: brightness(0.6) !important;
+}
+
 @keyframes kenBurns {
   from {
     transform: scale(1);
