@@ -15,7 +15,7 @@
 
 /* --- Backdrop Animation (Ken Burns) --- */
 .slide.active .backdrop {
-    animation: kenBurns 6.5s ease-out forwards !important;
+    animation: kenBurns 7s ease-out forwards !important;
 }
 
 @keyframes kenBurns {
@@ -254,7 +254,7 @@
 /* --- Mobile Layout Fixes --- */
 @media only screen and (max-width: 767px) and (orientation: portrait) {
   .slide.active .backdrop {
-    animation: panHorizontally 6.5s linear infinite alternate !important;
+    animation: panHorizontally 12s linear infinite alternate !important;
   }
   .gradient-overlay {
     background: linear-gradient(to top, rgba(16, 16, 16, .75) 20%, transparent 50%) !important;
