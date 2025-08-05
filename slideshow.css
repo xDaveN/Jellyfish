@@ -15,20 +15,17 @@
 
 /* --- Backdrop Animation (Ken Burns) --- */
 .slide.active .backdrop {
-    animation: kenBurns 12s ease-out forwards !important;
-    /* Ensure final state persists */
-    transform: scale(1.05) !important;
-    filter: brightness(0.7) !important;
+    animation: kenBurns 6.5s ease-out forwards !important;
 }
 
 @keyframes kenBurns {
-  0% {
-    transform: scale(1) !important;
-    filter: brightness(0.6) !important;
+  from {
+    transform: scale(1);
+    filter: brightness(0.6);
   }
-  100% {
-    transform: scale(1.05) !important;
-    filter: brightness(0.7) !important;
+  to {
+    transform: scale(1.05);
+    filter: brightness(0.7);
   }
 }
 
@@ -75,9 +72,7 @@
 
 /* --- Backdrop & Gradient Styling --- */
 .backdrop {
-  transform: scale(1) !important;
-  filter: brightness(0.6) !important;
-  transition: transform 0.8s ease-out, filter 0.8s ease-out !important;
+  filter: brightness(0.9) !important;
 }
 
 .backdrop-overlay {
@@ -259,7 +254,7 @@
 /* --- Mobile Layout Fixes --- */
 @media only screen and (max-width: 767px) and (orientation: portrait) {
   .slide.active .backdrop {
-    animation: panHorizontally 12s linear infinite alternate !important;
+    animation: panHorizontally 6.5s linear infinite alternate !important;
   }
   .gradient-overlay {
     background: linear-gradient(to top, rgba(16, 16, 16, .75) 20%, transparent 50%) !important;
