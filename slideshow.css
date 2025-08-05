@@ -15,7 +15,7 @@
 
 /* --- Backdrop Animation (Ken Burns) --- */
 .slide.active .backdrop {
-    animation: kenBurns 7s ease-out forwards !important;
+    animation: kenBurns 12s ease-out forwards !important;
 }
 
 @keyframes kenBurns {
