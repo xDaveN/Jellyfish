@@ -15,7 +15,7 @@
 
 /* --- Backdrop Animation (Ken Burns) --- */
 .slide.active .backdrop {
-    animation: kenBurns 7s ease-out forwards !important;
+    animation: kenBurns 12s ease-out forwards !important;
 }
 
 @keyframes kenBurns {
@@ -73,6 +73,9 @@
 /* --- Backdrop & Gradient Styling --- */
 .backdrop {
   filter: brightness(0.9) !important;
+  /* Add bottom fade effect - bottom 10% fades to transparency */
+  mask: linear-gradient(to bottom, black 90%, transparent 100%) !important;
+  -webkit-mask: linear-gradient(to bottom, black 90%, transparent 100%) !important;
 }
 
 .backdrop-overlay {
