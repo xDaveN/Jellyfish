@@ -248,11 +248,11 @@ body:has(#loginPage:not(.hide)) .standalonePage {
   font-family: inherit;
 }
 #loginPage button.emby-button[type="submit"] {
-  background-color: #28a745a8 !important; /* Semi-transparent green */
+  background-color: #5f28a798 !important; /* Semi-transparent purple */
   color: var(--text-color) !important;
 }
 #loginPage button.emby-button[type="submit"]:hover {
-  background-color: #28a745 !important; /* Solid green on hover */
+  background-color: #5f28a7 !important; /* Solid purple on hover */
   color: white !important;
   transition: background-color 0.3s ease, transform 0.3s ease;
   transform: scale(1.05); /* Slight scale effect */
