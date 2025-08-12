@@ -1,7 +1,7 @@
 /* For some reason, Tomato ratings keep getting removed for me, added this to hide them so that N/A doesnt keep showing up in Media Bar */
-/* .tomato-rating {
+.tomato-rating {
     display: none !important;
-} */
+}
 
 /* I don't like or use favourites bar, this hides the entire bar */
 .headerTabs.sectionTabs {
@@ -25,4 +25,3 @@
 /* .emby-select option:checked {
   background-color: rgb(var(--primary-r), var(--primary-g), var(--primary-b));
 } */
-
